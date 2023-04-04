@@ -9,14 +9,42 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.13",
+    "@headlessui/tailwindcss": "^0.1.2",
+    "@react-hookz/web": "^23.0.0",
+    "@shopify/hydrogen-react": "^2023.1.7",
+    "clsx": "^1.2.1",
+    "daisyui": "^2.51.5",
+    "dompurify": "^3.0.1",
+    "eslint": "8.37.0",
+    "eslint-config-next": "13.2.4",
+    "hamburger-react": "^2.5.0",
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-alice-carousel": "^2.7.1",
+    "react-dom": "18.2.0",
+    "react-feather": "^2.0.10",
+    "react-iconly": "^2.2.6",
+    "react-responsive-masonry": "^2.1.7",
+    "react-spinners": "^0.13.8",
+    "sharp": "^0.32.0",
+    "zustand": "^4.3.7"
+  },
+  "devDependencies": {
+    "@total-typescript/ts-reset": "^0.4.2",
+    "eslint-config-prettier": "^8.8.0",
+    "graphql": "^16.6.0",
+    "prettier-plugin-tailwindcss": "^0.2.6",
+    "type-fest": "^3.7.2",
+    "typescript": "5.0.3",
+    "@types/dompurify": "^3.0.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
-    "eslint": "8.37.0",
-    "eslint-config-next": "13.2.4",
-    "next": "13.2.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.3"
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.7",
+    "@tailwindcss/typography": "^0.5.9",
+    "tailwindcss": "^3.3.1"
   }
 }
