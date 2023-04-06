@@ -14,7 +14,7 @@ type ProductImageProps = {
     imageProps?: Partial<ShopifyImageProps>
 }
 
-export default function ProductImage(props: ProductImageProps) {
+export function ProductImage(props: ProductImageProps) {
     const { image, title, rounded = true, containerProps, imageProps } = props
     const altText = image?.altText ?? title
 
