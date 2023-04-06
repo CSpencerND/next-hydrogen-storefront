@@ -4,9 +4,8 @@ import type Children from "types"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
-import { getStorefrontProps } from "./lib/storefront"
-
 import RootProvider from "./lib/state"
+import { getStorefrontProps } from "./lib/storefront"
 
 const inter = Inter({ subsets: ["latin"] })
 

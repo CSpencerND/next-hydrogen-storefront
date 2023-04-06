@@ -1,4 +1,6 @@
+import type { ShopifyImageProps } from "@shopify/hydrogen-react/dist/types/Image"
 import type { Image as ImageT } from "@shopify/hydrogen-react/storefront-api-types"
+
 import { Image } from "@shopify/hydrogen-react"
 import cn from "clsx"
 
@@ -8,8 +10,8 @@ type ProductImageProps = {
     image: ImageT
     title: string
     rounded?: true | false | "top" | "bottom"
-    containerProps?: React.HTMLAttributes<HTMLDivElement>
-    imageProps?: React.HTMLAttributes<HTMLImageElement>
+    containerProps?: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+    imageProps?: Partial<ShopifyImageProps>
 }
 
 export default function ProductImage(props: ProductImageProps) {

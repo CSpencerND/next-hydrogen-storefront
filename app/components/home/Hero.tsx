@@ -7,9 +7,9 @@ import cn from "clsx"
 import Image from "next/image"
 
 type HeroProps = {
-    data: Maybe<Brand> | undefined
-    font?: NextFont
     image: StaticImageData
+    data?: Maybe<Brand>
+    font?: NextFont
 }
 
 export function Hero({ data, font, image, ...props }: HeroProps) {

@@ -19,7 +19,12 @@ import { ChevronLeft, ChevronRight } from "react-iconly"
   * import Loader from "react-spinners/HashLoader"
   */
 
-export function Featured({ featured }: { featured: Product[] }) {
+type FeaturedProps = {
+    featured: Product[]
+    LoadingSpinner?: JSX.Element
+} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+
+export function Featured({ featured, LoadingSpinner, ...props }: FeaturedProps) {
     const isLoading = useLoader((s) => s.isLoading)
     const setLoadingFalse = useLoader((s) => s.setLoadingFalse)
 
@@ -38,11 +43,12 @@ export function Featured({ featured }: { featured: Product[] }) {
     ))
 
     return (
-        <section className="bg-blur-200 card space-y-6 rounded-3xl py-6">
+        <section className="bg-blur-200 card space-y-6 rounded-3xl py-6" {...props}>
             <h2 className="text-center text-lg font-bold text-accent-content">
                 Featured Items
             </h2>
             
+            { LoadingSpinner }
             {/** Define your loader here
                *
                * <Loader

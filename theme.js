@@ -15,5 +15,6 @@ module.exports = {
         warning:                "hsl(49, 88%, 49%)",
         error:                  "hsl(346, 87%, 57%)",
         "--border-btn":         "0px",
+        // TODO: add border radius options
     },
 }
