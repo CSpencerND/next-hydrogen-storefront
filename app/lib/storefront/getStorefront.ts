@@ -1,9 +1,9 @@
 import type { Shop } from "@shopify/hydrogen-react/storefront-api-types"
 import storefrontQuery from "./storefrontClient"
 
-export async function getStorefrontProps(): Promise<{ shop: Shop }> {
+export async function getStorefrontProps(): Promise<Shop> {
     const { shop } = await storefrontQuery<"shop", Shop>(shopQuery)
-    return { shop }
+    return shop
 }
 
 const gql = String.raw

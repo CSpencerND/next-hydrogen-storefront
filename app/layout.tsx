@@ -11,7 +11,7 @@ import RootProvider from "./lib/state"
 const inter = Inter({ subsets: ["latin"] })
 
 export async function generateMetadata(): Promise<Metadata> {
-    const { shop } = await getStorefrontProps()
+    const shop = await getStorefrontProps()
 
     return {
         title: shop.name,
