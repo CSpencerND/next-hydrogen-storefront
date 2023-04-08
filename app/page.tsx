@@ -1,7 +1,6 @@
 import { getFeaturedCollection, getStorefrontProps } from "./lib/storefront"
 
-import { Statement } from "./components/home"
-import { Featured } from "./components/home"
+import { Featured, Hero, Statement } from "./components/home"
 
 const getData = async () => {
     const featuredCollectionData = getFeaturedCollection("staff-picks")
@@ -15,12 +14,12 @@ export default async function HomePage() {
 
     return (
         <>
-                <h1 className="text-2xl text-center">{shop.name}</h1>
-                <Featured featured={featured} />
-                <Statement heading="What we do">
-                    <p>Work hard, play hard, I guess.</p>
-                    <p>That is what The kids say, yeah?</p>
-                </Statement>
+            <h1 className="text-center text-2xl">{shop.name}</h1>
+            <Featured featured={featured} />
+            <Statement heading="What we do">
+                <p>Work hard, play hard, I guess.</p>
+                <p>That is what The kids say, yeah?</p>
+            </Statement>
         </>
     )
 }
