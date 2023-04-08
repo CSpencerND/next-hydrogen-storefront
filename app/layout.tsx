@@ -49,7 +49,7 @@ export default async function RootLayout({ children }: Children) {
                 className={`
                     relative isolate flex 
                     min-h-screen flex-col overflow-x-hidden 
-                    bg-black text-sm
+                    bg-base-300 text-sm
                 `}
                 style={{
                     paddingBottom: "env(safe-area-inset-bottom)", // ios

@@ -15,7 +15,7 @@ type LoaderStore = {
     setLoadingFalse: () => void
 }
 
-export const useLoader = create<LoaderStore>((set, get) => ({
+export const useLoader = create<LoaderStore>()((set, get) => ({
     isLoading: true,
     LoadingSpinner: () => (
         <Loader

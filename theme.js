@@ -6,10 +6,11 @@ module.exports = {
         "secondary-content":    "hsl(266, 85%, 68%)",
         accent:                 "hsl(302, 63%, 19%)",
         "accent-content":       "hsl(300, 58%, 53%)",
-        neutral:                "hsl(225, 12%, 48%)",
-        "base-100":             "hsl(225, 12%, 20%)",
-        "base-200":             "hsl(225, 12%, 12%)",
-        "base-300":             "hsl(225, 12%, 8%)",
+        neutral:                "hsl(225, 18%, 28%)",
+        "neutral-focus":        "hsl(225, 18%, 20%)",
+        "base-100":             "hsl(223, 18%, 12%)",
+        "base-200":             "hsl(223, 18%, 8%)",
+        "base-300":             "hsl(223, 18%, 4%)",
         info:                   "hsl(170, 79%, 43%)",
         success:                "hsl(145, 70%, 46%)",
         warning:                "hsl(49, 88%, 49%)",
@@ -18,3 +19,14 @@ module.exports = {
         // TODO: add border radius options
     },
 }
+
+
+        // neutral:                "hsl(225, 12%, 48%)",
+
+        // "base-100":             "hsl(223, 17%, 20%)",
+        // "base-200":             "hsl(223, 17%, 16%)",
+        // "base-300":             "hsl(223, 17%, 12%)",
+
+        // "base-100":             "hsl(225, 12%, 20%)",
+        // "base-200":             "hsl(225, 12%, 12%)",
+        // "base-300":             "hsl(225, 12%, 8%)",

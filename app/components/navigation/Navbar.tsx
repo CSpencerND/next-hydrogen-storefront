@@ -30,7 +30,7 @@ async function Navbar({ logo }: { logo?: StaticImageData }) {
     const linkData = await getData()
 
     return (
-        <header className="before-blur-black sticky top-0 z-40">
+        <header className="before-blur-300 sticky top-0 z-40">
             <nav className="navbar isolate mx-auto max-w-7xl border-b border-base-200">
                 <div className="navbar-start">
                     <Link

@@ -81,7 +81,7 @@ export function Featured({ featured, ...props }: FeaturedProps) {
             <div className="flex items-center justify-evenly">
                 <Link
                     href="collections/staff-picks"
-                    className="btn-primary btn rounded-xl"
+                    className="btn-primary btn"
                 >
                     See More
                 </Link>
@@ -89,7 +89,7 @@ export function Featured({ featured, ...props }: FeaturedProps) {
                 <span className="flex gap-2">
                     <button
                         aria-controls="alice-carousel"
-                        className="btn-square btn-sm btn rounded-md bg-base-100"
+                        className="btn-square btn-sm btn bg-base-100"
                         onClick={() => sliderRef?.current?.slidePrev() || null}
                     >
                         <ChevronLeft set="curved" />
@@ -97,7 +97,7 @@ export function Featured({ featured, ...props }: FeaturedProps) {
 
                     <button
                         aria-controls="alice-carousel"
-                        className="btn-square btn-sm btn rounded-md bg-base-100"
+                        className="btn-square btn-sm btn bg-base-100"
                         onClick={() => sliderRef?.current?.slideNext() || null}
                     >
                         <ChevronRight set="curved" />
