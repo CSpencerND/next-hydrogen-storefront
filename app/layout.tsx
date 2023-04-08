@@ -7,6 +7,8 @@ import "./globals.css"
 import RootProvider from "./lib/state"
 import { getStorefrontProps } from "./lib/storefront"
 
+import { Navbar } from "./components/navigation"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -38,11 +40,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: Children) {
     return (
-        <html className={inter.className} data-theme="next" lang="en">
+        <html
+            className={inter.className}
+            data-theme="next"
+            lang="en"
+        >
             <body
                 className={`
-                    relative min-h-screen isolate 
-                    overflow-x-hidden flex flex-col 
+                    relative isolate flex 
+                    min-h-screen flex-col overflow-x-hidden 
                     bg-black text-sm
                 `}
                 style={{
@@ -50,6 +56,7 @@ export default async function RootLayout({ children }: Children) {
                 }}
             >
                 <RootProvider>
+                    <Navbar />
                     <main className="container relative mx-auto space-y-8 px-4 py-8">
                         {children}
                     </main>
