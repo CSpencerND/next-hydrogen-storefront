@@ -1,5 +1,3 @@
-"use client"
-
 import { getFeaturedCollection, getStorefrontProps } from "./lib/storefront"
 
 import { Statement } from "./components/home"
@@ -17,7 +15,7 @@ export default async function HomePage() {
 
     return (
         <>
-                <h1 className="text-2xl">{shop.name}</h1>
+                <h1 className="text-2xl text-center">{shop.name}</h1>
                 <Featured featured={featured} />
                 <Statement heading="What we do">
                     <p>Work hard, play hard, I guess.</p>

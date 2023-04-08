@@ -1,9 +1,5 @@
 "use client"
 
-import { useLoader } from "@/lib/state"
-import { useWindowSize } from "@react-hookz/web/esm/useWindowSize"
-import { useRef } from "react"
-
 import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import "./Featured.css"
@@ -11,31 +7,19 @@ import "./Featured.css"
 import { ProductImage } from "@/components/common"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "react-iconly"
-import PulseLoader from "react-spinners/PulseLoader"
+
+import { useLoader } from "@/lib/state"
+import { useWindowSize } from "@react-hookz/web/esm/useWindowSize"
+import { useRef } from "react"
 
 import type { Image, Product } from "@shopify/hydrogen-react/storefront-api-types"
-import type { LoaderSizeProps } from "react-spinners/helpers/props"
-
-type LoaderT = ({
-    loading,
-    color,
-    speedMultiplier,
-    cssOverride,
-    size,
-    ...additionalprops
-}: LoaderSizeProps) => JSX.Element | null
 
 type FeaturedProps = {
     featured: Product[]
-    renderLoader?: {
-        Loader: LoaderT
-        loaderColor: string
-        loaderSize: number
-    }
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
 
-export function Featured({ featured, renderLoader, ...props }: FeaturedProps) {
-    const isLoading = useLoader((s) => s.isLoading)
+export function Featured({ featured, ...props }: FeaturedProps) {
+    const LoadingSpinner = useLoader((s) => s.LoadingSpinner)
     const setLoadingFalse = useLoader((s) => s.setLoadingFalse)
 
     const sliderRef = useRef<AliceCarousel>(null)
@@ -52,12 +36,6 @@ export function Featured({ featured, renderLoader, ...props }: FeaturedProps) {
         />
     ))
 
-    const {
-        Loader = PulseLoader,
-        loaderColor = "#00aaff",
-        loaderSize,
-    } = renderLoader ?? {}
-
     return (
         <section
             className="bg-blur-200 card space-y-6 rounded-3xl py-6"
@@ -67,12 +45,7 @@ export function Featured({ featured, renderLoader, ...props }: FeaturedProps) {
                 Featured Items
             </h2>
 
-            <Loader
-                loading={isLoading}
-                color={loaderColor}
-                size={loaderSize}
-                className="mx-auto"
-            />
+            <LoadingSpinner />
 
             <AliceCarousel
                 onInitialized={setLoadingFalse}
