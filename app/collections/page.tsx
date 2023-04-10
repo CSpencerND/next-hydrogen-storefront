@@ -1,7 +1,7 @@
 import { getCollections } from "@/lib/storefront"
 
-import { PageTitle, ProductImage } from "@/components/common"
-import ProductGrid from "@/components/ui/grid"
+import Collection from "@/components/collection"
+import { ProductImage } from "@/components/common"
 import Link from "next/link"
 
 const getData = async () => {
@@ -23,10 +23,10 @@ export default async function CollectionDirectoryPage() {
     const collections = await getData()
 
     return (
-        <section className="mx-auto max-w-2xl space-y-8">
-            <PageTitle title="Collections Directory" />
+        <Collection.Section>
+            <Collection.Title title="Collections Directory" />
 
-            <ProductGrid>
+            <Collection.Grid>
                 {collections.map(({ id, title, href, image }) => {
                     return (
                         <li key={id}>
@@ -61,7 +61,7 @@ export default async function CollectionDirectoryPage() {
                         </li>
                     )
                 })}
-            </ProductGrid>
-        </section>
+            </Collection.Grid>
+        </Collection.Section>
     )
 }
