@@ -2,7 +2,7 @@ import Image, { type StaticImageData } from "next/image"
 import Link from "next/link"
 
 import { getCollections } from "@/lib/storefront"
-import { Sidebar } from "./Sidebar"
+import { NavMenu } from "./NavMenu"
 
 // import ShoppingCart from "./Cart"
 // import NavMenu from "./NavMenu"
@@ -11,7 +11,7 @@ import { Sidebar } from "./Sidebar"
 const getData = async () => {
     const collections = await getCollections()
 
-    const linkData = collections.map((collection, i) => {
+    const linkData = collections.map((collection) => {
         return {
             title: collection.title,
             href: `/collections/${collection.handle}`,
@@ -31,7 +31,12 @@ async function Navbar({ logo }: { logo?: StaticImageData }) {
 
     return (
         <header className="before-blur-300 sticky top-0 z-40">
-            <nav className="navbar isolate mx-auto max-w-7xl border-b border-base-200">
+            <nav
+                className={`
+                    navbar isolate mx-auto max-w-7xl
+                    border-b border-neutral-focus px-6 py-4
+                `}
+            >
                 <div className="navbar-start">
                     <Link
                         href="/"
@@ -50,7 +55,7 @@ async function Navbar({ logo }: { logo?: StaticImageData }) {
                     {/* <UserAccount /> */}
                     {/* <ShoppingCart /> */}
                     {/* <NavMenu links={links} /> */}
-                    <Sidebar linkData={linkData} />
+                    <NavMenu linkData={linkData} />
                 </div>
             </nav>
         </header>
