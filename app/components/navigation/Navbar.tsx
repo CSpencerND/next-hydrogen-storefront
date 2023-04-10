@@ -1,7 +1,8 @@
+import { getCollections } from "@/lib/storefront"
+
 import Image, { type StaticImageData } from "next/image"
 import Link from "next/link"
 
-import { getCollections } from "@/lib/storefront"
 import { NavMenu } from "./NavMenu"
 
 // import ShoppingCart from "./Cart"
@@ -54,7 +55,6 @@ async function Navbar({ logo }: { logo?: StaticImageData }) {
                 <div className="navbar-end relative">
                     {/* <UserAccount /> */}
                     {/* <ShoppingCart /> */}
-                    {/* <NavMenu links={links} /> */}
                     <NavMenu linkData={linkData} />
                 </div>
             </nav>

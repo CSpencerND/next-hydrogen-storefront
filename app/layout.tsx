@@ -60,6 +60,7 @@ export default async function RootLayout({ children }: Children) {
                     <main className="container relative mx-auto space-y-8 px-4 py-8">
                         {children}
                     </main>
+                    {/* <Footer /> */}
                 </RootProvider>
             </body>
         </html>
