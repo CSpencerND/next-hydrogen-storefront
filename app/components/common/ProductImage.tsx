@@ -1,3 +1,4 @@
+"use client"
 import type { ShopifyImageProps } from "@shopify/hydrogen-react/dist/types/Image"
 import type { Image as ImageT } from "@shopify/hydrogen-react/storefront-api-types"
 import type { HTMLAttributes } from "react"
@@ -5,8 +6,6 @@ import type { HTMLAttributes } from "react"
 import { cn } from "@/lib/utils"
 
 import { Image } from "@shopify/hydrogen-react"
-
-// const nullImage = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3C/svg%3E`
 
 type ProductImageProps = {
     image: ImageT
@@ -27,16 +26,14 @@ export function ProductImage(props: ProductImageProps) {
                 rounded === true ? "rounded-2xl" : "",
                 rounded === "top" ? "rounded-t-2xl" : "",
                 rounded === "bottom" ? "rounded-b-2xl" : "",
-                containerProps?.className ?? ""
+                containerProps?.className ?? "",
+                "flex flex-col"
             )}
         >
             <Image
-                data={image}
                 role="presentation"
+                data={image}
                 alt={altText ?? "loading"}
-                // src={image?.url ?? nullImage}
-                // width={image?.width ?? 1024}
-                // height={image?.height ?? 1024}
                 {...imageProps}
             />
         </figure>
