@@ -1,7 +1,11 @@
 import storefrontQuery from "./storefrontClient"
 import type { Product, Collection } from "@shopify/hydrogen-react/storefront-api-types"
 
-type ProductsByCollection = { collectionTitle: string; products: Product[] }
+type ProductsByCollection = {
+    collectionTitle: string
+    collectionDescription: string
+    products: Product[]
+}
 
 const gql = String.raw
 
@@ -9,8 +13,9 @@ export async function getProductsByCollection(handle: string): Promise<ProductsB
     const data = await storefrontQuery<"collection", Collection>(allProductsQuery, { handle })
 
     const collectionTitle: string = data.collection.title
+    const collectionDescription: string = data.collection.descriptionHtml
     const products: Product[] = data.collection.products.nodes
-    return { collectionTitle, products }
+    return { collectionTitle, collectionDescription, products }
 }
 
 export async function getFeaturedCollection(handle: string): Promise<Product[]> {
@@ -41,6 +46,7 @@ const allProductsQuery = gql`
     query getProductsByCollection($handle: String!) {
         collection(handle: $handle) {
             title
+            descriptionHtml
             products(first: 99) {
                 nodes {
                     id

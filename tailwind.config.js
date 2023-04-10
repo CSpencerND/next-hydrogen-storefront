@@ -16,6 +16,10 @@ module.exports = {
                 "5xl": ["clamp(2.28rem, calc(0.94rem + 6.71vw), 5.72rem)", "1"],
                 "6xl": ["clamp(2.57rem, calc(0.78rem + 8.95vw), 7.15rem)", "1"],
             },
+            maxWidth: {
+                'prose-narrow': '45ch',
+                'prose-wide': '80ch',
+            },
             boxShadow: {
                 box: "0 0 10px rgb(0 0 0 / 0.2), 0 0 5px rgb(0 0 0 / 0.2)",
             },
