@@ -1,29 +1,34 @@
 "use client"
 
-import { create } from "zustand"
+import { useState } from "react"
 
 import { HashLoader as Loader } from "react-spinners"
+
 const loaderProps = {
     color: "#00aaff",
     size: 96,
 }
 
-type LoaderStore = {
-    isLoading: boolean
+type LoaderState = {
     LoadingSpinner: () => JSX.Element
-    setLoadingTrue: () => void
-    setLoadingFalse: () => void
+    toggleLoading: () => void
+    isLoading: boolean
 }
 
-export const useLoader = create<LoaderStore>()((set, get) => ({
-    isLoading: true,
-    LoadingSpinner: () => (
+export const useLoader = (size?: number, color?: string): LoaderState => {
+    const [isLoading, setLoading] = useState<boolean>(true)
+    const toggleLoading = () => setLoading((state) => !state)
+
+    const LoadingSpinner = () => (
         <Loader
-            {...loaderProps}
+            color={color ?? loaderProps.color}
+            size={size ?? loaderProps.size}
+            loading={isLoading}
             className="mx-auto"
-            loading={get().isLoading}
+            aria-label="Loading Spinner"
+            data-testid="loader"
         />
-    ),
-    setLoadingTrue: () => set(() => ({ isLoading: true })),
-    setLoadingFalse: () => set(() => ({ isLoading: false })),
-}))
+    )
+
+    return { LoadingSpinner, toggleLoading, isLoading }
+}

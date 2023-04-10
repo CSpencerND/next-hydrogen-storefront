@@ -20,8 +20,7 @@ type FeaturedProps = {
 } & HTMLAttributes<HTMLElement>
 
 export function Featured({ featured, ...props }: FeaturedProps) {
-    const LoadingSpinner = useLoader((s) => s.LoadingSpinner)
-    const setLoadingFalse = useLoader((s) => s.setLoadingFalse)
+    const { toggleLoading, LoadingSpinner } = useLoader()
 
     const sliderRef = useRef<AliceCarousel>(null)
     const width = useWindowSize(undefined, true).width
@@ -49,7 +48,7 @@ export function Featured({ featured, ...props }: FeaturedProps) {
             <LoadingSpinner />
 
             <AliceCarousel
-                onInitialized={setLoadingFalse}
+                onInitialized={toggleLoading}
                 ref={sliderRef}
                 items={carouselItems}
                 infinite
