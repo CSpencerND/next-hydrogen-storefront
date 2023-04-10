@@ -1,10 +1,10 @@
-import type { DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from "react"
+import type { HTMLAttributes, PropsWithChildren } from "react"
 
-type StatementProps = PropsWithChildren<{
+type StatementProps = PropsWithChildren & {
     heading?: string
-}> & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+} & HTMLAttributes<HTMLElement>
 
-export function Statement({ heading, children, ...props }: StatementProps) {
+export function Statement({ heading, children, className, ...props }: StatementProps) {
     return (
         <article
             className="prose relative max-w-none space-y-6"

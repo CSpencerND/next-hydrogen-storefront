@@ -1,7 +1,7 @@
 "use client"
 
-import type { DetailedHTMLProps, HTMLAttributes, PropsWithChildren } from "react"
 import type { Transition } from "framer-motion"
+import type { HTMLAttributes, PropsWithChildren } from "react"
 
 import { Menu } from "@headlessui/react"
 import { Spiral as HamburgerIcon } from "hamburger-react"
@@ -15,7 +15,7 @@ type SidebarProps = PropsWithChildren & {
     position?: "fixed" | "static"
     direction?: "ltr" | "rtl"
     type: "menu" | "cart" | "account"
-} & DetailedHTMLProps<HTMLAttributes<HTMLMenuElement>, HTMLMenuElement>
+} & HTMLAttributes<HTMLMenuElement>
 
 const transition: Transition = {
     type: "spring",

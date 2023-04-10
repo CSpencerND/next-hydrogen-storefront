@@ -13,10 +13,11 @@ import { useWindowSize } from "@react-hookz/web/esm/useWindowSize"
 import { useRef } from "react"
 
 import type { Image, Product } from "@shopify/hydrogen-react/storefront-api-types"
+import type { HTMLAttributes } from "react"
 
 type FeaturedProps = {
     featured: Product[]
-} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+} & HTMLAttributes<HTMLElement>
 
 export function Featured({ featured, ...props }: FeaturedProps) {
     const LoadingSpinner = useLoader((s) => s.LoadingSpinner)

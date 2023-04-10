@@ -2,7 +2,7 @@ import type { Brand, Maybe } from "@shopify/hydrogen-react/storefront-api-types"
 import type { NextFont } from "next/dist/compiled/@next/font"
 import type { StaticImageData } from "next/image"
 
-import cn from "clsx"
+import { cn } from "@/lib/utils"
 
 import Image from "next/image"
 
@@ -22,7 +22,10 @@ export function Hero({ data, font, image, ...props }: HeroProps) {
                 placeholder="blur"
                 {...props}
             />
-            <div aria-hidden className="hero-overlay bg-black/30" />
+            <div
+                aria-hidden
+                className="hero-overlay bg-black/30"
+            />
             <div className="hero-content">
                 <h1
                     className={cn(font?.className ?? "", "text-3xl")}

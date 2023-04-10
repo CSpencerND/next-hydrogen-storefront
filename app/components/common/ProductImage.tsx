@@ -1,8 +1,10 @@
 import type { ShopifyImageProps } from "@shopify/hydrogen-react/dist/types/Image"
 import type { Image as ImageT } from "@shopify/hydrogen-react/storefront-api-types"
+import type { HTMLAttributes } from "react"
+
+import { cn } from "@/lib/utils"
 
 import { Image } from "@shopify/hydrogen-react"
-import cn from "clsx"
 
 // const nullImage = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3C/svg%3E`
 
@@ -10,7 +12,7 @@ type ProductImageProps = {
     image: ImageT
     title: string
     rounded?: true | false | "top" | "bottom"
-    containerProps?: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+    containerProps?: HTMLAttributes<HTMLElement>
     imageProps?: Partial<ShopifyImageProps>
 }
 
