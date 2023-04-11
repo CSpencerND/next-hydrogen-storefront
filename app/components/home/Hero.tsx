@@ -23,6 +23,7 @@ export function Hero({ data, font, image, rounded, ...props }: HeroProps) {
                 src={image}
                 alt={data?.slogan ?? data?.coverImage?.alt ?? ""}
                 placeholder="blur"
+                priority
                 {...props}
             />
             <div
