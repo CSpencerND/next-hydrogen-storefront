@@ -1,4 +1,4 @@
-import { Sidebar } from "../ui/sidebar"
+import { Sidebar } from "@/components/ui"
 
 type LinkData = {
     title: string

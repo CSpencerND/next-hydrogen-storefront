@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "./components/common"
+import { LoadingSpinner } from "./components/ui"
 
 export default function LoadingPage() {
     return (
