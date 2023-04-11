@@ -8,13 +8,16 @@ import Image from "next/image"
 
 type HeroProps = {
     image: StaticImageData
-    data?: Maybe<Brand>
+    data: Maybe<Brand>
     font?: NextFont
+    rounded?: boolean
 }
 
-export function Hero({ data, font, image, ...props }: HeroProps) {
+export function Hero({ data, font, image, rounded, ...props }: HeroProps) {
     return (
-        <section className="hero overflow-hidden rounded-3xl shadow-box">
+        <section
+            className={cn("hero overflow-hidden shadow-box", rounded ? "rounded-3xl" : "")}
+        >
             <Image
                 className="aspect-video max-h-[calc(100vh-196px)] object-cover object-top"
                 src={image}
