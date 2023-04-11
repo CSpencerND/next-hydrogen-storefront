@@ -1,8 +1,7 @@
 import { getCollections } from "@/lib/storefront"
 
 import Collection from "@/components/collection"
-import { ProductImage } from "@/components/common"
-import Link from "next/link"
+import Product from "@/components/product"
 
 const getData = async () => {
     const collections = await getCollections()
@@ -24,40 +23,24 @@ export default async function CollectionDirectoryPage() {
 
     return (
         <Collection.Section>
-            <Collection.Title title="Collections Directory" />
-
+            <Collection.Heading collectionTitle="Collection Directory" />
             <Collection.Grid>
                 {collections.map(({ id, title, href, image }) => {
                     return (
                         <li key={id}>
-                            <Link
-                                href={href}
-                                className={`
-                                    card relative h-full overflow-hidden rounded-2xl
-                                    text-primary-content transition-all
-                                    hover:scale-105 hover:brightness-105
-                                    active:scale-95
-                                `}
-                            >
+                            <Product.Card href={href}>
                                 {image && (
-                                    <ProductImage
+                                    <Product.Image
                                         image={image}
                                         title={title}
                                     />
                                 )}
-                                <div
-                                    className={`
-                                        bg-blur-300 card-body absolute
-                                        bottom-0 w-full border-t
-                                        border-base-100 p-1
-                                        sm:p-2
-                                    `}
-                                >
-                                    <h2 className="card-title mx-auto whitespace-nowrap text-sm">
-                                        {title}
-                                    </h2>
-                                </div>
-                            </Link>
+                                <Product.Title
+                                    title={title}
+                                    centered
+                                    overlayed
+                                />
+                            </Product.Card>
                         </li>
                     )
                 })}

@@ -4,7 +4,7 @@ import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import "./Featured.css"
 
-import { ProductImage } from "@/components/common"
+import Product from "@/components/product"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "react-iconly"
 
@@ -12,11 +12,11 @@ import { useLoader } from "@/lib/state"
 import { useWindowSize } from "@react-hookz/web/esm/useWindowSize"
 import { useRef } from "react"
 
-import type { Image, Product } from "@shopify/hydrogen-react/storefront-api-types"
+import type { Image, Product as TProduct } from "@shopify/hydrogen-react/storefront-api-types"
 import type { HTMLAttributes } from "react"
 
 type FeaturedProps = {
-    featured: Product[]
+    featured: TProduct[]
 } & HTMLAttributes<HTMLElement>
 
 export function Featured({ featured, ...props }: FeaturedProps) {
@@ -26,14 +26,21 @@ export function Featured({ featured, ...props }: FeaturedProps) {
     const width = useWindowSize(undefined, true).width
 
     const carouselItems = featured.map(({ featuredImage, title }) => (
-        <ProductImage
-            key={featuredImage?.id}
-            image={featuredImage as Image}
-            title={title}
-            imageProps={{
-                onDragStart: (e) => e.preventDefault(),
-            }}
-        />
+        <Product.Card>
+            <Product.Image
+                key={featuredImage?.id}
+                image={featuredImage as Image}
+                title={title}
+                imageProps={{
+                    onDragStart: (e) => e.preventDefault(),
+                }}
+            />
+            <Product.Title
+                truncate
+                overlayed
+                title={title}
+            />
+        </Product.Card>
     ))
 
     return (
