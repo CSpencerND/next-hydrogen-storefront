@@ -4,7 +4,7 @@ import type Children from "types"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
-import RootProvider from "./lib/state"
+import { RootProvider } from "./lib/state"
 import { getStorefrontProps } from "./lib/storefront"
 
 import { Navbar } from "./components/navigation"

@@ -11,7 +11,7 @@ import { create } from "zustand"
 
 import Children from "types"
 
-export default function RootProvider({ children }: Children) {
+export function RootProvider({ children }: Children) {
     return (
         <ShopifyProvider
             storefrontId={env.ID}
