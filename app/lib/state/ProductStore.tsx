@@ -8,9 +8,10 @@ import { useContext, useRef } from "react"
 import { useStore } from "zustand"
 
 import type { Image, Product } from "@shopify/hydrogen-react/storefront-api-types"
-import type { ProductProps, ProductState, ProductProviderProps } from "types"
+import type { PropsWithChildren } from "react"
+import type { ProductProps, ProductProviderProps, ProductState } from "types"
 
-const createProductStore = (initProps?: ProductProps) => {
+const createProductStore = (initProps: ProductProps) => {
     const DEFAULT_PROPS: ProductProps = {
         product: {} as Product,
         images: [{}] as Image[],
@@ -18,6 +19,7 @@ const createProductStore = (initProps?: ProductProps) => {
         isModalOpen: false,
         selectedColor: "",
         colorOptions: [""],
+        sizeOptions: [""],
         hexCodes: [""],
         selectedSize: "",
     }
@@ -36,7 +38,7 @@ const ProductContext = createContext<ProductStore | null>(null)
 
 type ProductStore = ReturnType<typeof createProductStore>
 
-export function ProductProvider({ children, ...props }: ProductProviderProps) {
+function EXProductProvider({ children, ...props }: ProductProviderProps) {
     const storeRef = useRef<ProductStore>()
 
     if (!storeRef.current) {
@@ -44,10 +46,33 @@ export function ProductProvider({ children, ...props }: ProductProviderProps) {
     }
 
     return (
-        <ShopifyProductProvider data={props.product}>
-            <ProductContext.Provider value={storeRef.current}>
-                {children}
-            </ProductContext.Provider>
+        <ProductContext.Provider value={storeRef.current}>{children}</ProductContext.Provider>
+    )
+}
+
+type PPProps = PropsWithChildren<{
+    product: Product
+}>
+
+export function ProductProvider({ children, product }: PPProps) {
+    const colorOptions = product.options.find((option) => option.name === "Color")!.values
+    const sizeOptions = product.options.find((option) => option.name === "Size")!.values
+
+    const initProps: ProductProviderProps = {
+        product: product,
+        images: product.images.nodes,
+        currentImage: product.images.nodes[0],
+        hexCodes: JSON.parse(product.metafield!.value) as string[],
+        colorOptions,
+        sizeOptions,
+        selectedColor: colorOptions[0],
+        selectedSize: sizeOptions[0],
+        isModalOpen: false,
+    }
+
+    return (
+        <ShopifyProductProvider data={product}>
+            <EXProductProvider {...initProps}>{children}</EXProductProvider>
         </ShopifyProductProvider>
     )
 }
@@ -62,3 +87,5 @@ export function useProduct<T>(
     }
     return useStore(store, selector, equalityFn)
 }
+
+export { useProduct as useShopifyProduct } from "@shopify/hydrogen-react"

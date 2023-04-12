@@ -28,8 +28,8 @@ export type ModalState = ModalProps & {
 }
 
 export type SwatchProps = {
-    selectedColor?: string
     colorOptions?: string[]
+    selectedColor?: string
     hexCodes?: string[]
 }
 
@@ -38,6 +38,7 @@ export type SwatchState = SwatchProps & {
 }
 
 export type SizeProps = {
+    sizeOptions?: string[]
     selectedSize?: string
 }
 

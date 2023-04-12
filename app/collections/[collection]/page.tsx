@@ -2,8 +2,7 @@ import { getCollections, getProductsByCollection } from "@/lib/storefront"
 
 import Collection from "@/components/collection"
 import Product from "@/components/product"
-
-// import type { ProductProviderProps } from "@/lib/ProductStore"
+import { ProductProvider } from "@/lib/state"
 
 export async function generateStaticParams() {
     const collections = await getCollections()
@@ -31,9 +30,13 @@ export default async function CollectionDynamicSegment({ params }: SegmentParams
                 {products.map((p) => {
                     if (!p) throw new Error("No product found!")
                     return (
-                        <li key={p.id}>
-                            <Product.Card href="#">
+                        <ProductProvider
+                            product={p}
+                            key={p.id}
+                        >
+                            <Product.Card href="#" colorSwatch>
                                 <Product.Image
+                                    rounded="top"
                                     image={p.images.nodes[0]}
                                     title={p.title}
                                     key={p.id}
@@ -44,7 +47,7 @@ export default async function CollectionDynamicSegment({ params }: SegmentParams
                                     truncate
                                 />
                             </Product.Card>
-                        </li>
+                        </ProductProvider>
                     )
                 })}
 
