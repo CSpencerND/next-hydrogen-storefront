@@ -18,9 +18,7 @@ export function Card({ href, children, colorSwatch, ...props }: CardProps) {
                 {children}
             </CardBody>
             {colorSwatch && (
-                <span className="w-full overflow-x-scroll p-4 bg-gradient-to-t from-base-200 to-base-100">
-                    <Swatch />
-                </span>
+                <Swatch className="overflow-x-scroll bg-gradient-to-t from-base-200 to-base-100 p-4" />
             )}
         </li>
     )
