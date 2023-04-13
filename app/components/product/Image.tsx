@@ -1,4 +1,5 @@
 "use client"
+
 import type { ShopifyImageProps } from "@shopify/hydrogen-react/dist/types/Image"
 import type { Image as TImage } from "@shopify/hydrogen-react/storefront-api-types"
 import type { HTMLAttributes } from "react"

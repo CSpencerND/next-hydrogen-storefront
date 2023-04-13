@@ -5,7 +5,11 @@ import { cn } from "@/lib/utils"
 
 import { RadioGroup } from "@headlessui/react"
 
-export function Swatch({ ...props }) {
+/** A react component for rendering a swatch of colors. Swaps the current image according to the color of the button pressed.
+ *
+ *  @param {boolean | undefined} attached - Use if component is attached to a product card. Styles will be added to make the component look correct when inside a product card.
+ */
+export function Swatch({ attached, ...props }: { attached?: boolean }) {
     const selectedColor = useProduct((s) => s.selectedColor)
     const setSelectedColor = useProduct((s) => s.setSelectedColor)
     const hexCodes = useProduct((s) => s.hexCodes)
@@ -16,6 +20,11 @@ export function Swatch({ ...props }) {
         <RadioGroup
             value={selectedColor}
             onChange={setSelectedColor}
+            className={cn(
+                attached
+                    ? "overflow-y-hidden overflow-x-scroll bg-gradient-to-t from-base-200 to-base-100 px-4 pt-3 pb-5"
+                    : ""
+            )}
             {...props}
         >
             <RadioGroup.Label className="sr-only"> Select a color </RadioGroup.Label>
