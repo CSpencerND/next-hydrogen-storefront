@@ -27,21 +27,19 @@ export default async function CollectionDirectoryPage() {
             <Collection.Grid>
                 {collections.map(({ id, title, href, image }) => {
                     return (
-                        <li key={id}>
-                            <Product.Card href={href}>
-                                {image && (
-                                    <Product.Image
-                                        image={image}
-                                        title={title}
-                                    />
-                                )}
-                                <Product.Title
+                        <Product.Card href={href} rounded key={id}>
+                            {image && (
+                                <Product.Image
+                                    image={image}
                                     title={title}
-                                    centered
-                                    overlayed
                                 />
-                            </Product.Card>
-                        </li>
+                            )}
+                            <Product.Title
+                                title={title}
+                                centered
+                                overlayed
+                            />
+                        </Product.Card>
                     )
                 })}
             </Collection.Grid>

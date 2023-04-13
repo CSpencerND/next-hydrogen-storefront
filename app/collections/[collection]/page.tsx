@@ -34,37 +34,10 @@ export default async function CollectionDynamicSegment({ params }: SegmentParams
                             product={p}
                             key={p.id}
                         >
-                            <Product.Card href="#" colorSwatch>
-                                <Product.Image
-                                    rounded="top"
-                                    image={p.images.nodes[0]}
-                                    title={p.title}
-                                    key={p.id}
-                                />
-                                <Product.Title
-                                    title={p.title}
-                                    overlayed
-                                    truncate
-                                />
-                            </Product.Card>
+                            <Product.Item />
                         </ProductProvider>
                     )
                 })}
-
-                {/* {products.map((product) => { */}
-                {/*     if(!product) throw new Error("No product found!") */}
-                {/*     const hexCodes = JSON.parse(product.metafield!.value) as string[] */}
-                {/*     if(!hexCodes) throw new Error("No hex codes found!") */}
-
-                {/*     const initProviderProps: ProductProviderProps = { */}
-                {/*         product: product, */}
-                {/*         currentImage: product.images.nodes[0], */}
-                {/*         isModalOpen: false, */}
-                {/*         images: product.images.nodes, */}
-                {/*         hexCodes: hexCodes, */}
-                {/*     } */}
-                {/*     return <Product {...initProviderProps} key={product.id} /> */}
-                {/* })} */}
             </Collection.Grid>
         </Collection.Section>
     )
