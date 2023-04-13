@@ -1,31 +1,14 @@
 "use client"
 
-import { createContext } from "react"
-import { createStore } from "zustand"
-
 import { ProductProvider as ShopifyProductProvider } from "@shopify/hydrogen-react"
-import { useContext, useRef } from "react"
-import { useStore } from "zustand"
+import { createContext, useContext, useRef } from "react"
+import { createStore, useStore } from "zustand"
 
-import type { Image, Product } from "@shopify/hydrogen-react/storefront-api-types"
-import type { PropsWithChildren } from "react"
+import type { Product } from "@shopify/hydrogen-react/storefront-api-types"
 import type { ProductProps, ProductProviderProps, ProductState } from "types"
 
 const createProductStore = (initProps: ProductProps) => {
-    const DEFAULT_PROPS: ProductProps = {
-        product: {} as Product,
-        images: [{}] as Image[],
-        currentImage: {} as Image,
-        isModalOpen: false,
-        selectedColor: "",
-        colorOptions: [""],
-        sizeOptions: [""],
-        hexCodes: [""],
-        selectedSize: "",
-    }
-
     return createStore<ProductState>()((set) => ({
-        ...DEFAULT_PROPS,
         ...initProps,
         setCurrentImage: (i) => set((state) => ({ currentImage: state.images[i] })),
         setSelectedColor: (color) => set(() => ({ selectedColor: color })),
@@ -50,11 +33,7 @@ function EXProductProvider({ children, ...props }: ProductProviderProps) {
     )
 }
 
-type PPProps = PropsWithChildren<{
-    product: Product
-}>
-
-export function ProductProvider({ children, product }: PPProps) {
+export function ProductProvider({ children, product }: {children: React.ReactNode, product: Product}) {
     const colorOptions = product.options.find((option) => option.name === "Color")!.values
     const sizeOptions = product.options.find((option) => option.name === "Size")!.values
 
