@@ -25,8 +25,8 @@ export function Featured({ featured, ...props }: FeaturedProps) {
     const sliderRef = useRef<AliceCarousel>(null)
     const width = useWindowSize(undefined, true).width
 
-    const carouselItems = featured.map(({ featuredImage, title }) => (
-        <Product.Card>
+    const carouselItems = featured.map(({ featuredImage, title }, i) => (
+        <Product.Card key={i}>
             <Product.Image
                 key={featuredImage?.id}
                 image={featuredImage as Image}
