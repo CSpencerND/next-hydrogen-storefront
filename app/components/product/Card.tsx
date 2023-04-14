@@ -2,10 +2,11 @@ import { cn } from "@/lib/utils"
 
 import Link from "next/link"
 
+import type { Url } from "next/dist/shared/lib/router/router"
 import type { PropsWithChildren } from "react"
 
 type CardProps = PropsWithChildren<{
-    href?: string
+    href?: Url
     rounded?: boolean
 }>
 
