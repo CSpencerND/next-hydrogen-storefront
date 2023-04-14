@@ -1,20 +1,20 @@
 "use client"
 
-import { useProduct } from "@/lib/state"
+import { useProductStore } from "@/lib/state"
 import { cn } from "@/lib/utils"
 
 import { RadioGroup } from "@headlessui/react"
 
 /** A react component for rendering a swatch of colors. Swaps the current image according to the color of the button pressed.
  *
- *  @param {boolean | undefined} attached - Use if component is attached to a product card. Styles will be added to make the component look correct when inside a product card.
+ *  @prop {boolean | undefined} attached - Use if component is attached to a product card. Styles will be added to make the component look correct when inside a product card.
  */
 export function Swatch({ attached, ...props }: { attached?: boolean }) {
-    const selectedColor = useProduct((s) => s.selectedColor)
-    const setSelectedColor = useProduct((s) => s.setSelectedColor)
-    const hexCodes = useProduct((s) => s.hexCodes)
-    const colorOptions = useProduct((s) => s.colorOptions)
-    const setCurrentImage = useProduct((s) => s.setCurrentImage)
+    const selectedColor = useProductStore((s) => s.selectedColor)
+    const setSelectedColor = useProductStore((s) => s.setSelectedColor)
+    const hexCodes = useProductStore((s) => s.hexCodes)
+    const colorOptions = useProductStore((s) => s.colorOptions)
+    const setCurrentImage = useProductStore((s) => s.setCurrentImage)
 
     return (
         <RadioGroup

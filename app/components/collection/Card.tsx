@@ -11,19 +11,23 @@ type CardProps = PropsWithChildren<{
 }>
 
 export function Card({ href, children, rounded, ...props }: CardProps) {
-        return (
+    return (
+        <li
+            className={cn(`
+                relative h-full overflow-hidden
+                text-primary-content transition
+                hover:brightness-105 active:scale-95
+            `,
+                rounded ? "rounded-2xl" : ""
+            )}
+        >
             <Link
                 href={href}
-                className={cn(`
-                    relative h-full overflow-hidden
-                    text-primary-content transition
-                    hover:brightness-105 active:scale-95
-                `,
-                    rounded ? "rounded-2xl" : ""
-                )}
+                className="text-primary-content transition"
                 {...props}
             >
                 {children}
             </Link>
-        )
+        </li>
+    )
 }

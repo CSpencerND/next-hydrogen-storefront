@@ -26,7 +26,10 @@ export function Featured({ featured, ...props }: FeaturedProps) {
     const width = useWindowSize(undefined, true).width
 
     const carouselItems = featured.map(({ featuredImage, title }, i) => (
-        <Product.Card key={i}>
+        <Product.Card
+            carouselItem
+            key={i}
+        >
             <Product.Image
                 key={featuredImage?.id}
                 image={featuredImage as Image}
@@ -35,11 +38,12 @@ export function Featured({ featured, ...props }: FeaturedProps) {
                     onDragStart: (e) => e.preventDefault(),
                 }}
             />
-            <Product.Title
-                truncate
-                overlayed
-                title={title}
-            />
+            <Product.Title.Overlay>
+                <Product.Title
+                    truncate
+                    title={title}
+                />
+            </Product.Title.Overlay>
         </Product.Card>
     ))
 

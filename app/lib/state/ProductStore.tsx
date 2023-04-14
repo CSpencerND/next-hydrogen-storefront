@@ -56,7 +56,7 @@ export function ProductProvider({ children, product }: {children: React.ReactNod
     )
 }
 
-export function useProduct<T>(
+export function useProductStore<T>(
     selector: (state: ProductState) => T,
     equalityFn?: (left: T, right: T) => boolean
 ): T {
