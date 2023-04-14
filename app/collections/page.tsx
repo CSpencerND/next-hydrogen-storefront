@@ -1,7 +1,6 @@
 import { getCollections } from "@/lib/storefront"
 
 import Collection from "@/components/collection"
-import Product from "@/components/product"
 
 const getData = async () => {
     const collections = await getCollections()
@@ -27,19 +26,27 @@ export default async function CollectionDirectoryPage() {
             <Collection.Grid>
                 {collections.map(({ id, title, href, image }) => {
                     return (
-                        <Product.Card href={href} rounded key={id}>
-                            {image && (
-                                <Product.Image
+                        <Collection.Card
+                            href={href}
+                            rounded
+                            key={id}
+                        >
+                            {image ? (
+                                <Collection.Image
                                     image={image}
                                     title={title}
                                 />
+                            ) : (
+                                <p className="flex flex-col text-center text-base font-bold">
+                                    <span>Collection</span>
+                                    <span>Image</span>
+                                </p>
                             )}
-                            <Product.Title
+                            <Collection.Title
                                 title={title}
                                 centered
-                                overlayed
                             />
-                        </Product.Card>
+                        </Collection.Card>
                     )
                 })}
             </Collection.Grid>
