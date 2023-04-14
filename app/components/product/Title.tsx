@@ -21,7 +21,7 @@ export function Title({ title, centered, truncate, overlayed = false, ...props }
     return (
         <ConditionalWrapper
             condition={overlayed}
-            wrapper={(children) => <Overlay children={children} />}
+            wrapper={(children) => <Overlay>{children}</Overlay>}
         >
             <h2
                 className={cn(
