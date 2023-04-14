@@ -12,11 +12,11 @@ export async function generateStaticParams() {
     }))
 }
 
-type SegmentParams = {
+export type CollectionSegmentParams = {
     params: { collection: string }
 }
 
-export default async function CollectionDynamicSegment({ params }: SegmentParams) {
+export default async function CollectionDynamicSegment({ params }: CollectionSegmentParams) {
     const data = await getProductsByCollection(params.collection)
     const { collectionTitle, collectionDescription, products } = data
 
@@ -34,7 +34,7 @@ export default async function CollectionDynamicSegment({ params }: SegmentParams
                             product={p}
                             key={p.id}
                         >
-                            <Product.Item />
+                            <Product.Item collection={params.collection} />
                         </ProductProvider>
                     )
                 })}
