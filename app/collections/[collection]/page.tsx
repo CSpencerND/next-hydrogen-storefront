@@ -20,7 +20,6 @@ export default async function CollectionDynamicSegment({ params }: CollectionSeg
     const data = await getProductsByCollection(params.collection)
     const { collectionTitle, collectionDescription, products } = data
 
-    // const PRODUCT_URL =  as const
     return (
         <Collection.Section>
             <Collection.Heading
@@ -39,7 +38,10 @@ export default async function CollectionDynamicSegment({ params }: CollectionSeg
                                 <Product.Link
                                     href={`/collections/${params.collection}/${p.handle}`}
                                 >
-                                    <Product.Image rounded="top" title={p.title} />
+                                    <Product.Image
+                                        rounded="top"
+                                        title={p.title}
+                                    />
                                     <Product.Title.Overlay>
                                         <Product.Title
                                             truncate
@@ -57,19 +59,19 @@ export default async function CollectionDynamicSegment({ params }: CollectionSeg
     )
 }
 
-        // <li className="card relative h-full overflow-hidden rounded-2xl">
-        //     <Card>
-        //         <Image
-        //             image={currentImage}
-        //             title={title}
-        //             rounded="none"
-        //         />
-        //         <Title.Overlay>
-        //             <Title
-        //                 truncate
-        //                 title={title}
-        //             />
-        //         </Title.Overlay>
-        //     </Card>
-        //     <Swatch attached />
-        // </li>
+// <li className="card relative h-full overflow-hidden rounded-2xl">
+//     <Card>
+//         <Image
+//             image={currentImage}
+//             title={title}
+//             rounded="none"
+//         />
+//         <Title.Overlay>
+//             <Title
+//                 truncate
+//                 title={title}
+//             />
+//         </Title.Overlay>
+//     </Card>
+//     <Swatch attached />
+// </li>

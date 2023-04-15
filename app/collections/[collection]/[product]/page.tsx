@@ -23,7 +23,6 @@ export default async function ProductDynamicSegment({ params }: ProductSegmentPa
     return (
         <section className="grid h-screen place-items-center">
             <ProductProvider product={productData}>
-                <Product.Item collection={params.collection} />
             </ProductProvider>
         </section>
     )
