@@ -30,7 +30,7 @@ export function Featured({ featured, ...props }: FeaturedProps) {
             carouselItem
             key={i}
         >
-            <Product.Image
+            <Product.Image.Static
                 key={featuredImage?.id}
                 image={featuredImage as Image}
                 title={title}

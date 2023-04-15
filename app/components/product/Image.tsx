@@ -10,23 +10,50 @@ import { cn } from "@/lib/utils"
 import { Image as ShopImage } from "@shopify/hydrogen-react"
 
 type ProductImageProps = {
-    image?: TImage
-    title?: string
+    title: string
     rounded?: "full" | "top" | "bottom" | "none"
     containerProps?: HTMLAttributes<HTMLElement>
     imageProps?: Partial<ShopifyImageProps>
 }
 
-export function Image(props: ProductImageProps) {
-    const {
-        image,
-        title,
-        rounded = "full",
-        containerProps,
-        imageProps,
-    } = props
+type StaticImageProps = ProductImageProps & {
+    image: TImage
+}
 
-    const currentImage = image ?? useProductStore((s) => s.currentImage)
+/**
+ * @usage Omits the use of useProductStore for use without ProductProvider. Must provide image data.
+ */
+function Static(props: StaticImageProps) {
+    const { image, title, rounded = "full", containerProps, imageProps } = props
+
+    return (
+        <figure
+            className={cn(
+                "bg-glass flex flex-col overflow-hidden",
+                rounded === "full" ? "rounded-2xl" : "",
+                rounded === "top" ? "rounded-t-2xl" : "",
+                rounded === "bottom" ? "rounded-b-2xl" : ""
+            )}
+            {...containerProps}
+        >
+            <ShopImage
+                role="presentation"
+                data={image}
+                alt={image.altText ?? title}
+                {...imageProps}
+            />
+        </figure>
+    )
+}
+
+/**
+ * @usage Use the Static member if not using inside ProductProvider
+ * @member Static - Omits the use of useProductStore for use without ProductProvider
+ */
+function Image(props: ProductImageProps) {
+    const { title, rounded = "full", containerProps, imageProps } = props
+
+    const currentImage = useProductStore((s) => s.currentImage)
 
     return (
         <figure
@@ -41,9 +68,12 @@ export function Image(props: ProductImageProps) {
             <ShopImage
                 role="presentation"
                 data={currentImage}
-                alt={image?.altText ?? title}
+                alt={currentImage.altText ?? title}
                 {...imageProps}
             />
         </figure>
     )
 }
+
+Image.Static = Static
+export { Image }
