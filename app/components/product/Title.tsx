@@ -15,7 +15,13 @@ type TitleProps = {
  */
 function Overlay({ children }: Children) {
     return (
-        <div className="bg-blur-base absolute bottom-12 w-full bg-gradient-to-t from-base-100 to-transparent p-2">
+        <div
+            id="titleOverlay"
+            className={cn(`
+                bg-blur-base absolute bottom-0 w-full
+                bg-gradient-to-t from-base-100 to-transparent p-2
+            `)}
+        >
             {children}
         </div>
     )

@@ -12,7 +12,7 @@ export function Link({ href, children, ...props }: LinkProps) {
     return (
         <NextLink
             href={href}
-            className="text-primary-content transition"
+            className="text-primary-content transition [&>#titleOverlay]:bottom-12"
             {...props}
         >
             {children}
