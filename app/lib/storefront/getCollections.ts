@@ -44,6 +44,7 @@ const featuredQuery = gql`
             products(first: 99) {
                 nodes {
                     title
+                    handle
                     featuredImage {
                         url
                         altText
@@ -56,4 +57,3 @@ const featuredQuery = gql`
         }
     }
 `
-

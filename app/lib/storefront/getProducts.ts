@@ -34,6 +34,16 @@ const allProductsQuery = gql`
                     id
                     handle
                     title
+                    priceRange {
+                        maxVariantPrice {
+                            currencyCode
+                            amount
+                        }
+                        minVariantPrice {
+                            currencyCode
+                            amount
+                        }
+                    }
                     descriptionHtml
                     images(first: 99) {
                         nodes {
@@ -48,6 +58,10 @@ const allProductsQuery = gql`
                         nodes {
                             id
                             title
+                            price {
+                                amount
+                                currencyCode
+                            }
                             selectedOptions {
                                 name
                                 value
@@ -91,6 +105,16 @@ const productByHandleQuery = gql`
             handle
             title
             descriptionHtml
+            priceRange {
+                maxVariantPrice {
+                    currencyCode
+                    amount
+                }
+                minVariantPrice {
+                    currencyCode
+                    amount
+                }
+            }
             images(first: 99) {
                 nodes {
                     url
@@ -104,6 +128,10 @@ const productByHandleQuery = gql`
                 nodes {
                     id
                     title
+                    price {
+                        amount
+                        currencyCode
+                    }
                     selectedOptions {
                         name
                         value
