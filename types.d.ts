@@ -5,6 +5,12 @@ export default interface Children {
     children?: ReactNode
 }
 
+export { Children }
+
+export type ClassName = {
+    className?: string
+}
+
 export type GalleryImageData = {
     src: StaticImageData
     alt: string
