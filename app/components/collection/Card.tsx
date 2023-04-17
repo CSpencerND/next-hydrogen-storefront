@@ -20,7 +20,7 @@ export function Card({ href, children, rounded, ...props }: CardProps) {
                 text-primary-content transition
                 hover:brightness-105 active:scale-95
             `,
-                rounded ? "rounded-2xl" : ""
+                rounded ? "rounded-3xl" : ""
             )}
         >
             <Link

@@ -15,7 +15,7 @@ export function Card({ children, carouselItem, ...props }: CardProps) {
         <Wrapper
             className={`
                 relative h-full overflow-hidden
-                rounded-2xl transition
+                rounded-3xl transition
                 hover:brightness-105
             `}
             {...props}
