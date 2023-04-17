@@ -2,7 +2,6 @@
 
 import type { ShopifyImageProps } from "@shopify/hydrogen-react/dist/types/Image"
 import type { Image as TImage } from "@shopify/hydrogen-react/storefront-api-types"
-import type { HTMLAttributes } from "react"
 
 import { useProductStore } from "@/lib/state"
 import { cn } from "@/lib/utils"
@@ -12,8 +11,8 @@ import { Image as ShopImage } from "@shopify/hydrogen-react"
 type ProductImageProps = {
     title: string
     rounded?: "full" | "top" | "bottom" | "none"
-    containerProps?: HTMLAttributes<HTMLElement>
     imageProps?: Partial<ShopifyImageProps>
+    className?: string
 }
 
 type StaticImageProps = ProductImageProps & {
@@ -21,57 +20,51 @@ type StaticImageProps = ProductImageProps & {
 }
 
 /**
- * @usage Omits the use of useProductStore for use without ProductProvider. Must provide image data.
+ * @usage Use the Static member if not using inside ProductProvider
+ * @member Static - Omits the use of useProductStore for use without ProductProvider
  */
-function Static(props: StaticImageProps) {
-    const { image, title, rounded = "full", containerProps, imageProps } = props
+function Image(props: ProductImageProps) {
+    const { title, rounded = "full", className } = props
+
+    const currentImage = useProductStore((s) => s.currentImage)
 
     return (
-        <figure
-            className={cn(
-                "bg-glass mx-auto flex flex-col overflow-hidden",
-                rounded === "full" ? "rounded-2xl" : "",
-                rounded === "top" ? "rounded-t-2xl" : "",
-                rounded === "bottom" ? "rounded-b-2xl" : ""
-            )}
-            {...containerProps}
-        >
+        <figure className={cn("overflow-hidden", className)}>
             <ShopImage
                 role="presentation"
-                data={image}
-                alt={image.altText ?? title}
-                className="h-full w-full object-cover object-center"
-                {...imageProps}
+                data={currentImage}
+                alt={currentImage.altText ?? title}
+                className={cn(
+                    "bg-glass h-full w-full object-cover object-center",
+                    rounded === "full" ? "rounded-3xl" : "",
+                    rounded === "top" ? "rounded-t-3xl" : "",
+                    rounded === "bottom" ? "rounded-b-3xl" : ""
+                )}
+                {...props.imageProps}
             />
         </figure>
     )
 }
 
 /**
- * @usage Use the Static member if not using inside ProductProvider
- * @member Static - Omits the use of useProductStore for use without ProductProvider
+ * @usage Omits the use of useProductStore for use without ProductProvider. Must provide image data.
  */
-function Image(props: ProductImageProps) {
-    const { title, rounded = "full", containerProps, imageProps } = props
-
-    const currentImage = useProductStore((s) => s.currentImage)
+function Static(props: StaticImageProps) {
+    const { image, title, rounded = "full", className } = props
 
     return (
-        <figure
-            className={cn(
-                "bg-glass mx-auto flex flex-col overflow-hidden",
-                rounded === "full" ? "rounded-2xl" : "",
-                rounded === "top" ? "rounded-t-2xl" : "",
-                rounded === "bottom" ? "rounded-b-2xl" : ""
-            )}
-            {...containerProps}
-        >
+        <figure className={cn("overflow-hidden", className)}>
             <ShopImage
                 role="presentation"
-                data={currentImage}
-                alt={currentImage.altText ?? title}
-                className="h-full w-full object-cover object-center"
-                {...imageProps}
+                data={image}
+                alt={image.altText ?? title}
+                className={cn(
+                    "bg-glass h-full w-full object-cover object-center",
+                    rounded === "full" ? "rounded-3xl" : "",
+                    rounded === "top" ? "rounded-t-3xl" : "",
+                    rounded === "bottom" ? "rounded-b-3xl" : ""
+                )}
+                {...props.imageProps}
             />
         </figure>
     )
