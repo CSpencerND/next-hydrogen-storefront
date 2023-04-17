@@ -2,6 +2,7 @@ import Children from "types"
 import { Card } from "./Card"
 import { Description } from "./Description"
 import { Image } from "./Image"
+import { Layout } from "./Layout"
 import { Link } from "./Link"
 import { Price } from "./Price"
 import { Size } from "./Size"
@@ -15,6 +16,7 @@ function Product({ children }: Children) {
 Product.Card = Card
 Product.Description = Description
 Product.Image = Image
+Product.Layout = Layout
 Product.Link = Link
 Product.Price = Price
 Product.Size = Size
