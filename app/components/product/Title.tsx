@@ -6,6 +6,7 @@ type TitleProps = {
     title: string
     centered?: boolean
     truncate?: boolean
+    className?: string
 }
 
 /**
@@ -13,7 +14,7 @@ type TitleProps = {
  *
  *  @memberof Title
  */
-function Overlay({ children }: Children) {
+function Overlay({ children, ...props }: Children) {
     return (
         <div
             id="titleOverlay"
@@ -21,6 +22,7 @@ function Overlay({ children }: Children) {
                 bg-blur-base absolute bottom-0 w-full
                 bg-gradient-to-t from-base-100 to-transparent p-2
             `)}
+            {...props}
         >
             {children}
         </div>
@@ -40,9 +42,9 @@ function Title({ title, centered, truncate, ...props }: TitleProps) {
             className={cn(
                 "text-sm font-bold",
                 centered ? "mx-auto" : "",
-                truncate ? "truncate" : ""
+                truncate ? "truncate" : "",
+                props.className
             )}
-            {...props}
         >
             {title}
         </h2>

@@ -40,7 +40,7 @@ export function Sidebar(props: SidebarProps) {
                             className={cn(
                                 "btn-square btn grid place-items-center",
                                 position === "fixed"
-                                    ? "btn-secondary rounded-xl border border-secondary-content/30 bg-opacity-60 backdrop-blur-sm"
+                                    ? "btn-secondary rounded-sq border border-secondary-content/30 bg-opacity-60 backdrop-blur-sm"
                                     : "btn-ghost"
                             )}
                         >

@@ -29,7 +29,7 @@ function Static(props: StaticImageProps) {
     return (
         <figure
             className={cn(
-                "bg-glass flex flex-col overflow-hidden",
+                "bg-glass mx-auto flex flex-col overflow-hidden",
                 rounded === "full" ? "rounded-2xl" : "",
                 rounded === "top" ? "rounded-t-2xl" : "",
                 rounded === "bottom" ? "rounded-b-2xl" : ""
@@ -40,6 +40,7 @@ function Static(props: StaticImageProps) {
                 role="presentation"
                 data={image}
                 alt={image.altText ?? title}
+                className="h-full w-full object-cover object-center"
                 {...imageProps}
             />
         </figure>
@@ -58,7 +59,7 @@ function Image(props: ProductImageProps) {
     return (
         <figure
             className={cn(
-                "bg-glass flex flex-col overflow-hidden",
+                "bg-glass mx-auto flex flex-col overflow-hidden",
                 rounded === "full" ? "rounded-2xl" : "",
                 rounded === "top" ? "rounded-t-2xl" : "",
                 rounded === "bottom" ? "rounded-b-2xl" : ""
@@ -69,6 +70,7 @@ function Image(props: ProductImageProps) {
                 role="presentation"
                 data={currentImage}
                 alt={currentImage.altText ?? title}
+                className="h-full w-full object-cover object-center"
                 {...imageProps}
             />
         </figure>

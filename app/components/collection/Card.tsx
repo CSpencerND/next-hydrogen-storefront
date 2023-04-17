@@ -8,12 +8,14 @@ import type { PropsWithChildren } from "react"
 type CardProps = PropsWithChildren<{
     href: Url
     rounded?: boolean
+    className?: string
 }>
 
 export function Card({ href, children, rounded, ...props }: CardProps) {
     return (
         <li
-            className={cn(`
+            className={cn(
+                `
                 relative h-full overflow-hidden
                 text-primary-content transition
                 hover:brightness-105 active:scale-95
@@ -23,8 +25,7 @@ export function Card({ href, children, rounded, ...props }: CardProps) {
         >
             <Link
                 href={href}
-                className="text-primary-content transition"
-                {...props}
+                className={cn("text-primary-content transition", props.className)}
             >
                 {children}
             </Link>

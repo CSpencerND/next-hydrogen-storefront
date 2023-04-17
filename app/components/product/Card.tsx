@@ -16,7 +16,7 @@ export function Card({ children, carouselItem, ...props }: CardProps) {
             className={`
                 relative h-full overflow-hidden
                 rounded-2xl transition
-                hover:brightness-105 active:scale-95
+                hover:brightness-105
             `}
             {...props}
         >

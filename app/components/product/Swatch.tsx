@@ -9,7 +9,7 @@ import { RadioGroup } from "@headlessui/react"
  *
  *  @prop {boolean | undefined} attached - Use if component is attached to a product card. Styles will be added to make the component look correct when inside a product card.
  */
-export function Swatch({ attached, ...props }: { attached?: boolean }) {
+export function Swatch({ attached, ...props }: { attached?: boolean; className?: string }) {
     const selectedColor = useProductStore((s) => s.selectedColor)
     const setSelectedColor = useProductStore((s) => s.setSelectedColor)
     const hexCodes = useProductStore((s) => s.hexCodes)
@@ -24,7 +24,6 @@ export function Swatch({ attached, ...props }: { attached?: boolean }) {
                 attached
                     ? "overflow-y-hidden overflow-x-scroll bg-gradient-to-t from-base-200 to-base-100 p-4"
                     : ""
-                    // ? "overflow-y-hidden overflow-x-scroll bg-gradient-to-t from-base-200 to-base-100 px-4 pt-3 pb-5"
             )}
             {...props}
         >
@@ -37,10 +36,12 @@ export function Swatch({ attached, ...props }: { attached?: boolean }) {
                         value={colorOptions![i]}
                         className={({ active, checked }) =>
                             cn(
-                                `relative -m-0.5 flex cursor-pointer
-                                items-center justify-center rounded-md
+                                `
+                                relative -m-0.5 flex cursor-pointer
+                                place-items-center rounded-full
                                 ring-neutral ring-offset-base-200 transition-all
-                                hover:brightness-125 focus:outline-none`,
+                                hover:brightness-125 focus:outline-none
+                            `,
 
                                 active && checked
                                     ? "focus-visible:ring-2 focus-visible:ring-primary-content"
@@ -65,7 +66,11 @@ export function Swatch({ attached, ...props }: { attached?: boolean }) {
                                 backgroundColor:
                                     code === "#212226" || code === "0D0D0D" ? "#070707" : code,
                             }}
-                            className="h-6 w-6 rounded-md"
+                            className={cn(`
+                                h-7 w-7 rounded-full border-2 border-neutral
+                                ui-checked:border-0`,
+                                props.className    
+                            )}
                         />
                     </RadioGroup.Option>
                 ))}
