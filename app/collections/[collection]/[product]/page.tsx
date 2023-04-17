@@ -1,10 +1,10 @@
 import { getProductByHandle } from "@/lib/storefront"
 
+import { Breadcrumbs } from "@/components/navigation"
 import Product from "@/components/product"
 import { ProductProvider } from "@/lib/state"
 
 import type { FullPathParams } from "../layout"
-import { Breadcrumbs } from "@/components/navigation"
 
 // export async function generateStaticParams() {
 //     const products = await getProductsByCollection("full-catalog")
