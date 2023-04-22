@@ -1,6 +1,8 @@
 "use client"
 
 import { useProductStore } from "@/lib/state"
+import { useProduct } from "@shopify/hydrogen-react"
+
 import { cn } from "@/lib/utils"
 
 import { RadioGroup } from "@headlessui/react"
@@ -11,15 +13,22 @@ import { RadioGroup } from "@headlessui/react"
  */
 export function Swatch({ attached, ...props }: { attached?: boolean; className?: string }) {
     const selectedColor = useProductStore((s) => s.selectedColor)
-    const setSelectedColor = useProductStore((s) => s.setSelectedColor)
     const hexCodes = useProductStore((s) => s.hexCodes)
     const colorOptions = useProductStore((s) => s.colorOptions)
     const setCurrentImage = useProductStore((s) => s.setCurrentImage)
 
+    const setSelectedColor = useProductStore((s) => s.setSelectedColor)
+    const setSelectedOption = useProduct().setSelectedOption
+    const handleChange = (color: string) => {
+        if (!selectedColor) return
+        setSelectedColor(color)
+        setSelectedOption("Color", selectedColor)
+    }
+
     return (
         <RadioGroup
             value={selectedColor}
-            onChange={setSelectedColor}
+            onChange={handleChange}
             className={cn(
                 attached
                     ? "overflow-y-hidden overflow-x-scroll bg-gradient-to-t from-base-200 to-base-100 p-4"
@@ -66,10 +75,11 @@ export function Swatch({ attached, ...props }: { attached?: boolean; className?:
                                 backgroundColor:
                                     code === "#212226" || code === "0D0D0D" ? "#070707" : code,
                             }}
-                            className={cn(`
+                            className={cn(
+                                `
                                 h-7 w-7 rounded-full border-2 border-neutral
                                 ui-checked:border-0`,
-                                props.className    
+                                props.className
                             )}
                         />
                     </RadioGroup.Option>

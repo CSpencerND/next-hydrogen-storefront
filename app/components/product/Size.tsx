@@ -1,6 +1,8 @@
 "use client"
 
 import { useProductStore } from "@/lib/state"
+import { useProduct } from "@shopify/hydrogen-react"
+
 import { cn } from "@/lib/utils"
 
 import { RadioGroup } from "@headlessui/react"
@@ -9,14 +11,19 @@ export function Size({ ...props }) {
     const options = useProductStore((s) => s.product.options)
     const sizeOptions = options!.find((option) => option!.name === "Size")!.values as string[]
     const selectedSize = useProductStore((s) => s.selectedSize)
-    const setSelectedSize = useProductStore((s) => s.setSelectedSize)
 
-    // useSelectedSize()
+    const setSelectedSize = useProductStore((s) => s.setSelectedSize)
+    const setSelectedOption = useProduct().setSelectedOption
+    const handleChange = (size: string) => {
+        if (!selectedSize) return
+        setSelectedSize(size)
+        setSelectedOption("Size", selectedSize)
+    }
 
     return (
         <RadioGroup
             value={selectedSize}
-            onChange={setSelectedSize}
+            onChange={handleChange}
             {...props}
         >
             <RadioGroup.Label className="sr-only"> Select a size </RadioGroup.Label>

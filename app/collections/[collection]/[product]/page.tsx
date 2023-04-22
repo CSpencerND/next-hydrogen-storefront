@@ -27,7 +27,6 @@ export default async function ProductDynamicSegment({ params }: FullPathParams) 
                 <Product.Image
                     title={p.title}
                     rounded="full"
-                    className=""
                 />
                 <Product.Layout.Body>
                     <Product.Title
@@ -37,6 +36,8 @@ export default async function ProductDynamicSegment({ params }: FullPathParams) 
                     <Product.Price />
                     <Product.Swatch className="md:h-10 md:w-10" />
                     <Product.Size />
+                    <Product.Variant />
+                    <Product.CartButton />
                     <Product.Description text={p.descriptionHtml} />
                 </Product.Layout.Body>
             </Product.Layout>
