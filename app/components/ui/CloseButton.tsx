@@ -1,3 +1,5 @@
+"use client"
+
 import { ArrowLeft, ArrowRight, X } from "lucide-react"
 
 type CloseButtonProps = {

@@ -2,13 +2,13 @@
 
 import type { Transition } from "framer-motion"
 
-import { Menu } from "@headlessui/react"
-import { Trash2 as Delete, Minus, Plus, ShoppingCart } from "lucide-react"
-import Link from "next/link"
-
 import { CartLineProvider, useCart, useCartLine } from "@shopify/hydrogen-react"
-
 import { AnimatePresence, MotionConfig, motion } from "framer-motion"
+
+import { Menu } from "@headlessui/react"
+import { ArrowRight, Trash2 as Delete, Minus, Plus, ShoppingCart } from "lucide-react"
+import Link from "next/link"
+import { Fragment } from "react"
 
 const transition: Transition = {
     type: "spring",
@@ -53,13 +53,11 @@ export default function Cart() {
                                     animate={open ? "open" : "close"}
                                     exit="close"
                                 >
-                                    <header className="flex items-center justify-between border-b border-base-100 px-4 py-3">
+                                    <header className="flex items-center justify-between border-b border-base-100 px-6 py-4">
                                         <h1 className="text-lg font-medium">In Your Cart</h1>
-                                        {/* <Menu.Button as={Fragment}> */}
-                                        {/*     <CloseButton */}
-                                        {/*         icon="right" */}
-                                        {/*     /> */}
-                                        {/* </Menu.Button> */}
+                                        <Menu.Button className="btn-primary btn-square btn rounded-sq">
+                                            <ArrowRight />
+                                        </Menu.Button>
                                     </header>
                                     <Menu.Items
                                         as={motion.menu}
