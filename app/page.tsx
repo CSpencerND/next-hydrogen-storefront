@@ -16,7 +16,7 @@ export default async function HomePage() {
         <>
             <h1 className="text-center text-2xl">{shop.name}</h1>
             {/* <Hero /> */}
-            <Featured featured={featured} />
+            {/* <Featured featured={featured} /> */}
             <Statement heading="What we do">
                 <p>Work hard, play hard, I guess.</p>
                 <p>That is what The kids say, yeah?</p>

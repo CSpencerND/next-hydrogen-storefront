@@ -58,12 +58,6 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
-  react-feather:
-    specifier: ^2.0.10
-    version: 2.0.10(react@18.2.0)
-  react-iconly:
-    specifier: ^2.2.6
-    version: 2.2.6(react@18.2.0)
   react-responsive-masonry:
     specifier: ^2.1.7
     version: 2.1.7
@@ -2746,24 +2740,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
-
-  /react-feather@2.0.10(react@18.2.0):
-    resolution: {integrity: sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==}
-    peerDependencies:
-      react: '>=16.8.6'
-    dependencies:
-      prop-types: 15.8.1
-      react: 18.2.0
-    dev: false
-
-  /react-iconly@2.2.6(react@18.2.0):
-    resolution: {integrity: sha512-wpBXmfWbSnUPMf4VzDCZEhTPJaRwNO9YUjAGR3XWd0tEaZjw7pN9Hw1Zqo3IBnuetoPVXsYWn2IqI8tnvgmthQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: '>=16.8.0'
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:

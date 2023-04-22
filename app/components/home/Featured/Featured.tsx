@@ -6,7 +6,7 @@ import "./Featured.css"
 
 import Product from "@/components/product"
 import Link from "next/link"
-import { ChevronLeft, ChevronRight } from "react-iconly"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 import { useLoader } from "@/lib/state"
 import { useWindowSize } from "@react-hookz/web/esm/useWindowSize"
@@ -103,7 +103,7 @@ export function Featured({ featured, ...props }: FeaturedProps) {
                         className="btn-square btn-sm btn bg-base-100"
                         onClick={() => sliderRef?.current?.slidePrev() || null}
                     >
-                        <ChevronLeft set="curved" />
+                        <ChevronLeft />
                     </button>
 
                     <button
@@ -111,7 +111,7 @@ export function Featured({ featured, ...props }: FeaturedProps) {
                         className="btn-square btn-sm btn bg-base-100"
                         onClick={() => sliderRef?.current?.slideNext() || null}
                     >
-                        <ChevronRight set="curved" />
+                        <ChevronRight />
                     </button>
                 </span>
             </div>
