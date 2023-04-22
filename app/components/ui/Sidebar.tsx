@@ -1,20 +1,23 @@
 "use client"
 
 import type { Transition } from "framer-motion"
-import type { HTMLAttributes, PropsWithChildren } from "react"
+import type { HTMLAttributes } from "react"
 
 import { Menu } from "@headlessui/react"
 import { Spiral as HamburgerIcon } from "hamburger-react"
+import { ShoppingCart } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { AnimatePresence, MotionConfig, motion } from "framer-motion"
 
-type SidebarProps = PropsWithChildren & {
+type SidebarProps = {
     items: JSX.Element[]
     center?: boolean
-    position?: "fixed" | "static"
+    buttonPosition?: "fixed"
     direction?: "ltr" | "rtl"
     type: "menu" | "cart" | "account"
+    header?: JSX.Element
+    footer?: JSX.Element
 } & HTMLAttributes<HTMLMenuElement>
 
 const transition: Transition = {
@@ -24,7 +27,7 @@ const transition: Transition = {
 } as const
 
 export function Sidebar(props: SidebarProps) {
-    const { items, center, position = "static", direction = "ltr", type = "menu" } = props
+    const { items, center, buttonPosition, direction = "ltr", type = "menu" } = props
 
     return (
         <Menu>
@@ -33,18 +36,18 @@ export function Sidebar(props: SidebarProps) {
                     <div
                         className={cn(
                             type === "menu" ? "z-40" : "",
-                            position === "fixed" ? "fixed bottom-0 right-0 p-6" : ""
+                            buttonPosition === "fixed" ? "fixed bottom-0 right-0 p-6" : ""
                         )}
                     >
                         <Menu.Button
                             className={cn(
                                 "btn-square btn grid place-items-center",
-                                position === "fixed"
+                                buttonPosition === "fixed"
                                     ? "btn-secondary rounded-sq border border-secondary-content/30 bg-opacity-60 backdrop-blur-sm"
                                     : "btn-ghost"
                             )}
                         >
-                            {type === "menu" && (
+                            {type === "menu" ? (
                                 <HamburgerIcon
                                     toggled={open}
                                     size={24}
@@ -52,6 +55,8 @@ export function Sidebar(props: SidebarProps) {
                                     rounded
                                     label="Toggle Navigation Menu"
                                 />
+                            ) : (
+                                <ShoppingCart />
                             )}
                         </Menu.Button>
                     </div>
@@ -60,9 +65,10 @@ export function Sidebar(props: SidebarProps) {
                             <MotionConfig transition={{ ...transition }}>
                                 <motion.div
                                     className={cn(
-                                        "fixed inset-0 z-40 flex h-screen border-neutral-focus bg-base-300/60",
+                                        "fixed inset-0 h-screen border-neutral-focus bg-base-300/60",
                                         direction === "ltr" ? " border-r" : "border-l",
-                                        type === "menu" && direction === "ltr" ? "mr-24" : ""
+                                        type === "menu" && direction === "ltr" ? "mr-24" : "",
+                                        type === "menu" ? "z-40 flex" : "z-50"
                                     )}
                                     key="navMenuSidebar"
                                     variants={{
@@ -84,6 +90,7 @@ export function Sidebar(props: SidebarProps) {
                                     animate={open ? "open" : "close"}
                                     exit="close"
                                 >
+                                    {props.header}
                                     <Menu.Items
                                         as={motion.menu}
                                         variants={{
@@ -118,24 +125,23 @@ export function Sidebar(props: SidebarProps) {
                                             </motion.li>
                                         ))}
                                     </Menu.Items>
+                                    {props.footer}
                                 </motion.div>
                             </MotionConfig>
                         )}
                     </AnimatePresence>
-                    <AnimatePresence>{open && <Overlay />}</AnimatePresence>
+                    <AnimatePresence>
+                        {open && (
+                            <motion.div
+                                className="bg-blur-clear fixed inset-0 z-30"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                            />
+                        )}
+                    </AnimatePresence>
                 </>
             )}
         </Menu>
-    )
-}
-
-export function Overlay() {
-    return (
-        <motion.div
-            className="bg-blur-clear fixed inset-0 z-30"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-        />
     )
 }
