@@ -38,7 +38,7 @@ export default function NavMenu({ linkData }: { linkData: LinkData[] }) {
                         <Menu.Button
                             className={`
                                 btn-secondary btn-square btn grid place-items-center
-                                rounded-sq border border-secondary-content/30 bg-opacity-60 backdrop-blur-sm
+                                rounded-sq bg-opacity-60 backdrop-blur-sm
                             `}
                         >
                             <HamburgerIcon
@@ -114,7 +114,7 @@ export default function NavMenu({ linkData }: { linkData: LinkData[] }) {
                     <AnimatePresence>
                         {open && (
                             <motion.div
-                                className="bg-blur-clear fixed inset-0 z-30"
+                                className="bg-blur-clear fixed inset-0 z-30 cursor-pointer"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
