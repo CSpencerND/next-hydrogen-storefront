@@ -10,7 +10,6 @@ import {
 import { Popover } from "@headlessui/react"
 import { AnimatePresence, MotionConfig, motion } from "framer-motion"
 import { ArrowRight, ShoppingCart } from "lucide-react"
-import Link from "next/link"
 import CartLine from "./CartLine"
 
 import type { Transition } from "framer-motion"
@@ -36,7 +35,10 @@ export default function Cart() {
                         {open && (
                             <MotionConfig transition={{ ...transition }}>
                                 <motion.div
-                                    className="fixed inset-0 z-50 h-screen border-l border-neutral-focus bg-base-300/60"
+                                    className={`
+                                        fixed inset-0 z-50 h-screen border-l border-neutral-focus
+                                        bg-base-300/60 sm:ml-[20%] md:ml-[35%] lg:ml-[50%]
+                                    `}
                                     key="navMenuSidebar"
                                     variants={{
                                         close: {

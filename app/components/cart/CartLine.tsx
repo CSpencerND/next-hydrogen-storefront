@@ -1,29 +1,34 @@
 "use client"
 
 import {
-    CartLineQuantityAdjustButton,
     CartLineQuantity,
+    CartLineQuantityAdjustButton,
     Money,
     useCartLine,
 } from "@shopify/hydrogen-react"
 
 import Product from "@/components/product"
+import { Popover } from "@headlessui/react"
 import { Minus, Plus, Trash2 as Remove } from "lucide-react"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
 import type { CartLine, Image, MoneyV2 } from "@shopify/hydrogen-react/storefront-api-types"
 import type { Children, ClassName } from "types"
+import { Fragment } from "react"
 
 type ImageProps = {
     image: Image
     title: string
+    productURL: string
 }
 
 type BodyProps = {
     productTitle: string
     variantTitle: string
+    productURL: string
     price: MoneyV2
     className?: string
 } & Children
@@ -34,11 +39,11 @@ function CartLine({ className }: ClassName) {
             image,
             price,
             title: variantTitle,
-            product: { title: productTitle, handle },
+            product: { title: productTitle, handle, onlineStoreUrl },
         },
     } = useCartLine() as CartLine
 
-    const productURL = `/products/${handle}`
+    const productURL = onlineStoreUrl ?? `/collections/full-catalog/${handle}`
 
     return (
         <motion.li
@@ -57,10 +62,12 @@ function CartLine({ className }: ClassName) {
             <Image
                 image={image!}
                 title={productTitle}
+                productURL={productURL}
             />
             <Body
                 productTitle={productTitle}
                 variantTitle={variantTitle}
+                productURL={productURL}
                 price={price}
             >
                 <Actions />
@@ -69,27 +76,45 @@ function CartLine({ className }: ClassName) {
     )
 }
 
-function Image({ image, title }: ImageProps) {
+function Image({ image, title, productURL }: ImageProps) {
     return (
-        <Product.Image.Static
-            className="w-1/4"
-            imageClassName="rounded-2xl sm:rounded-3xl"
-            image={image}
-            title={title}
-        />
+        <Popover.Button as={Fragment}>
+            <Link
+                href={productURL}
+                className="w-1/4"
+            >
+                <Product.Image.Static
+                    imageClassName="rounded-2xl sm:rounded-3xl"
+                    image={image}
+                    title={title}
+                />
+            </Link>
+        </Popover.Button>
     )
 }
 
-function Body({ productTitle, variantTitle, price, className, children }: BodyProps) {
+function Body({
+    productTitle,
+    variantTitle,
+    productURL,
+    price,
+    className,
+    children,
+}: BodyProps) {
     return (
-        <div className={cn("card-body p-0 text-xs", className)}>
-            {/* <Link href={productURL}>{productTitle}</Link> */}
+        <div className={cn("card-body p-0 text-xs sm:text-sm", className)}>
             <div className="flex justify-between">
-                <Product.Title
-                    title={productTitle}
-                    truncate
-                    className="w-2/3"
-                />
+                <Popover.Button as={Fragment}>
+                    <Link
+                        href={productURL}
+                        className="w-2/3 text-primary-content"
+                    >
+                        <Product.Title
+                            title={productTitle}
+                            truncate
+                        />
+                    </Link>
+                </Popover.Button>
                 <Money
                     as="span"
                     data={price}
