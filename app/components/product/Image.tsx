@@ -12,6 +12,7 @@ type ProductImageProps = {
     title: string
     rounded?: "full" | "top" | "bottom" | "none"
     imageProps?: Partial<ShopifyImageProps>
+    imageClassName?: string
     className?: string
 }
 
@@ -38,7 +39,8 @@ function Image(props: ProductImageProps) {
                     "bg-glass h-full w-full object-cover object-center",
                     rounded === "full" ? "rounded-3xl" : "",
                     rounded === "top" ? "rounded-t-3xl" : "",
-                    rounded === "bottom" ? "rounded-b-3xl" : ""
+                    rounded === "bottom" ? "rounded-b-3xl" : "",
+                    props.imageClassName
                 )}
                 {...props.imageProps}
             />
@@ -62,7 +64,8 @@ function Static(props: StaticImageProps) {
                     "bg-glass h-full w-full object-cover object-center",
                     rounded === "full" ? "rounded-3xl" : "",
                     rounded === "top" ? "rounded-t-3xl" : "",
-                    rounded === "bottom" ? "rounded-b-3xl" : ""
+                    rounded === "bottom" ? "rounded-b-3xl" : "",
+                    props.imageClassName
                 )}
                 {...props.imageProps}
             />
