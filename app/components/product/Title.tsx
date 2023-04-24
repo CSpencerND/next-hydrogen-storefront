@@ -10,26 +10,6 @@ type TitleProps = {
 }
 
 /**
- *  @usage Wrap this around Text to position absolute and overlay on bottom of Image
- *
- *  @memberof Title
- */
-function Overlay({ children, ...props }: Children) {
-    return (
-        <div
-            id="titleOverlay"
-            className={cn(`
-                bg-blur-base absolute bottom-0 w-full
-                bg-gradient-to-t from-base-100 to-transparent p-2
-            `)}
-            {...props}
-        >
-            {children}
-        </div>
-    )
-}
-
-/**
  *  @prop title The title of the product.
  *  @prop centered Centers the title in the parent container.
  *  @prop truncate Truncates the title to one line with ellipsis.
@@ -48,6 +28,26 @@ function Title({ title, centered, truncate, ...props }: TitleProps) {
         >
             {title}
         </h2>
+    )
+}
+
+/**
+ *  @usage Wrap this around Text to position absolute and overlay on bottom of Image
+ *
+ *  @memberof Title
+ */
+function Overlay({ children, ...props }: Children) {
+    return (
+        <div
+            id="titleOverlay"
+            className={cn(`
+                bg-blur-base absolute bottom-0 w-full
+                bg-gradient-to-t from-base-100 to-transparent p-2
+            `)}
+            {...props}
+        >
+            {children}
+        </div>
     )
 }
 
