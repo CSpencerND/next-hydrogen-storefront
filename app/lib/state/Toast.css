@@ -1,0 +1,11 @@
+.Toastify__toast {
+    @apply rounded-2xl bg-blur-200 shadow-box max-sm:m-6;
+}
+
+.Toastify__toast-body {
+    @apply text-base-content;
+}
+
+.Toastify__progress-bar {
+    @apply h-0.5 bg-info;
+}
