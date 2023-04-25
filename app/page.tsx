@@ -1,8 +1,10 @@
 import { getFeaturedCollection, getStorefrontProps } from "./lib/storefront"
 
 import { Featured, Hero, Statement } from "./components/home"
+import Footer from "./components/footer/Footer"
 
 // import hero from "@/static/hero.webp"
+import logo from "@/static/wp4l-square.webp"
 
 const getData = async () => {
     const featuredCollectionData = getFeaturedCollection("staff-picks")
@@ -23,6 +25,7 @@ export default async function HomePage() {
                 <p>Work hard, play hard, I guess.</p>
                 <p>That is what The kids say, yeah?</p>
             </Statement>
+            <Footer logo={logo} />
         </>
     )
 }
