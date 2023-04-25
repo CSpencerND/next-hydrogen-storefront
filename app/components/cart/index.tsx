@@ -110,7 +110,7 @@ export default function Cart() {
                                                 Shipping and taxes calculated at checkout.
                                             </p>
 
-                                            <CartCheckoutButton className="btn-secondary btn-block btn mt-6">
+                                            <CartCheckoutButton className="btn-secondary btn-block btn mt-6 shadow-box shadow-secondary-content">
                                                 Checkout
                                             </CartCheckoutButton>
 
