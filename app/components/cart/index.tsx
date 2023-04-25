@@ -37,7 +37,7 @@ export default function Cart() {
                                 <motion.div
                                     className={`
                                         fixed inset-0 z-50 h-screen border-l border-neutral-focus
-                                        bg-base-300/60 sm:ml-[20%] md:ml-[35%] lg:ml-[50%]
+                                        bg-base-300/60 sm:ml-[20%] md:ml-[35%] lg:ml-[60%]
                                     `}
                                     key="navMenuSidebar"
                                     variants={{
@@ -110,7 +110,7 @@ export default function Cart() {
                                                 Shipping and taxes calculated at checkout.
                                             </p>
 
-                                            <CartCheckoutButton className="btn-secondary btn-block btn mt-6 shadow-box shadow-secondary-content">
+                                            <CartCheckoutButton className="btn-secondary rounded-2xl btn-block btn mt-6 shadow-box shadow-secondary-content">
                                                 Checkout
                                             </CartCheckoutButton>
 
