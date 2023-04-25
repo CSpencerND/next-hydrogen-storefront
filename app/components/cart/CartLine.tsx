@@ -15,12 +15,12 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
-import type { CartLine, Image, MoneyV2 } from "@shopify/hydrogen-react/storefront-api-types"
+import type { CartLine, Image as TImage, MoneyV2 } from "@shopify/hydrogen-react/storefront-api-types"
 import type { Children, ClassName } from "types"
 import { Fragment } from "react"
 
 type ImageProps = {
-    image: Image
+    image: TImage
     title: string
     productURL: string
 }

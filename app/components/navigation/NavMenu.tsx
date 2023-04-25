@@ -6,7 +6,7 @@ import { Menu } from "@headlessui/react"
 import { Spiral as HamburgerIcon } from "hamburger-react"
 import Link from "next/link"
 
-import { AnimatePresence, MotionConfig, motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 type LinkData = {
     title: string
@@ -54,9 +54,9 @@ export default function NavMenu({ linkData }: { linkData: LinkData[] }) {
                         {open && (
                             <motion.div
                                 className={`
-                                        fixed inset-0 z-40 mr-24 flex h-screen
-                                        border-r border-neutral-focus bg-base-300/60
-                                    `}
+                                    fixed inset-0 z-40 mr-24 flex h-screen
+                                    border-r border-neutral-focus bg-base-300/60
+                                `}
                                 key="navMenuSidebar"
                                 variants={{
                                     close: {

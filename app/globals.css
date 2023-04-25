@@ -50,6 +50,10 @@
     .input {
         @apply rounded-xl;
     }
+
+    .menu a, .menu li {
+        @apply !rounded-xl;
+    }
 }
 
 @layer utilities {
