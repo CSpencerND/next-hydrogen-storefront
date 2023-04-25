@@ -2,6 +2,8 @@ import { getFeaturedCollection, getStorefrontProps } from "./lib/storefront"
 
 import { Featured, Hero, Statement } from "./components/home"
 
+import hero from "@/static/hero.webp"
+
 const getData = async () => {
     const featuredCollectionData = getFeaturedCollection("staff-picks")
     const shopData = getStorefrontProps()
@@ -15,7 +17,7 @@ export default async function HomePage() {
     return (
         <>
             <h1 className="text-center text-2xl">{shop.name}</h1>
-            {/* <Hero /> */}
+            {/* <Hero image={hero} rounded /> */}
             {/* <Featured featured={featured} /> */}
             <Statement heading="What we do">
                 <p>Work hard, play hard, I guess.</p>
