@@ -11,14 +11,14 @@ export function CartButton() {
         <div className="flex justify-center gap-6 px-2.5 [&>button]:basis-1/2">
             <AddToCartButton
                 variantId={variantID ?? ""}
-                className="btn-outline btn-primary btn rounded-xl border-2 border-primary !text-primary-content"
+                className="btn-outline btn-primary btn rounded-2xl border-2 border-primary !text-primary-content"
                 accessibleAddingToCartLabel="Item is being added to cart with selected color and size"
             >
                 Add To Cart
             </AddToCartButton>
             {/* <BuyNowButton */}
             {/*     variantId={variantID ?? ""} */}
-            {/*     className="btn-primary btn rounded-xl" */}
+            {/*     className="btn-primary btn rounded-2xl" */}
             {/* > */}
             {/*     Buy Now */}
             {/* </BuyNowButton> */}
