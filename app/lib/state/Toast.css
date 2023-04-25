@@ -1,5 +1,5 @@
 .Toastify__toast {
-    @apply rounded-2xl bg-blur-200 shadow-box max-sm:m-6;
+    @apply rounded-2xl bg-base-200/30 bg-blur-base shadow-box max-sm:m-6;
 }
 
 .Toastify__toast-body {
