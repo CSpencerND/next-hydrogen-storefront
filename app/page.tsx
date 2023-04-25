@@ -2,7 +2,7 @@ import { getFeaturedCollection, getStorefrontProps } from "./lib/storefront"
 
 import { Featured, Hero, Statement } from "./components/home"
 
-import hero from "@/static/hero.webp"
+// import hero from "@/static/hero.webp"
 
 const getData = async () => {
     const featuredCollectionData = getFeaturedCollection("staff-picks")
