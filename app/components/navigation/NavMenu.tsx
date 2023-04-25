@@ -52,63 +52,61 @@ export default function NavMenu({ linkData }: { linkData: LinkData[] }) {
                     </div>
                     <AnimatePresence>
                         {open && (
-                            <MotionConfig transition={{ ...transition }}>
-                                <motion.div
-                                    className={`
+                            <motion.div
+                                className={`
                                         fixed inset-0 z-40 mr-24 flex h-screen
                                         border-r border-neutral-focus bg-base-300/60
                                     `}
-                                    key="navMenuSidebar"
-                                    variants={{
-                                        close: {
-                                            x: "-100%",
-                                            transition: {
-                                                when: "afterChildren",
-                                            },
+                                key="navMenuSidebar"
+                                variants={{
+                                    close: {
+                                        x: "-100%",
+                                        transition: {
+                                            when: "afterChildren",
                                         },
+                                    },
+                                    open: {
+                                        x: 0,
+                                        transition: {
+                                            when: "beforeChildren",
+                                            ...transition,
+                                        },
+                                    },
+                                }}
+                                initial="close"
+                                animate={open ? "open" : "close"}
+                                exit="close"
+                            >
+                                <Menu.Items
+                                    as={motion.menu}
+                                    variants={{
                                         open: {
-                                            x: 0,
                                             transition: {
-                                                when: "beforeChildren",
-                                                ...transition,
+                                                staggerChildren: 0.05,
                                             },
                                         },
                                     }}
-                                    initial="close"
-                                    animate={open ? "open" : "close"}
-                                    exit="close"
+                                    className="menu w-screen self-center p-4"
                                 >
-                                    <Menu.Items
-                                        as={motion.menu}
-                                        variants={{
-                                            open: {
-                                                transition: {
-                                                    staggerChildren: 0.05,
+                                    {links.map((link) => (
+                                        <motion.li
+                                            variants={{
+                                                close: {
+                                                    x: -20,
+                                                    opacity: 0,
                                                 },
-                                            },
-                                        }}
-                                        className="menu w-screen self-center p-4"
-                                    >
-                                        {links.map((link) => (
-                                            <motion.li
-                                                variants={{
-                                                    close: {
-                                                        x: "-10%",
-                                                        opacity: 0,
-                                                    },
-                                                    open: {
-                                                        x: 0,
-                                                        opacity: 1,
-                                                    },
-                                                }}
-                                                key={link.key}
-                                            >
-                                                <Menu.Item>{link}</Menu.Item>
-                                            </motion.li>
-                                        ))}
-                                    </Menu.Items>
-                                </motion.div>
-                            </MotionConfig>
+                                                open: {
+                                                    x: 0,
+                                                    opacity: 1,
+                                                },
+                                            }}
+                                            key={link.key}
+                                        >
+                                            <Menu.Item>{link}</Menu.Item>
+                                        </motion.li>
+                                    ))}
+                                </Menu.Items>
+                            </motion.div>
                         )}
                     </AnimatePresence>
                     <AnimatePresence>

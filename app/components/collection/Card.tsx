@@ -1,5 +1,7 @@
-import { cn } from "@/lib/utils"
+"use client"
 
+import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 import Link from "next/link"
 
 import type { Url } from "next/dist/shared/lib/router/router"
@@ -11,13 +13,21 @@ type CardProps = PropsWithChildren<{
     className?: string
 }>
 
+const fadeInUp = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+    },
+}
+
 export function Card({ href, children, rounded, ...props }: CardProps) {
     return (
-        <li
+        <motion.li
+            variants={fadeInUp}
             className={cn(
                 `
-                relative h-full overflow-hidden
-                text-primary-content transition
+                relative h-full overflow-hidden text-primary-content
                 hover:brightness-105 active:scale-95
             `,
                 rounded ? "rounded-3xl" : ""
@@ -29,6 +39,6 @@ export function Card({ href, children, rounded, ...props }: CardProps) {
             >
                 {children}
             </Link>
-        </li>
+        </motion.li>
     )
 }

@@ -1,6 +1,5 @@
-import { getCollections } from "@/lib/storefront"
-
 import Collection from "@/components/collection"
+import { getCollections } from "@/lib/storefront"
 
 const getData = async () => {
     const collections = await getCollections()
@@ -24,31 +23,31 @@ export default async function CollectionDirectoryPage() {
         <Collection.Section>
             <Collection.Heading collectionTitle="Collection Directory" />
             <Collection.Grid>
-                {collections.map(({ id, title, href, image }) => {
-                    return (
-                        <Collection.Card
-                            href={href}
-                            rounded
-                            key={id}
-                        >
-                            {image ? (
-                                <Collection.Image
-                                    image={image}
+                    {collections.map(({ id, title, href, image }) => {
+                        return (
+                            <Collection.Card
+                                href={href}
+                                rounded
+                                key={id}
+                            >
+                                {image ? (
+                                    <Collection.Image
+                                        image={image}
+                                        title={title}
+                                    />
+                                ) : (
+                                    <p className="flex flex-col text-center text-base font-bold">
+                                        <span>Collection</span>
+                                        <span>Image</span>
+                                    </p>
+                                )}
+                                <Collection.Title
                                     title={title}
+                                    centered
                                 />
-                            ) : (
-                                <p className="flex flex-col text-center text-base font-bold">
-                                    <span>Collection</span>
-                                    <span>Image</span>
-                                </p>
-                            )}
-                            <Collection.Title
-                                title={title}
-                                centered
-                            />
-                        </Collection.Card>
-                    )
-                })}
+                            </Collection.Card>
+                        )
+                    })}
             </Collection.Grid>
         </Collection.Section>
     )
