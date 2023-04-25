@@ -50,7 +50,7 @@ async function Hero({
                 </h1>
                 <Link
                     href="/collections"
-                    className="bg-blur-base btn-primary btn rounded-xl bg-opacity-60"
+                    className="bg-blur-base btn-primary btn bg-opacity-60"
                 >
                     {buttonText}
                 </Link>

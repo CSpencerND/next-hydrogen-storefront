@@ -27,7 +27,7 @@ export default function Footer({ logo }: { logo: StaticImageData }) {
                             type="email"
                             inputMode="email"
                             placeholder="username@site.com"
-                            className="input mb-2 w-full rounded-xl bg-base-300"
+                            className="input mb-2 w-full bg-base-300"
                         />
                         <button className="btn-secondary btn absolute right-0 top-0 rounded-l-none">
                             Sub

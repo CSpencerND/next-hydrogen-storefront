@@ -46,6 +46,10 @@
     .btn-square {
         @apply rounded-sq;
     }
+
+    .input {
+        @apply rounded-xl;
+    }
 }
 
 @layer utilities {
