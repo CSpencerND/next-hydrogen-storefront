@@ -92,7 +92,7 @@ export function Featured({ featured, ...props }: FeaturedProps) {
             <div className="flex items-center justify-evenly">
                 <Link
                     href="collections/staff-picks"
-                    className="btn-primary btn"
+                    className="btn-primary btn rounded-xl"
                 >
                     See More
                 </Link>
