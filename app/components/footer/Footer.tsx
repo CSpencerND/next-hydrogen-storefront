@@ -1,13 +1,19 @@
-import { cn } from "@/lib/utils"
-
+import { getStorefrontProps } from "@/lib/storefront"
 import { Facebook, Instagram, Twitter } from "lucide-react"
 import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 
-export default function Footer({ logo }: { logo: StaticImageData }) {
+type FooterProps = {
+    logo: StaticImageData
+}
+
+async function Footer({ logo }: FooterProps) {
+    const shop = await getStorefrontProps()
+    const currentYear = new Date().getFullYear()
+
     return (
         <footer className="container mx-auto space-y-6">
-            <section className="footer px-6 max-md:footer-center">
+            <section className="footer max-md:footer-center">
                 <div className="form-control text-sm">
                     <label className="label">
                         <span className="text-sm font-bold text-base-content/80">
@@ -17,11 +23,10 @@ export default function Footer({ logo }: { logo: StaticImageData }) {
                     <div className="relative isolate">
                         <div
                             aria-hidden
-                            className={cn(
-                                "absolute -inset-x-0.5 -top-1 bottom-1 -z-10",
-                                "bg-gradient-to-bl from-accent-content/40 to-primary-content/30",
-                                "rounded-xl blur-md"
-                            )}
+                            className={`
+                                absolute -inset-x-0.5 -top-1 bottom-1 -z-10 rounded-xl
+                                bg-gradient-to-bl from-accent-content/40 to-primary-content/30 blur-md
+                            `}
                         />
                         <input
                             type="email"
@@ -63,17 +68,11 @@ export default function Footer({ logo }: { logo: StaticImageData }) {
                     </ul>
                 </div>
             </section>
-            <section
-                className={cn(
-                    "footer",
-                    "border-t border-base-200 px-2 py-6",
-                    "max-md:footer-center"
-                )}
-            >
+            <section className="footer border-t border-neutral-focus py-6 max-md:footer-center">
                 <div className="grid-flow-col items-center">
                     <Link
                         href="/"
-                        className="btn-link btn hover:opacity-80"
+                        className="hover:opacity-80 h-14 w-14"
                     >
                         <Image
                             src={logo}
@@ -81,9 +80,13 @@ export default function Footer({ logo }: { logo: StaticImageData }) {
                             className="h-full w-auto"
                         />
                     </Link>
-                    <p>Copyright © 2022 - All right reserved wordplay4lyfe</p>
+                    <p>
+                        © {currentYear} All right reserved {shop.name}
+                    </p>
                 </div>
             </section>
         </footer>
     )
 }
+
+export default Footer as unknown as () => JSX.Element
