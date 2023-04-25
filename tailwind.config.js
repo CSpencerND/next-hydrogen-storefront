@@ -51,7 +51,7 @@ module.exports = {
         require("daisyui"),
         require("@tailwindcss/typography"),
         require("@headlessui/tailwindcss")({ prefix: "ui" }),
-        // require("tailwindcss-animate"),
+        require("tailwindcss-animate"),
     ],
 
     daisyui: {
