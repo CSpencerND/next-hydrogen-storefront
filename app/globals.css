@@ -38,6 +38,14 @@
     .card {
         @apply shadow-box;
     }
+
+    .btn {
+        @apply rounded-xl;
+    }
+
+    .btn-square {
+        @apply rounded-sq;
+    }
 }
 
 @layer utilities {
