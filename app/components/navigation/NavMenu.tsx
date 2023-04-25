@@ -38,7 +38,7 @@ export default function NavMenu({ linkData }: { linkData: LinkData[] }) {
                         <Menu.Button
                             className={`
                                 btn-secondary btn-square btn grid place-items-center
-                                rounded-sq bg-opacity-60 backdrop-blur-sm
+                                rounded-sq bg-opacity-60 shadow-box shadow-secondary-content backdrop-blur-sm
                             `}
                         >
                             <HamburgerIcon
