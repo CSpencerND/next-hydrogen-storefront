@@ -10,6 +10,8 @@ import {
 import { Popover } from "@headlessui/react"
 import { AnimatePresence, MotionConfig, motion } from "framer-motion"
 import { ArrowRight, ShoppingCart } from "lucide-react"
+import Link from "next/link"
+import { Fragment } from "react"
 import CartLine from "./CartLine"
 
 import type { Transition } from "framer-motion"
@@ -79,10 +81,24 @@ export default function Cart() {
                                             }}
                                             className="h-full divide-y divide-base-100 overflow-y-scroll px-6 py-4"
                                         >
-                                            {!lines ? (
-                                                <p>Your Cart Is Empty</p>
+                                            {lines?.length === 0 ? (
+                                                <div className="grid h-full place-items-center">
+                                                    <div className="space-y-6">
+                                                        <h2 className="text-xl font-bold">
+                                                            Your Cart Is Empty
+                                                        </h2>
+                                                        <Popover.Button as={Fragment}>
+                                                            <Link
+                                                                href="/collections"
+                                                                className="btn-primary btn-block btn shadow-box shadow-primary-content"
+                                                            >
+                                                                Go Shopping!
+                                                            </Link>
+                                                        </Popover.Button>
+                                                    </div>
+                                                </div>
                                             ) : (
-                                                lines.map((line) => {
+                                                lines?.map((line) => {
                                                     if (!line) return null
                                                     return (
                                                         <CartLineProvider
