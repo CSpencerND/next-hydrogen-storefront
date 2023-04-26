@@ -4,7 +4,7 @@ import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 
 type FooterProps = {
-    logo: StaticImageData
+    logo?: StaticImageData
 }
 
 async function Footer({ logo }: FooterProps) {
@@ -70,16 +70,18 @@ async function Footer({ logo }: FooterProps) {
             </section>
             <section className="footer border-t border-neutral-focus py-6 max-md:footer-center">
                 <div className="grid-flow-col items-center">
-                    <Link
-                        href="/"
-                        className="hover:opacity-80 h-14 w-14"
-                    >
-                        <Image
-                            src={logo}
-                            alt="WordPlay4Lyfe"
-                            className="h-full w-auto"
-                        />
-                    </Link>
+                    {logo && (
+                        <Link
+                            href="/"
+                            className="h-14 w-14 hover:opacity-80"
+                        >
+                            <Image
+                                src={logo}
+                                alt={shop.name}
+                                className="h-full w-auto"
+                            />
+                        </Link>
+                    )}
                     <p>
                         © {currentYear} All right reserved {shop.name}
                     </p>
