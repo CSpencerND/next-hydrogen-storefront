@@ -12,7 +12,7 @@ export function Gallery({ galleryImageData }: { galleryImageData: GalleryImageDa
                 src={src}
                 alt={alt}
                 key={i}
-                className="rounded-2xl shadow-box"
+                className="rounded-2xl shadow-lg"
             />
         )
     })

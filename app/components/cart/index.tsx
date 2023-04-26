@@ -1,5 +1,7 @@
 "use client"
 
+import { cn } from "@/lib/utils"
+
 import {
     CartCheckoutButton,
     CartCost,
@@ -15,6 +17,7 @@ import { Fragment } from "react"
 import CartLine from "./CartLine"
 
 import type { Transition } from "framer-motion"
+// import { useMountEffect } from "@react-hookz/web"
 
 const transition: Transition = {
     type: "spring",
@@ -24,6 +27,15 @@ const transition: Transition = {
 
 export default function Cart() {
     const { lines } = useCart()
+
+    // const { lines, cartCreate, status } = useCart()
+
+    // useMountEffect(() => {
+    //     if (status === "uninitialized") {
+    //         cartCreate({})
+    //         console.log("cart status: ", status)
+    //     }
+    // })
 
     return (
         <Popover>
@@ -126,7 +138,12 @@ export default function Cart() {
                                                 Shipping and taxes calculated at checkout.
                                             </p>
 
-                                            <CartCheckoutButton className="btn-secondary btn-block btn mt-6 shadow-box shadow-secondary-content">
+                                            <CartCheckoutButton
+                                                className={cn(
+                                                    "btn-secondary btn-block btn mt-6 shadow-box shadow-secondary-content",
+                                                    lines?.length === 0 ? "btn-disabled" : ""
+                                                )}
+                                            >
                                                 Checkout
                                             </CartCheckoutButton>
 

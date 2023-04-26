@@ -2,61 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-    .before-blur-300 {
-        @apply before:absolute before:-z-10 before:content-[''];
-        @apply before:bg-blur-300 before:h-full before:w-full;
-    }
-
-    .after-blur-300 {
-        @apply after:absolute after:-z-10 after:content-[''];
-        @apply after:bg-blur-300 after:h-full after:w-full;
-    }
-
-    .before-blur-black {
-        @apply before:absolute before:-z-10 before:content-[''];
-        @apply before:bg-blur-black before:h-full before:w-full;
-    }
-
-    .after-blur-black {
-        @apply after:absolute after:-z-10 after:content-[''];
-        @apply after:bg-blur-black after:h-full after:w-full;
-    }
-
-    .before-blur-clear {
-        @apply before:absolute before:-z-10 before:content-[''];
-        @apply before:bg-blur-clear before:h-full before:w-full;
-    }
-
-    .after-blur-clear {
-        @apply after:absolute after:-z-10 after:content-[''];
-        @apply after:bg-blur-clear after:h-full after:w-full;
-    }
-}
-
-@layer components {
-    .card {
-        @apply shadow-box;
-    }
-
-    .btn {
-        @apply rounded-xl;
-    }
-
-    .btn-square {
-        @apply rounded-sq;
-    }
-
-    .input {
-        @apply rounded-xl;
-    }
-
-    .menu a, .menu li {
-        @apply !rounded-xl;
-    }
-}
-
-@layer utilities {
+@layer base {
     .bg-blur-base {
         @apply backdrop-blur-lg backdrop-saturate-[1.8];
     }
@@ -91,5 +37,59 @@
 
     .bg-blur-clear-sm {
         @apply bg-transparent backdrop-blur;
+    }
+}
+
+@layer components {
+    .before-blur-300 {
+        @apply before:absolute before:-z-10 before:content-[''];
+        @apply before:bg-blur-300 before:h-full before:w-full;
+    }
+
+    .after-blur-300 {
+        @apply after:absolute after:-z-10 after:content-[''];
+        @apply after:bg-blur-300 after:h-full after:w-full;
+    }
+
+    .before-blur-black {
+        @apply before:absolute before:-z-10 before:content-[''];
+        @apply before:bg-blur-black before:h-full before:w-full;
+    }
+
+    .after-blur-black {
+        @apply after:absolute after:-z-10 after:content-[''];
+        @apply after:bg-blur-black after:h-full after:w-full;
+    }
+
+    .before-blur-clear {
+        @apply before:absolute before:-z-10 before:content-[''];
+        @apply before:bg-blur-clear before:h-full before:w-full;
+    }
+
+    .after-blur-clear {
+        @apply after:absolute after:-z-10 after:content-[''];
+        @apply after:bg-blur-clear after:h-full after:w-full;
+    }
+}
+
+@layer components {
+    .card {
+        @apply shadow-lg;
+    }
+
+    .btn {
+        @apply rounded-xl;
+    }
+
+    .btn-square {
+        @apply rounded-sq;
+    }
+
+    .input {
+        @apply rounded-xl;
+    }
+
+    .menu a, .menu li {
+        @apply !rounded-xl;
     }
 }

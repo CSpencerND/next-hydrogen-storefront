@@ -24,7 +24,7 @@ module.exports = {
                 'prose-wide': '80ch',
             },
             boxShadow: {
-                box: "0 0 10px rgb(0 0 0 / 0.2), 0 0 5px rgb(0 0 0 / 0.2)",
+                box: "0 0 12px 0 rgb(0 0 0 / 0.2), 0 0 6px 0 rgb(0 0 0 / 0.2)",
             },
             transitionProperty: {
                 height: "height",

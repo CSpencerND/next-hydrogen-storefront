@@ -38,10 +38,9 @@ export function Size({ ...props }) {
                                 `
                                 -m-0.5 grid h-7 w-7 cursor-pointer
                                 place-items-center rounded-sq bg-base-100 text-xs
-                                ring-neutral ring-offset-base-200
+                                shadow-lg ring-neutral ring-offset-base-200
                                 transition-all duration-200
-                                hover:!bg-secondary-focus 
-                                focus:outline-none
+                                hover:!bg-secondary-focus focus:outline-none
                                 md:h-10 md:w-10
                             `,
 

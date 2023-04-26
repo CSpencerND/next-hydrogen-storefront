@@ -1,5 +1,9 @@
+.bg-blur-base {
+    @apply backdrop-blur-lg backdrop-saturate-[1.8];
+}
+
 .Toastify__toast {
-    @apply rounded-2xl bg-base-200/30 bg-blur-base shadow-box max-sm:m-6;
+    @apply rounded-2xl bg-base-200/30 bg-blur-base shadow-lg max-sm:m-6;
 }
 
 .Toastify__toast-body {

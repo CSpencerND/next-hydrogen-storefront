@@ -52,9 +52,11 @@ export function ExtendedCartProvider({ children }: Children) {
 
     return (
         <CartProvider
+            onCreate={onStart}
             onLineAdd={onStart}
             onLineRemove={onStart}
             onLineUpdate={onStart}
+            onCreateComplete={() => onComplete("Item added to cart")}
             onLineAddComplete={() => onComplete("Item added to cart")}
             onLineRemoveComplete={() => onComplete("Item removed from cart")}
             onLineUpdateComplete={() => onComplete("Item updated in cart")}

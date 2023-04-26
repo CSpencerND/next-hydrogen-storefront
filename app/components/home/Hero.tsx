@@ -25,7 +25,7 @@ async function Hero({
 
     return (
         <section
-            className={cn("hero overflow-hidden shadow-box", rounded ? "rounded-3xl" : "")}
+            className={cn("hero overflow-hidden shadow-lg", rounded ? "rounded-3xl" : "")}
         >
             <Image
                 className="aspect-video max-h-[calc(100vh-196px)] object-cover object-top"
