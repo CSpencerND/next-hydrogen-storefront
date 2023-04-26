@@ -19,7 +19,7 @@ type FeaturedProps = {
     featured: TProduct[]
 } & HTMLAttributes<HTMLElement>
 
-export function Featured({ featured, ...props }: FeaturedProps) {
+export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
     const { toggleLoading, LoadingSpinner } = useLoader()
 
     const sliderRef = useRef<AliceCarousel>(null)
