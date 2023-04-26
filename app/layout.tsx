@@ -8,6 +8,7 @@ import { RootProvider } from "./lib/state"
 import { getStorefrontProps } from "./lib/storefront"
 
 import { Navbar } from "./components/navigation"
+// import { Footer } from "./components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -60,7 +61,7 @@ export default async function RootLayout({ children }: Children) {
                     <main className="container relative mx-auto space-y-8 px-4 py-8">
                         {children}
                     </main>
-                    {/* <Footer /> */}
+                    {/* <Footer logo={logo} /> */}
                 </RootProvider>
             </body>
         </html>
