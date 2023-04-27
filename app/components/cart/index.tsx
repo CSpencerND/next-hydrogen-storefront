@@ -9,6 +9,7 @@ import {
     useCart,
 } from "@shopify/hydrogen-react"
 
+import { ScreenOverlay } from "@/components/ui"
 import { Popover } from "@headlessui/react"
 import { AnimatePresence, MotionConfig, motion } from "framer-motion"
 import { ArrowRight, ShoppingCart } from "lucide-react"
@@ -161,16 +162,7 @@ export default function Cart() {
                             </MotionConfig>
                         )}
                     </AnimatePresence>
-                    <AnimatePresence>
-                        {open && (
-                            <motion.div
-                                className="bg-blur-clear fixed inset-0 z-30 cursor-pointer"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                            />
-                        )}
-                    </AnimatePresence>
+                    <ScreenOverlay open={open} />
                 </>
             )}
         </Popover>
