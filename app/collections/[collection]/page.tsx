@@ -29,7 +29,7 @@ export default async function CollectionDynamicSegment({ params }: CollectionSeg
                             >
                                 <Product.Card>
                                     <Product.Link
-                                        href={`/collections/${params.collection}/${p.handle}`}
+                                        href={`/collections/${params.collection}/products/${p.handle}`}
                                     >
                                         <Product.Image
                                             rounded="top"

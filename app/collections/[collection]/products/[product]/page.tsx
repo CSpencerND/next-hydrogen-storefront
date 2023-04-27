@@ -3,7 +3,7 @@ import { getFeaturedCollection, getProductByHandle } from "@/lib/storefront"
 import { Breadcrumbs } from "@/components/navigation"
 import Product from "@/components/product"
 
-import type { FullPathParams } from "../layout"
+import type { FullPathParams } from "../../layout"
 
 export async function generateStaticParams({ params }: FullPathParams) {
     const products = await getFeaturedCollection(params.collection)

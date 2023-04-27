@@ -43,7 +43,7 @@ function CartLine({ className }: ClassName) {
         },
     } = useCartLine() as CartLine
 
-    const productURL = onlineStoreUrl ?? `/collections/full-catalog/${handle}`
+    const productURL = onlineStoreUrl ?? `/collections/full-catalog/products/${handle}`
 
     return (
         <motion.li

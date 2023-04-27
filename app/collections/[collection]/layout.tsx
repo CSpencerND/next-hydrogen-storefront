@@ -1,6 +1,6 @@
 import { getCollections } from "@/lib/storefront"
 
-import type Children from "types"
+import type { ReactNode } from "react"
 
 export type CollectionSegmentParams = {
     params: { collection: string }
@@ -20,8 +20,16 @@ export async function generateStaticParams() {
     }))
 }
 
-export default function CollectionLayout({children}: Children){
+type CollectionLayoutProps = {
+    children?: ReactNode
+    modal?: ReactNode
+}
+
+export default function CollectionLayout({ children, modal }: CollectionLayoutProps) {
     return (
-        <>{children}</>
+        <>
+            {children}
+            {modal}
+        </>
     )
 }

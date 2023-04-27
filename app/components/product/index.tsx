@@ -6,6 +6,7 @@ import { Description } from "./Description"
 import { Image } from "./Image"
 import { Layout } from "./Layout"
 import { Link } from "./Link"
+import { Modal } from "./Modal"
 import { Price } from "./Price"
 import { Size } from "./Size"
 import { Swatch } from "./Swatch"
@@ -22,6 +23,7 @@ Product.Description = Description
 Product.Image = Image
 Product.Layout = Layout
 Product.Link = Link
+Product.Modal = Modal
 Product.Price = Price
 Product.Size = Size
 Product.Swatch = Swatch
