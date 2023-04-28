@@ -2,11 +2,13 @@
 
 import type { ShopifyImageProps } from "@shopify/hydrogen-react/dist/types/Image"
 import type { Image as TImage } from "@shopify/hydrogen-react/storefront-api-types"
+import type { ImageProps as NextImageProps } from "next/image"
 
 import { useProductStore } from "@/lib/state"
 import { cn } from "@/lib/utils"
 
 import { Image as ShopImage } from "@shopify/hydrogen-react"
+import NextImage from "next/image"
 
 type ProductImageProps = {
     title: string
@@ -16,8 +18,9 @@ type ProductImageProps = {
     className?: string
 }
 
-type StaticImageProps = ProductImageProps & {
+type StaticImageProps = Omit<ProductImageProps, "imageProps"> & {
     image: TImage
+    imageProps?: Partial<NextImageProps>
 }
 
 /**
@@ -53,13 +56,16 @@ function Image(props: ProductImageProps) {
  */
 function Static(props: StaticImageProps) {
     const { image, title, rounded = "full", className } = props
+    const { url, altText, width, height } = image
 
     return (
         <figure className={cn("overflow-hidden", className)}>
-            <ShopImage
+            <NextImage
                 role="presentation"
-                data={image}
-                alt={image.altText ?? title}
+                src={url}
+                alt={altText ?? title}
+                width={width || 1024}
+                height={height || 1024}
                 className={cn(
                     "bg-glass h-full w-full object-cover object-center",
                     rounded === "full" ? "rounded-3xl" : "",
@@ -74,4 +80,5 @@ function Static(props: StaticImageProps) {
 }
 
 Image.Static = Static
+
 export { Image }

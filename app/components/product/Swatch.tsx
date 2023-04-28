@@ -27,6 +27,7 @@ export function Swatch({ attached, ...props }: { attached?: boolean; className?:
 
     return (
         <RadioGroup
+            id="swatch"
             value={selectedColor}
             onChange={handleChange}
             className={cn(

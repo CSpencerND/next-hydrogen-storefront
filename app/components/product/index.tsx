@@ -9,6 +9,7 @@ import { Link } from "./Link"
 import { Modal } from "./Modal"
 import { Price } from "./Price"
 import { Size } from "./Size"
+import { Static } from "./Static"
 import { Swatch } from "./Swatch"
 import { Title } from "./Title"
 import { Variant } from "./Variant"
@@ -26,6 +27,7 @@ Product.Link = Link
 Product.Modal = Modal
 Product.Price = Price
 Product.Size = Size
+Product.Static = Static
 Product.Swatch = Swatch
 Product.Title = Title
 Product.Variant = Variant
