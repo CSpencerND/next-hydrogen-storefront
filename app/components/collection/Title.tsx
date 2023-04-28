@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils"
 import type { HTMLAttributes } from "react"
 
 type TitleProps = {
@@ -8,9 +7,14 @@ type TitleProps = {
 
 export function Title({ title, centered, ...props }: TitleProps) {
     return (
-        <div className="bg-blur-base absolute bottom-0 card-body w-full bg-gradient-to-t from-base-100 to-transparent p-2">
+        <div
+            className={`
+                bg-blur-base card-body absolute bottom-0 w-full
+                bg-gradient-to-t from-base-100 to-transparent p-2
+            `}
+        >
             <h1
-                className={cn(centered ? "card-title mx-auto" : "")}
+                className={centered ? "card-title mx-auto" : ""}
                 {...props}
             >
                 {title}

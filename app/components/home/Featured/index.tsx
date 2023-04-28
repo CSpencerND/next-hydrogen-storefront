@@ -1,8 +1,8 @@
-import { getFeaturedCollection } from "@/lib/storefront"
+import { getCollectionByHandle } from "@/lib/storefront"
 import { FeaturedCollection } from "./Featured"
 
 async function Featured({ collectionHandle }: { collectionHandle: string }) {
-    const featured = await getFeaturedCollection(collectionHandle)
+    const featured = await getCollectionByHandle(collectionHandle)
     return <FeaturedCollection featured={featured} />
 }
 
