@@ -1,5 +1,7 @@
 import { getCollections } from "@/lib/storefront"
 
+import { Breadcrumbs } from "@/components/navigation"
+
 import type { ReactNode } from "react"
 
 export type CollectionSegmentParams = {
@@ -26,10 +28,18 @@ type CollectionLayoutProps = {
 }
 
 export default function CollectionLayout({ children, modal }: CollectionLayoutProps) {
+
     return (
         <>
+            <Breadcrumbs />
+            {modal && (
+                <>
+                    <h2>Modal</h2>
+                    {modal}
+                </>
+            )}
+
             {children}
-            {modal}
         </>
     )
 }
