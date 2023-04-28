@@ -1,19 +1,17 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-type BreadcrumbProps = {
-    root?: string
-    segments: string[]
-}
+export function Breadcrumbs() {
+    const pathname = usePathname()
+    const segments = pathname.split("/").filter((s) => s !== "")
 
-export function Breadcrumbs({ root = "collections", segments }: BreadcrumbProps) {
     return (
         <section className="breadcrumbs mx-auto text-sm lg:max-w-7xl">
             <ul className="bg-blur-200 w-fit rounded-2xl p-4 shadow-lg [&_a]:text-primary-content">
-                <li key="rootPath">
-                    <Link href={`/${root}`}>{root}</Link>
-                </li>
                 {segments.map((segment, i) => {
-                    const path = `/${root}/${segments.slice(0, i + 1).join("/")}`
+                    const path = `${segments.slice(0, i + 1).join("/")}`
                     if (i !== segments.length - 1) {
                         return (
                             <li key={segment}>

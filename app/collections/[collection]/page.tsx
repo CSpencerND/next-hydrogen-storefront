@@ -1,7 +1,6 @@
 import { getProductsByCollection } from "@/lib/storefront"
 
 import Collection from "@/components/collection"
-import { Breadcrumbs } from "@/components/navigation"
 import Product from "@/components/product"
 import { ProductProvider } from "@/lib/state"
 
@@ -13,7 +12,6 @@ export default async function CollectionDynamicSegment({ params }: CollectionSeg
 
     return (
         <>
-            <Breadcrumbs segments={[params.collection]} />
             <Collection.Section>
                 <Collection.Heading
                     collectionTitle={collectionTitle}
@@ -29,7 +27,7 @@ export default async function CollectionDynamicSegment({ params }: CollectionSeg
                             >
                                 <Product.Card>
                                     <Product.Link
-                                        href={`/collections/${params.collection}/products/${p.handle}`}
+                                        href={`/collections/${params.collection}/${p.handle}`}
                                     >
                                         <Product.Image
                                             rounded="top"
