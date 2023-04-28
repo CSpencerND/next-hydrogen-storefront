@@ -33,7 +33,7 @@ const query = gql`
     }
 `
 
-export async function getFeaturedCollection(handle: string): Promise<Product[]> {
+export async function getCollectionByHandle(handle: string): Promise<Product[]> {
     const data = await storefrontQuery<"collection", Collection>(featuredQuery, { handle })
     return data.collection.products.nodes
 }

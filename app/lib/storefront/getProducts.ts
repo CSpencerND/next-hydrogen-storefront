@@ -24,6 +24,14 @@ export async function getProductByHandle(handle: string): Promise<Product> {
     return data.product
 }
 
+export async function getProductRecommendations(id: string): Promise<Product[]> {
+    const data = await storefrontQuery<"productRecommendations", Product[]>(
+        recommendedProductsQuery,
+        { id }
+    )
+    return data.productRecommendations
+}
+
 const allProductsQuery = gql`
     query getProductsByCollection($handle: String!) {
         collection(handle: $handle) {
@@ -162,6 +170,23 @@ const productByHandleQuery = gql`
                     name
                 }
             }
+        }
+    }
+`
+
+const recommendedProductsQuery = gql`
+    query Recommendations($id: ID!) {
+        productRecommendations(productId: $id) {
+            featuredImage {
+                url
+                altText
+                width
+                height
+            }
+            title
+            id
+            handle
+            onlineStoreUrl
         }
     }
 `
