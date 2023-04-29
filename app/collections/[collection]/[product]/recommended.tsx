@@ -12,7 +12,8 @@ export default async function RecommendedProducts({ productID }: { productID: st
                     const { id, title, featuredImage, onlineStoreUrl, handle } = p
                     return (
                         <Collection.Card
-                            href={onlineStoreUrl ?? `/collections/full-catalog/${handle}`}
+                            // href={onlineStoreUrl ?? `/collections/full-catalog/${handle}`}
+                            href={`/collections/full-catalog/${handle}`}
                             key={id}
                             rounded
                         >
