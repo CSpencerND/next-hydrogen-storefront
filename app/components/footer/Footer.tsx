@@ -83,7 +83,7 @@ async function Footer({ logo }: FooterProps) {
                         </Link>
                     )}
                     <p>
-                        © {currentYear} All right reserved {shop.name}
+                        © {currentYear} All rights reserved {shop.name}
                     </p>
                 </div>
             </section>
