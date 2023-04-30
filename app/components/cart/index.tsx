@@ -51,8 +51,8 @@ export default function Cart() {
                             <MotionConfig transition={{ ...transition }}>
                                 <motion.div
                                     className={`
-                                        fixed inset-0 z-50 h-screen border-l border-neutral-focus
-                                        bg-base-300/60 sm:ml-[20%] md:ml-[35%] lg:ml-[60%]
+                                        fixed inset-0 z-50 w-screen sm:ml-auto h-screen sm:max-w-3xl
+                                        border-l border-neutral-focus bg-base-300/60
                                     `}
                                     key="navMenuSidebar"
                                     variants={{

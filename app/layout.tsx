@@ -1,6 +1,7 @@
 import type { Metadata } from "next/dist/lib/metadata/types/metadata-interface"
 import type Children from "types"
 
+import { cn } from "./lib/utils"
 import { Inter } from "next/font/google"
 import "./globals.css"
 
@@ -42,14 +43,14 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({ children }: Children) {
     return (
         <html
-            className={inter.className}
+            className={cn(inter.className, "overflow-x-hidden")}
             data-theme="next"
             lang="en"
         >
             <body
                 className={`
-                    relative isolate flex 
-                    min-h-screen flex-col overflow-x-hidden 
+                    relative isolate flex min-h-screen
+                    flex-col overflow-x-hidden
                     bg-base-300 text-sm
                 `}
                 style={{

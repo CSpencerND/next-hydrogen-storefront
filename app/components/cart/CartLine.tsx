@@ -9,13 +9,17 @@ import {
 
 import Product from "@/components/product"
 import { Popover } from "@headlessui/react"
-import { Minus, Plus, Trash2 as Remove } from "lucide-react"
+import { Minus, Plus } from "lucide-react"
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
-import type { CartLine, Image as TImage, MoneyV2 } from "@shopify/hydrogen-react/storefront-api-types"
+import type {
+    CartLine,
+    Image as TImage,
+    MoneyV2,
+} from "@shopify/hydrogen-react/storefront-api-types"
 import type { Children, ClassName } from "types"
 import { Fragment } from "react"
 
@@ -70,9 +74,7 @@ function CartLine({ className }: ClassName) {
                 variantTitle={variantTitle}
                 productURL={productURL}
                 price={price}
-            >
-                <Actions />
-            </Body>
+            />
         </motion.li>
     )
 }
@@ -82,7 +84,7 @@ function Image({ image, title, productURL }: ImageProps) {
         <Popover.Button as={Fragment}>
             <Link
                 href={productURL}
-                className="w-1/4"
+                className="w-2/5 sm:w-1/4"
             >
                 <Product.Image.Static
                     imageClassName="rounded-2xl sm:rounded-3xl"
@@ -94,72 +96,49 @@ function Image({ image, title, productURL }: ImageProps) {
     )
 }
 
-function Body({
-    productTitle,
-    variantTitle,
-    productURL,
-    price,
-    className,
-    children,
-}: BodyProps) {
+function Body({ productTitle, variantTitle, productURL, price, className }: BodyProps) {
     return (
-        <div className={cn("card-body p-0 text-xs sm:text-sm", className)}>
+        <div className={cn("card-body p-0 text-xs sm:text-base w-3/5 sm:w-3/4", className)}>
             <div className="flex justify-between">
                 <Popover.Button as={Fragment}>
                     <Link
                         href={productURL}
-                        className="w-2/3 text-primary-content"
+                        className="text-primary-content w-full"
                     >
                         <Product.Title
                             title={productTitle}
                             truncate
+                            className="text-sm sm:text-base"
                         />
                     </Link>
                 </Popover.Button>
-                <Money
-                    as="span"
-                    data={price}
-                    className="self-center"
-                />
             </div>
             <p>{variantTitle}</p>
-            <div className="flex items-center justify-between">
-                <p>
-                    <span>Qty </span>
+            <div className="flex justify-between">
+                <span className="self-center">
+                    <Money
+                        as="span"
+                        data={price}
+                    />
+                </span>
+                <span className="items-center card-actions gap-4">
+                    <CartLineQuantityAdjustButton
+                        adjust="decrease"
+                        className="btn-secondary btn-square btn-xs btn rounded-sq sm:btn-sm"
+                    >
+                        <span className="sr-only">Decrease Quantity</span>
+                        <Minus size={16} />
+                    </CartLineQuantityAdjustButton>
                     <CartLineQuantity />
-                </p>
-                {children}
+                    <CartLineQuantityAdjustButton
+                        adjust="increase"
+                        className="btn-secondary btn-square btn-xs btn rounded-sq sm:btn-sm"
+                    >
+                        <span className="sr-only">Increase Quantity</span>
+                        <Plus size={16} />
+                    </CartLineQuantityAdjustButton>
+                </span>
             </div>
-        </div>
-    )
-}
-
-function Actions() {
-    return (
-        <div className="card-actions">
-            <CartLineQuantityAdjustButton
-                adjust="decrease"
-                className="btn-secondary btn-square btn-xs btn rounded-sq sm:btn-sm"
-            >
-                <span className="sr-only">Decrease Quantity</span>
-                <Minus size={16} />
-            </CartLineQuantityAdjustButton>
-
-            <CartLineQuantityAdjustButton
-                adjust="increase"
-                className="btn-secondary btn-square btn-xs btn rounded-sq sm:btn-sm"
-            >
-                <span className="sr-only">Increase Quantity</span>
-                <Plus size={16} />
-            </CartLineQuantityAdjustButton>
-
-            <CartLineQuantityAdjustButton
-                adjust="remove"
-                className="btn-secondary btn-square btn-xs btn rounded-sq sm:btn-sm"
-            >
-                <span className="sr-only">Remove Item</span>
-                <Remove size={16} />
-            </CartLineQuantityAdjustButton>
         </div>
     )
 }
