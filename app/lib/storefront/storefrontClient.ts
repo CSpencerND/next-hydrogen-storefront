@@ -1,25 +1,13 @@
-type Env = {
-    ID: string
-    TOKEN: string
-    DOMAIN: string
-    VERSION: string
-}
-
-export const env = {
-    ID: process.env.STOREFRONT_ID,
-    TOKEN: process.env.STOREFRONT_TOKEN,
-    DOMAIN: process.env.STOREFRONT_DOMAIN,
-    VERSION: process.env.STOREFRONT_VERSION || "2023-01",
-} as Env
+import { env } from "env.mjs"
 
 export const shopify = {
-    endpoint: `https://${env.DOMAIN}/api/${env.VERSION}/graphql.json`,
+    endpoint: `https://${env.NEXT_PUBLIC_STOREFRONT_DOMAIN}/api/${env.NEXT_PUBLIC_STOREFRONT_VERSION}/graphql.json`,
     headers: {
         "content-type": "application/json",
         "X-SDK-Variant": "hydrogen-react",
         "X-SDK-Variant-Source": "react",
-        "X-SDK-Version": env.VERSION,
-        "X-Shopify-Storefront-Access-Token": env.TOKEN,
+        "X-SDK-Version": env.NEXT_PUBLIC_STOREFRONT_VERSION,
+        "X-Shopify-Storefront-Access-Token": env.NEXT_PUBLIC_STOREFRONT_TOKEN,
     },
 } as const
 

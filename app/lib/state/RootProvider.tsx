@@ -2,7 +2,7 @@
 
 import Children from "types"
 
-import { env } from "@/lib/storefront"
+import { env } from "env.mjs"
 
 import { CartProvider, ShopifyProvider } from "@shopify/hydrogen-react"
 import { useRef } from "react"
@@ -15,10 +15,10 @@ import "./Toast.css"
 export function RootProvider({ children }: Children) {
     return (
         <ShopifyProvider
-            storefrontId={env.ID}
-            storefrontToken={env.TOKEN}
-            storeDomain={`https://${env.DOMAIN}`}
-            storefrontApiVersion={env.VERSION}
+            storefrontId={env.NEXT_PUBLIC_STOREFRONT_ID}
+            storefrontToken={env.NEXT_PUBLIC_STOREFRONT_TOKEN}
+            storeDomain={`https://${env.NEXT_PUBLIC_STOREFRONT_DOMAIN}`}
+            storefrontApiVersion={env.NEXT_PUBLIC_STOREFRONT_VERSION}
             countryIsoCode="US"
             languageIsoCode="EN"
         >

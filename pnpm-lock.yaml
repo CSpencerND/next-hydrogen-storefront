@@ -14,8 +14,11 @@ dependencies:
     specifier: ^9.7.2
     version: 9.7.2(react-dom@18.2.0)(react@18.2.0)
   '@shopify/hydrogen-react':
-    specifier: ^2023.1.7
-    version: 2023.1.7(@types/react@18.0.32)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2023.4.0
+    version: 2023.4.0(@types/react@18.0.32)(react-dom@18.2.0)(react@18.2.0)
+  '@t3-oss/env-nextjs':
+    specifier: ^0.2.2
+    version: 0.2.2(zod@3.21.4)
   class-variance-authority:
     specifier: ^0.5.1
     version: 0.5.1(typescript@5.0.3)
@@ -73,6 +76,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.5
     version: 1.0.5(tailwindcss@3.3.1)
+  zod:
+    specifier: ^3.21.4
+    version: 3.21.4
   zustand:
     specifier: ^4.3.7
     version: 4.3.7(react@18.2.0)
@@ -436,8 +442,8 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: false
 
-  /@shopify/hydrogen-react@2023.1.7(@types/react@18.0.32)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-9BC0tJDZ1aNCis+stelBDhGzPFUCNgJAJcqVZsNQSe9hq2QTHL8S2Hoi7ADpuyB4JwgpNPeWqAU7t9KH206GdQ==}
+  /@shopify/hydrogen-react@2023.4.0(@types/react@18.0.32)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/4kiMOlhEdisBY/qACypfCmYmKtbS8/ywjo40ldTf+ZVJSniR9RXqSiKEeFD1/1bRsLctAHCZvDI9ysaIJS1Mg==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^18.0.0
@@ -460,6 +466,23 @@ packages:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
       tslib: 2.5.0
+    dev: false
+
+  /@t3-oss/env-core@0.2.2(zod@3.21.4):
+    resolution: {integrity: sha512-Jiuph14/L3L9EDaU0O0YiLeaKUcWA9c3mWYuKem8+L64i3Iwz+IbKdl5Jp4cx+JbOsS/aptwGZplnxSHhm2gMQ==}
+    peerDependencies:
+      zod: ^3.0.0
+    dependencies:
+      zod: 3.21.4
+    dev: false
+
+  /@t3-oss/env-nextjs@0.2.2(zod@3.21.4):
+    resolution: {integrity: sha512-9LnVpTkf/8WkggyVN6Liz9Ma9a7fLzV00b5BngWj3HI3iWDfddsWaqCf/H0f46Bgu29NubP3Bwajf1JieVrxFA==}
+    peerDependencies:
+      zod: ^3.0.0
+    dependencies:
+      '@t3-oss/env-core': 0.2.2(zod@3.21.4)
+      zod: 3.21.4
     dev: false
 
   /@tailwindcss/typography@0.5.9(tailwindcss@3.3.1):
@@ -3176,6 +3199,10 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  /zod@3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false
 
   /zustand@4.3.7(react@18.2.0):
     resolution: {integrity: sha512-dY8ERwB9Nd21ellgkBZFhudER8KVlelZm8388B5nDAXhO/+FZDhYMuRnqDgu5SYyRgz/iaf8RKnbUs/cHfOGlQ==}
