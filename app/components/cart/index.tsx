@@ -75,7 +75,7 @@ export default function Cart() {
                                     exit="close"
                                 >
                                     <Popover.Panel className="flex h-screen flex-col">
-                                        <header className="flex items-center justify-between border-b border-base-100 px-6 py-4">
+                                        <header className="flex items-center justify-between border-b border-base-100 p-4">
                                             <h1 className="text-2xl font-medium">
                                                 In Your Cart
                                             </h1>

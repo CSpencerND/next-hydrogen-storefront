@@ -51,8 +51,7 @@ export default async function RootLayout({ children }: Children) {
         >
             <body
                 className={`
-                    relative isolate flex min-h-screen
-                    flex-col overflow-x-hidden
+                    relative isolate flex min-h-screen flex-col
                     bg-base-300 text-sm sm:px-6
                 `}
                 style={{
