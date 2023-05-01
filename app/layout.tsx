@@ -50,22 +50,19 @@ export default async function RootLayout({ children }: Children) {
             lang="en"
         >
             <body
-                className={`
-                    relative isolate flex min-h-screen flex-col
-                    bg-base-300 text-sm sm:px-6
-                `}
+                className="relative isolate bg-base-300 text-sm sm:px-6"
                 style={{
                     paddingBottom: "env(safe-area-inset-bottom)", // ios
                 }}
             >
                 <RootProvider>
-                    {/* @ts-expect-error Async Component */}
+                    {/*@ts-expect-error Async Component*/}
                     {/* <Navbar logo={logoMain} /> */}
                     <main className="container relative mx-auto max-w-7xl space-y-8 px-4 py-8 sm:px-6">
                         {children}
                     </main>
-                    {/* @ts-expect-error Async Component */}
-                    {/* <Footer logo={logo} /> */}
+                    {/*@ts-expect-error Async Component*/}
+                    {/* <Footer logo={logoSquare} /> */}
                 </RootProvider>
             </body>
         </html>

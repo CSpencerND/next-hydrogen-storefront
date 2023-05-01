@@ -48,7 +48,7 @@ export async function Hero({
                 </h1>
                 <Link
                     href="/collections"
-                    className="glass btn"
+                    className="bg-blur-base glass btn bg-opacity-0"
                 >
                     {buttonText}
                 </Link>
