@@ -21,10 +21,10 @@ export function Image(props: ProductImageProps) {
     return (
         <figure
             className={cn(
-                "bg-glass overflow-hidden",
-                rounded === true ? "rounded-2xl" : "",
-                rounded === "top" ? "rounded-t-2xl" : "",
-                rounded === "bottom" ? "rounded-b-2xl" : "",
+                "glass overflow-hidden",
+                rounded === true ? "rounded-3xl" : "",
+                rounded === "top" ? "rounded-t-3xl" : "",
+                rounded === "bottom" ? "rounded-b-3xl" : "",
                 "flex flex-col"
             )}
             {...containerProps}

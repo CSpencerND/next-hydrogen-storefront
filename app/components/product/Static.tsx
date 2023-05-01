@@ -25,7 +25,7 @@ export function Static(props: StaticProps) {
                 width={width || 1024}
                 height={height || 1024}
                 className={cn(
-                    "bg-glass h-full w-full object-cover object-center",
+                    "glass h-full w-full object-cover object-center",
                     rounded === "full" ? "rounded-3xl" : "",
                     rounded === "top" ? "rounded-t-3xl" : "",
                     rounded === "bottom" ? "rounded-b-3xl" : "",

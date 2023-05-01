@@ -1,6 +1,6 @@
 "use client"
 
-import type { ShopifyImageProps } from "@shopify/hydrogen-react/dist/types/Image"
+import type { HydrogenImageProps } from "@shopify/hydrogen-react/dist/types/Image"
 import type { Image as TImage } from "@shopify/hydrogen-react/storefront-api-types"
 import type { ImageProps as NextImageProps } from "next/image"
 
@@ -13,7 +13,7 @@ import NextImage from "next/image"
 type ProductImageProps = {
     title: string
     rounded?: "full" | "top" | "bottom" | "none"
-    imageProps?: Partial<ShopifyImageProps>
+    imageProps?: Partial<HydrogenImageProps>
     imageClassName?: string
     className?: string
 }
@@ -39,7 +39,7 @@ function Image(props: ProductImageProps) {
                 data={currentImage}
                 alt={currentImage.altText ?? title}
                 className={cn(
-                    "bg-glass h-full w-full object-cover object-center",
+                    "glass h-full w-full object-cover object-center",
                     rounded === "full" ? "rounded-3xl" : "",
                     rounded === "top" ? "rounded-t-3xl" : "",
                     rounded === "bottom" ? "rounded-b-3xl" : "",
@@ -67,7 +67,7 @@ function Static(props: StaticImageProps) {
                 width={width || 1024}
                 height={height || 1024}
                 className={cn(
-                    "bg-glass h-full w-full object-cover object-center",
+                    "glass h-full w-full object-cover object-center",
                     rounded === "full" ? "rounded-3xl" : "",
                     rounded === "top" ? "rounded-t-3xl" : "",
                     rounded === "bottom" ? "rounded-b-3xl" : "",

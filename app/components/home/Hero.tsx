@@ -14,7 +14,7 @@ type HeroProps = {
     buttonText?: string
 }
 
-async function Hero({
+export async function Hero({
     font,
     image,
     rounded,
@@ -24,9 +24,7 @@ async function Hero({
     const { brand } = await getStorefrontProps()
 
     return (
-        <section
-            className={cn("hero overflow-hidden shadow-lg", rounded ? "rounded-3xl" : "")}
-        >
+        <section className={cn("hero overflow-hidden shadow-lg", rounded ? "rounded-3xl" : "")}>
             <Image
                 className="aspect-video max-h-[calc(100vh-196px)] object-cover object-top"
                 src={image}
@@ -50,7 +48,7 @@ async function Hero({
                 </h1>
                 <Link
                     href="/collections"
-                    className="bg-blur-base btn-primary btn bg-opacity-60"
+                    className="glass btn"
                 >
                     {buttonText}
                 </Link>
@@ -58,5 +56,3 @@ async function Hero({
         </section>
     )
 }
-
-export default Hero as unknown as () => JSX.Element

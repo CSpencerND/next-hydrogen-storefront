@@ -23,10 +23,6 @@
         @apply bg-black/60 bg-blur-base;
     }
 
-    .bg-glass {
-        @apply glass bg-opacity-60 ring-0 hover:ring-0;
-    }
-
     .bg-grayscale {
         @apply bg-gradient-to-tl from-base-300 to-base-content/75 bg-blur-base;
     }
@@ -91,5 +87,9 @@
 
     .menu a, .menu li {
         @apply !rounded-xl;
+    }
+
+    .glass {
+        @apply ring-0 hover:ring-0;
     }
 }

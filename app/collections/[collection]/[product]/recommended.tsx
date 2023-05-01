@@ -22,8 +22,11 @@ export default async function RecommendedProducts({ productID }: { productID: st
                                 image={featuredImage!}
                             />
                             <Collection.Title
+                                className="text-sm sm:text-base md:text-sm lg:text-base"
                                 title={title}
+                                truncated
                                 centered
+                                rounded
                             />
                         </Collection.Card>
                     )

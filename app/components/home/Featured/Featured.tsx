@@ -38,7 +38,7 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
                     onDragStart: (e) => e.preventDefault(),
                 }}
             />
-            <Product.Title.Overlay>
+            <Product.Title.Overlay rounded>
                 <Product.Title
                     truncate
                     title={title}

@@ -31,19 +31,26 @@ function Title({ title, centered, truncate, className }: TitleProps) {
     )
 }
 
+type OverlayProps = Children & {
+    rounded?: boolean
+}
+
 /**
  *  @usage Wrap this around Text to position absolute and overlay on bottom of Image
  *
  *  @memberof Title
  */
-function Overlay({ children, ...props }: Children) {
+function Overlay({ children, rounded, ...props }: OverlayProps) {
     return (
         <div
             id="titleOverlay"
-            className={`
+            className={cn(
+                `
                 bg-blur-base absolute bottom-0 w-full
-                bg-gradient-to-t from-base-100 to-transparent p-2
-            `}
+                bg-gradient-to-t from-base-100 to-transparent px-4 py-2
+            `,
+                rounded ? "rounded-b-3xl" : ""
+            )}
             {...props}
         >
             {children}

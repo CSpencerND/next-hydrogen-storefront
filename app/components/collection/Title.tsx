@@ -4,16 +4,20 @@ type TitleProps = {
     title: string
     truncated?: boolean
     centered?: boolean
+    rounded?: boolean
     className?: string
 }
 
-export function Title({ title, truncated, centered, className }: TitleProps) {
+export function Title({ title, truncated, centered, rounded, className }: TitleProps) {
     return (
         <div
-            className={`
-                bg-blur-base flex absolute bottom-0 w-full
+            className={cn(
+                `
+                bg-blur-base absolute bottom-0 flex w-full
                 bg-gradient-to-t from-base-100 to-transparent p-2
-            `}
+            `,
+                rounded ? "rounded-b-3xl" : ""
+            )}
         >
             <h2
                 className={cn(
@@ -28,4 +32,3 @@ export function Title({ title, truncated, centered, className }: TitleProps) {
         </div>
     )
 }
-

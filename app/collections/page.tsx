@@ -44,6 +44,7 @@ export default async function CollectionDirectoryPage() {
                                 <Collection.Title
                                     title={title}
                                     centered
+                                    rounded
                                 />
                             </Collection.Card>
                         )
