@@ -25,7 +25,7 @@ const getData = async () => {
     return linkData
 }
 
-async function Navbar({ logo }: { logo?: StaticImageData }) {
+export async function Navbar({ logo }: { logo?: StaticImageData }) {
     const linkData = await getData()
 
     return (
@@ -33,13 +33,13 @@ async function Navbar({ logo }: { logo?: StaticImageData }) {
             <nav
                 className={`
                     navbar isolate mx-auto max-w-7xl
-                    border-b border-neutral-focus px-6 py-4
+                    border-b border-neutral-focus py-4
                 `}
             >
                 <div className="navbar-start">
                     <Link
                         href="/"
-                        className="btn-link btn hover:opacity-80"
+                        className="btn-link btn pl-2 hover:opacity-80"
                     >
                         {logo && (
                             <Image
@@ -59,5 +59,3 @@ async function Navbar({ logo }: { logo?: StaticImageData }) {
         </header>
     )
 }
-
-export default Navbar as unknown as () => JSX.Element

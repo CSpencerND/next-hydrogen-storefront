@@ -7,12 +7,12 @@ type FooterProps = {
     logo?: StaticImageData
 }
 
-async function Footer({ logo }: FooterProps) {
+export async function Footer({ logo }: FooterProps) {
     const shop = await getStorefrontProps()
     const currentYear = new Date().getFullYear()
 
     return (
-        <footer className="container mx-auto space-y-6">
+        <footer className="container mx-auto max-w-7xl space-y-6">
             <section className="footer max-md:footer-center">
                 <div className="form-control text-sm">
                     <label className="label">
@@ -90,5 +90,3 @@ async function Footer({ logo }: FooterProps) {
         </footer>
     )
 }
-
-export default Footer as unknown as () => JSX.Element

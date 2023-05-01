@@ -9,7 +9,9 @@ import { RootProvider } from "./lib/state"
 import { getStorefrontProps } from "./lib/storefront"
 
 import { Navbar } from "./components/navigation"
-// import { Footer } from "./components/footer"
+import { Footer } from "./components/footer"
+
+// import { logoMain, logoSquare } from "@/static"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -58,10 +60,12 @@ export default async function RootLayout({ children }: Children) {
                 }}
             >
                 <RootProvider>
-                    <Navbar />
-                    <main className="container relative mx-auto space-y-8 px-4 py-8">
+                    {/* @ts-expect-error Async Component */}
+                    {/* <Navbar logo={logoMain} /> */}
+                    <main className="container relative mx-auto max-w-7xl space-y-8 px-4 py-8 sm:px-6">
                         {children}
                     </main>
+                    {/* @ts-expect-error Async Component */}
                     {/* <Footer logo={logo} /> */}
                 </RootProvider>
             </body>

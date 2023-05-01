@@ -19,12 +19,12 @@ module.exports = {
             borderRadius: {
                 sq: "21%"
             },
+            boxShadow: {
+                box: "0 0 12px 0 rgb(0 0 0 / 0.2), 0 0 6px 0 rgb(0 0 0 / 0.2)",
+            },
             maxWidth: {
                 'prose-narrow': '45ch',
                 'prose-wide': '80ch',
-            },
-            boxShadow: {
-                box: "0 0 12px 0 rgb(0 0 0 / 0.2), 0 0 6px 0 rgb(0 0 0 / 0.2)",
             },
             transitionProperty: {
                 height: "height",

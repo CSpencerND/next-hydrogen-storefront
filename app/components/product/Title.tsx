@@ -16,14 +16,14 @@ type TitleProps = {
  *
  *  @member Overlay.
  */
-function Title({ title, centered, truncate, ...props }: TitleProps) {
+function Title({ title, centered, truncate, className }: TitleProps) {
     return (
         <h2
             className={cn(
                 "text-sm font-bold",
                 centered ? "mx-auto" : "",
                 truncate ? "truncate" : "",
-                props.className
+                className
             )}
         >
             {title}
@@ -40,10 +40,10 @@ function Overlay({ children, ...props }: Children) {
     return (
         <div
             id="titleOverlay"
-            className={cn(`
+            className={`
                 bg-blur-base absolute bottom-0 w-full
                 bg-gradient-to-t from-base-100 to-transparent p-2
-            `)}
+            `}
             {...props}
         >
             {children}
@@ -52,4 +52,5 @@ function Overlay({ children, ...props }: Children) {
 }
 
 Title.Overlay = Overlay
+
 export { Title }
