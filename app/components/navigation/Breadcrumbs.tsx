@@ -8,7 +8,7 @@ export function Breadcrumbs() {
     const segments = pathname.split("/").filter((s) => s !== "")
 
     return (
-        <section className="breadcrumbs mx-auto text-sm">
+        <nav className="breadcrumbs mx-auto text-sm">
             {/* <ul className="bg-blur-200 w-fit rounded-2xl p-4 shadow-lg [&_a]:text-primary-content"> */}
             <ul className="w-fit [&_a]:text-primary-content">
                 {segments.map((s, i) => {
@@ -27,6 +27,6 @@ export function Breadcrumbs() {
                     )
                 })}
             </ul>
-        </section>
+        </nav>
     )
 }
