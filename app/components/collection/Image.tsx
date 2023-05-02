@@ -15,7 +15,7 @@ type ProductImageProps = {
 
 export function Image(props: ProductImageProps) {
     const { image, title, rounded = true, containerProps, imageProps } = props
-    const altText = image?.altText ?? title
+    const altText = image?.altText ?? title ?? ""
     const { url, width, height } = image
 
     return (

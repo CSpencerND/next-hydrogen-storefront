@@ -33,8 +33,8 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
         <header className="sticky top-0 z-40 sm:-mx-6">
             <nav
                 className={`
-                    navbar relative isolate mx-auto max-w-7xl
-                    border-b border-neutral-focus px-3 sm:px-6
+                    navbar relative isolate mx-auto max-h-[74px] max-w-7xl
+                    border-b border-neutral-focus px-3 py-6 sm:px-6
                 `}
             >
                 <div
@@ -50,7 +50,7 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
                             <Image
                                 src={logo}
                                 alt="BrandLogo"
-                                className="h-5/6 w-auto"
+                                className="h-full w-auto"
                             />
                         )}
                     </Link>

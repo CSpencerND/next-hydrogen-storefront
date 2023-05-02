@@ -21,7 +21,7 @@ export function Static(props: StaticProps) {
             <NextImage
                 role="presentation"
                 src={url}
-                alt={altText ?? title}
+                alt={altText ?? title ?? ""}
                 width={width || 1024}
                 height={height || 1024}
                 className={cn(
