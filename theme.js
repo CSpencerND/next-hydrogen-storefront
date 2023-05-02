@@ -9,12 +9,12 @@
 // }
 
 const dark = {
-    gray1: "hsl(231, 1%, 56%)",
-    gray2: "hsl(240, 1%, 39%)",
-    gray3: "hsl(240, 2%, 29%)",
-    gray4: "hsl(240, 3%, 23%)",
-    gray5: "hsl(240, 6%, 18%)",
-    gray6: "hsl(240, 12%, 12%)",
+    gray1: "hsl(231, 2%, 56%)",
+    gray2: "hsl(240, 2%, 44%)",
+    gray3: "hsl(240, 4%, 32%)",
+    gray4: "hsl(240, 6%, 26%)",
+    gray5: "hsl(240, 8%, 20%)",
+    gray6: "hsl(240, 12%, 14%)",
     gray7: "hsl(240, 18%, 8%)",
 }
 
@@ -27,15 +27,15 @@ const dark = {
 //     gray6: 'rgb(242, 242, 247)',
 // }
 
-const iosDark = {
-    gray1: 'rgb(142, 142, 147)',
-    gray2: 'rgb(99, 99, 102)',
-    gray3: 'rgb(72, 72, 74)',
-    gray4: 'rgb(58, 58, 60)',
-    gray5: 'rgb(44, 44, 46)',
-    gray6: 'rgb(28, 28, 30)',
-    gray7: 'rgb(18, 18, 20)'
-}
+// const iosDark = {
+//     gray1: 'rgb(142, 142, 147)',
+//     gray2: 'rgb(99, 99, 102)',
+//     gray3: 'rgb(72, 72, 74)',
+//     gray4: 'rgb(58, 58, 60)',
+//     gray5: 'rgb(44, 44, 46)',
+//     gray6: 'rgb(28, 28, 30)',
+//     gray7: 'rgb(18, 18, 20)'
+// }
 
 // module.exports = {
 //     next: {
