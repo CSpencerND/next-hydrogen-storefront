@@ -7,7 +7,7 @@ type StatementProps = PropsWithChildren & {
 export function Statement({ heading, children, className, ...props }: StatementProps) {
     return (
         <article
-            className="prose relative max-w-none space-y-6"
+            className="prose relative max-w-prose-wide space-y-6"
             {...props}
         >
             <h3 className="text-accent-content md:text-lg">{heading}</h3>
