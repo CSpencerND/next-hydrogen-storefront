@@ -71,7 +71,7 @@ export function Swatch({ attached, ...props }: { attached?: boolean; className?:
 
                         <span
                             id="swatchColor"
-                            aria-hidden="true"
+                            aria-hidden={true}
                             style={{
                                 backgroundColor:
                                     code === "#212226" || code === "0D0D0D" ? "#070707" : code,

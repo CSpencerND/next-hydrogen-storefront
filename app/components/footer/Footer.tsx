@@ -22,7 +22,7 @@ export async function Footer({ logo }: FooterProps) {
                     </label>
                     <div className="relative isolate">
                         <div
-                            aria-hidden
+                            aria-hidden={true}
                             className={`
                                 absolute -inset-x-0.5 -top-1 bottom-1 -z-10 rounded-xl
                                 bg-gradient-to-bl from-accent-content/70 to-primary-content/50 blur

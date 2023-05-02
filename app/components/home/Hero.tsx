@@ -34,7 +34,7 @@ export async function Hero({
                 {...props}
             />
             <div
-                aria-hidden
+                aria-hidden={true}
                 className="hero-overlay bg-black/30"
             />
             <div className="hero-content flex flex-col text-center">
@@ -48,8 +48,12 @@ export async function Hero({
                 </h1>
                 <Link
                     href="/collections"
-                    className="bg-blur glass btn"
+                    className="glass btn relative text-primary-content shadow-box shadow-primary-content"
                 >
+                    <div
+                        aria-hidden={true}
+                        className="absolute left-0 top-0 -z-10 h-full w-full rounded-xl bg-primary/60 backdrop-blur-lg backdrop-saturate-150"
+                    />
                     {buttonText}
                 </Link>
             </div>

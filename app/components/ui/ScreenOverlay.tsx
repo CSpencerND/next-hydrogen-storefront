@@ -8,7 +8,7 @@ export function ScreenOverlay({ open }: { open: boolean }) {
             {open && (
                 <motion.div
                     className="bg-blur fixed inset-0 z-30 cursor-pointer"
-                    aria-hidden
+                    aria-hidden={true}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

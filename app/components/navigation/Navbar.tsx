@@ -37,7 +37,7 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
                 `}
             >
                 <div
-                    aria-hidden
+                    aria-hidden={true}
                     className="absolute left-0 top-0 -z-10 h-full w-full backdrop-blur-lg backdrop-saturate-150"
                 />
                 <div className="navbar-start">

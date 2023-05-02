@@ -56,7 +56,7 @@ function Overlay({ children, rounded, ...props }: OverlayProps) {
             {...props}
         >
             <div
-                aria-hidden
+                aria-hidden={true}
                 className="absolute left-0 top-0 -z-10 h-full w-full backdrop-blur-lg backdrop-saturate-150"
             />
             {children}
