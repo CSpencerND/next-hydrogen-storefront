@@ -46,13 +46,19 @@ function Overlay({ children, rounded, ...props }: OverlayProps) {
             id="titleOverlay"
             className={cn(
                 `
-                bg-blur-base absolute bottom-0 w-full
-                bg-gradient-to-t from-base-100 to-transparent px-4 py-2
+                absolute bottom-0 flex w-full
+                bg-gradient-to-t from-base-100 to-transparent
+                p-2 backdrop-blur-lg backdrop-saturate-150
             `,
+
                 rounded ? "rounded-b-3xl" : ""
             )}
             {...props}
         >
+            <div
+                aria-hidden
+                className="absolute left-0 top-0 -z-10 h-full w-full backdrop-blur-lg backdrop-saturate-150"
+            />
             {children}
         </div>
     )

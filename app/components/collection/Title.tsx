@@ -13,12 +13,17 @@ export function Title({ title, truncated, centered, rounded, className }: TitleP
         <div
             className={cn(
                 `
-                bg-blur-base absolute bottom-0 flex w-full
-                bg-gradient-to-t from-base-100 to-transparent p-2
+                absolute bottom-0 flex w-full
+                bg-gradient-to-t from-base-100 to-transparent
+                p-2 backdrop-blur-lg backdrop-saturate-150
             `,
                 rounded ? "rounded-b-3xl" : ""
             )}
         >
+            <div
+                aria-hidden
+                className="absolute left-0 top-0 -z-10 h-full w-full backdrop-blur-lg backdrop-saturate-150"
+            />
             <h2
                 className={cn(
                     "text-sm font-bold",

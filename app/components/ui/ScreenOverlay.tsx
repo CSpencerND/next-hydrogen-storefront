@@ -7,7 +7,7 @@ export function ScreenOverlay({ open }: { open: boolean }) {
         <AnimatePresence>
             {open && (
                 <motion.div
-                    className="bg-blur-clear fixed inset-0 z-30 cursor-pointer"
+                    className="bg-blur fixed inset-0 z-30 cursor-pointer"
                     aria-hidden
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

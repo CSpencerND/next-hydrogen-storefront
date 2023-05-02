@@ -49,7 +49,7 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
 
     return (
         <section
-            className="bg-blur-200 card space-y-6 rounded-3xl py-6"
+            className="bg-blur bg-base-200/60 card space-y-6 rounded-3xl py-6"
             {...props}
         >
             <h2 className="text-center text-lg font-bold text-accent-content">

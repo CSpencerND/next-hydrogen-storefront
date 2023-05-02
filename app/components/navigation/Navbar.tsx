@@ -29,13 +29,17 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
     const linkData = await getData()
 
     return (
-        <header className="before-blur-300 sticky top-0 z-40 sm:-mx-6">
+        <header className="sticky top-0 z-40 sm:-mx-6">
             <nav
                 className={`
-                    navbar isolate mx-auto max-w-7xl
+                    navbar relative isolate mx-auto max-w-7xl
                     border-b border-neutral-focus py-4
                 `}
             >
+                <div
+                    aria-hidden
+                    className="absolute left-0 top-0 -z-10 h-full w-full backdrop-blur-lg backdrop-saturate-150"
+                />
                 <div className="navbar-start">
                     <Link
                         href="/"

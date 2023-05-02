@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ["class", '[data-theme="dark"]'],
     content: ["./app/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
@@ -17,14 +16,14 @@ module.exports = {
                 "6xl": ["clamp(2.57rem, calc(0.78rem + 8.95vw), 7.15rem)", "1"],
             },
             borderRadius: {
-                sq: "21%"
+                sq: "21%",
             },
             boxShadow: {
                 box: "0 0 12px 0 rgb(0 0 0 / 0.2), 0 0 6px 0 rgb(0 0 0 / 0.2)",
             },
             maxWidth: {
-                'prose-narrow': '45ch',
-                'prose-wide': '80ch',
+                "prose-narrow": "45ch",
+                "prose-wide": "80ch",
             },
             transitionProperty: {
                 height: "height",
@@ -52,6 +51,28 @@ module.exports = {
         require("@tailwindcss/typography"),
         require("@headlessui/tailwindcss")({ prefix: "ui" }),
         require("tailwindcss-animate"),
+
+        function ({ addComponents }) {
+            addComponents({
+                ".bg-blur": {
+                    position: "relative",
+                    overflow: "hidden",
+
+                    "&::before": {
+                        content: `""`,
+                        position: "absolute",
+                        top: "0",
+                        left: "0",
+                        width: "100%",
+                        height: "100%",
+                        zIndex: "-1",
+                        backdropFilter: "blur(16px) saturate(1.8)",
+                        pointerEvents: "none",
+                        borderRadius: "inherit"
+                    },
+                },
+            })
+        },
     ],
 
     daisyui: {
@@ -62,6 +83,6 @@ module.exports = {
         rtl: false,
         prefix: "",
         darkTheme: "dark",
-        themes: [require("./theme")],
+        themes: [{ ...require("./theme") }],
     },
 }

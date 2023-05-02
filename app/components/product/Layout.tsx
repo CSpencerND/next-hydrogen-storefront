@@ -15,7 +15,7 @@ function Layout({ product, className, children }: LayoutProps) {
         <section
             className={cn(
                 `
-                bg-blur-200 card mx-auto max-w-lg gap-6 rounded-3xl p-6
+                bg-blur bg-base-200/60 card mx-auto max-w-lg gap-6 rounded-3xl p-6
                 lg:card-side md:gap-9 md:p-9 lg:max-w-7xl lg:gap-12 lg:p-12 [&>*]:basis-1/2
             `,
                 className
