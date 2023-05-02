@@ -5,10 +5,10 @@ import "react-alice-carousel/lib/alice-carousel.css"
 import "./Featured.css"
 
 import Product from "@/components/product"
-import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
-import { useLoader } from "@/lib/state"
+import { useHydrated, useLoader } from "@/lib/state"
 import { useWindowSize } from "@react-hookz/web/esm/useWindowSize"
 import { useRef } from "react"
 
@@ -24,6 +24,8 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
 
     const sliderRef = useRef<AliceCarousel>(null)
     const width = useWindowSize(undefined, true).width
+
+    const autoplay: boolean = useHydrated()
 
     const carouselItems = featured.map(({ featuredImage, title }, i) => (
         <Product.Card
@@ -51,7 +53,7 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
 
     return (
         <section
-            className="bg-blur bg-base-200/60 card space-y-6 rounded-3xl py-6"
+            className="card bg-blur space-y-6 rounded-3xl bg-base-200/60 py-6"
             {...props}
         >
             <h2 className="text-center text-lg font-bold text-accent-content">
@@ -71,7 +73,7 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
                 mouseTracking
                 paddingLeft={70}
                 paddingRight={70}
-                autoPlay
+                autoPlay={autoplay}
                 autoPlayStrategy="all"
                 autoPlayInterval={1250}
                 innerWidth={width}
