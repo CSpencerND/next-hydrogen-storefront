@@ -17,12 +17,13 @@ const getData = async () => {
         }
     })
 
-    linkData.unshift({
-        title: "Collections Directory",
-        href: "/collections",
-    })
-
-    return linkData
+    return [
+        {
+            title: "Collections Directory",
+            href: "/collections",
+        },
+        ...linkData,
+    ]
 }
 
 export async function Navbar({ logo }: { logo?: StaticImageData }) {
@@ -33,7 +34,7 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
             <nav
                 className={`
                     navbar relative isolate mx-auto max-w-7xl
-                    border-b border-neutral-focus py-4
+                    border-b border-neutral-focus px-3 sm:px-6
                 `}
             >
                 <div
@@ -55,7 +56,7 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
                     </Link>
                 </div>
                 <div className="navbar-end relative">
-                    <Account />
+                    {/* <Account /> */}
                     <Cart />
                     <NavMenu linkData={linkData} />
                 </div>
