@@ -44,7 +44,7 @@ export function ExtendedCartProvider({ children }: Children) {
             closeOnClick: true,
             draggable: true,
             closeButton: false,
-            autoClose: 3000,
+            autoClose: 2000,
             className: "animate-in zoom-in fade-in duration-300",
             icon: <Info className="stroke-info" />,
         })
@@ -63,7 +63,7 @@ export function ExtendedCartProvider({ children }: Children) {
         >
             <ToastContainer
                 position="top-right"
-                autoClose={3000}
+                autoClose={2000}
                 closeOnClick
                 pauseOnFocusLoss
                 draggable
