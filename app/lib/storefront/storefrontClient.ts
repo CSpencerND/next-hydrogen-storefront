@@ -19,6 +19,7 @@ export default async function storefrontQuery<K extends string, V>(
         body: JSON.stringify({ query, variables: vars }),
         headers: shopify.headers,
         method: "POST",
+        next: { revalidate: 86400 },
     })
 
     if (!response.ok) {
