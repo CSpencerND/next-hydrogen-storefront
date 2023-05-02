@@ -27,7 +27,7 @@ const transition: Transition = {
 } as const
 
 export default function Cart() {
-    const { lines } = useCart()
+    const { lines, totalQuantity } = useCart()
 
     // const { lines, cartCreate, status } = useCart()
 
@@ -42,17 +42,24 @@ export default function Cart() {
         <Popover>
             {({ open }) => (
                 <>
-                    <Popover.Button className="btn-ghost btn-square btn grid place-items-center">
-                        <ShoppingCart />
-                    </Popover.Button>
+                    <div className="indicator">
+                        {totalQuantity > 0 && (
+                            <span className="badge-accent badge badge-sm indicator-item right-2.5 top-2.5">
+                                {totalQuantity}
+                            </span>
+                        )}
+                        <Popover.Button className="btn-ghost btn-square btn grid place-items-center">
+                            <ShoppingCart />
+                        </Popover.Button>
+                    </div>
 
                     <AnimatePresence>
                         {open && (
                             <MotionConfig transition={{ ...transition }}>
                                 <motion.div
                                     className={`
-                                        fixed inset-0 z-50 w-screen sm:ml-auto h-screen sm:max-w-3xl
-                                        border-l border-neutral-focus bg-base-300/60
+                                        fixed inset-0 z-50 h-screen w-screen border-l border-neutral-focus
+                                        bg-base-300/60 sm:ml-auto sm:max-w-3xl
                                     `}
                                     key="navMenuSidebar"
                                     variants={{

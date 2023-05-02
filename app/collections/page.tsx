@@ -1,5 +1,7 @@
 import Collection from "@/components/collection"
+import { LoadingSpinner } from "@/components/ui"
 import { getCollections } from "@/lib/storefront"
+import { Suspense } from "react"
 
 const getData = async () => {
     const collections = await getCollections()
@@ -23,13 +25,14 @@ export default async function CollectionDirectoryPage() {
         <Collection.Section>
             <Collection.Heading collectionTitle="Collection Directory" />
             <Collection.Grid>
-                    {collections.map(({ id, title, href, image }) => {
-                        return (
-                            <Collection.Card
-                                href={href}
-                                rounded
-                                key={id}
-                            >
+                {collections.map(({ id, title, href, image }) => {
+                    return (
+                        <Collection.Card
+                            href={href}
+                            rounded
+                            key={id}
+                        >
+                            <Suspense fallback={<LoadingSpinner />}>
                                 {image ? (
                                     <Collection.Image
                                         image={image}
@@ -46,9 +49,10 @@ export default async function CollectionDirectoryPage() {
                                     centered
                                     rounded
                                 />
-                            </Collection.Card>
-                        )
-                    })}
+                            </Suspense>
+                        </Collection.Card>
+                    )
+                })}
             </Collection.Grid>
         </Collection.Section>
     )

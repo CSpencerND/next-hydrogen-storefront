@@ -40,8 +40,10 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
             />
             <Product.Title.Overlay rounded>
                 <Product.Title
-                    truncate
+                    className="p-2"
                     title={title}
+                    truncate
+                    centered
                 />
             </Product.Title.Overlay>
         </Product.Card>

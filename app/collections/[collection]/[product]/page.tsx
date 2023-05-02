@@ -3,6 +3,9 @@ import { getCollectionByHandle, getProductByHandle } from "@/lib/storefront"
 import Product from "@/components/product"
 import RecommendedProducts from "./recommended"
 
+import { LoadingSpinner } from "@/components/ui"
+import { Suspense } from "react"
+
 import type { FullPathParams } from "../layout"
 
 export async function generateStaticParams({ params }: FullPathParams) {
@@ -22,10 +25,12 @@ export default async function ProductDynamicSegment({ params }: FullPathParams) 
                 product={p}
                 key={p.id}
             >
-                <Product.Image
-                    title={p.title}
-                    rounded="full"
-                />
+                <Suspense fallback={<LoadingSpinner />}>
+                    <Product.Image
+                        title={p.title}
+                        rounded="full"
+                    />
+                </Suspense>
                 <Product.Layout.Body>
                     <Product.Title
                         className="md:text-lg"

@@ -2,7 +2,9 @@ import { getProductsByCollection } from "@/lib/storefront"
 
 import Collection from "@/components/collection"
 import Product from "@/components/product"
+import { LoadingSpinner } from "@/components/ui"
 import { ProductProvider } from "@/lib/state"
+import { Suspense } from "react"
 
 import type { CollectionSegmentParams } from "./layout"
 
@@ -29,16 +31,18 @@ export default async function CollectionDynamicSegment({ params }: CollectionSeg
                                     <Product.Link
                                         href={`/collections/${params.collection}/${p.handle}`}
                                     >
-                                        <Product.Image
-                                            rounded="top"
-                                            title={p.title}
-                                        />
-                                        <Product.Title.Overlay>
-                                            <Product.Title
-                                                truncate
+                                        <Suspense fallback={<LoadingSpinner />}>
+                                            <Product.Image
+                                                rounded="top"
                                                 title={p.title}
                                             />
-                                        </Product.Title.Overlay>
+                                            <Product.Title.Overlay>
+                                                <Product.Title
+                                                    truncate
+                                                    title={p.title}
+                                                />
+                                            </Product.Title.Overlay>
+                                        </Suspense>
                                     </Product.Link>
                                     <Product.Swatch attached />
                                 </Product.Card>
