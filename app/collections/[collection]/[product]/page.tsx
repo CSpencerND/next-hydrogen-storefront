@@ -25,21 +25,25 @@ export default async function ProductDynamicSegment({ params }: FullPathParams) 
                 product={p}
                 key={p.id}
             >
-                <Suspense fallback={<LoadingSpinner />}>
-                    <Product.Image
-                        title={p.title}
-                        rounded="full"
-                    />
-                </Suspense>
-                <Product.Layout.Body>
+                <div className="space-y-6">
+                    <Suspense fallback={<LoadingSpinner />}>
+                        <Product.Image
+                            title={p.title}
+                            rounded="full"
+                        />
+                    </Suspense>
                     <Product.Title
-                        className="md:text-lg"
+                        className="text-accent-content md:text-lg"
                         title={p.title}
                     />
-                    <Product.Price />
+                </div>
+                <Product.Layout.Body>
                     <Product.Swatch className="md:h-10 md:w-10" />
                     <Product.Size />
-                    <Product.Variant />
+                    <div className="flex w-full items-center justify-between">
+                        <Product.Variant />
+                        <Product.Price className="text-right" />
+                    </div>
                     <Product.CartButton />
                     <Product.Description text={p.descriptionHtml} />
                 </Product.Layout.Body>

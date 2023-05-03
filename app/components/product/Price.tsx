@@ -13,7 +13,7 @@ export function Price({ className }: ClassName) {
     return (
         <ProductPrice
             as="p"
-            className={cn("-mt-6 text-xs md:text-sm", className)}
+            className={cn("text-xs md:text-sm", className)}
             data={product}
             priceType="regular"
             valueType="max"
