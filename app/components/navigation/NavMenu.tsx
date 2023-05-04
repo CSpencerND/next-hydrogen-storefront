@@ -145,9 +145,10 @@ function Desktop({ linkData }: { linkData: LinkData[] }) {
             tabIndex={0}
             className="menu menu-compact flex-none flex-row p-2 max-lg:hidden"
         >
-            {linkData.map((link) => {
+            {linkData.map((link, i) => {
                 return (
                     <li
+                        key={i}
                         className={cn(
                             link.href !== "/collections" &&
                                 link.href !== "/collections/full-catalog"
