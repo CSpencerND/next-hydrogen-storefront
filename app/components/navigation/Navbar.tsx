@@ -3,7 +3,7 @@ import { getCollections } from "@/lib/storefront"
 import Image, { type StaticImageData } from "next/image"
 import Link from "next/link"
 
-import Account from "@/components/account"
+// import Account from "@/components/account"
 import Cart from "@/components/cart"
 import NavMenu from "./NavMenu"
 
@@ -57,8 +57,8 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
                 </div>
                 <div className="navbar-end relative">
                     {/* <Account /> */}
-                    <Cart />
                     <NavMenu linkData={linkData} />
+                    <Cart />
                 </div>
             </nav>
         </header>
