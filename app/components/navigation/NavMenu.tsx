@@ -150,21 +150,33 @@ function Desktop({ linkData }: { linkData: LinkData[] }) {
                     <li
                         key={i}
                         className={cn(
+                            "relative",
                             link.href !== "/collections" &&
                                 link.href !== "/collections/full-catalog"
                                 ? "max-xl:hidden"
-                                : "",
-                            isActiveLink(link.href, pathname)
-                                ? "bg-primary text-primary-content"
                                 : ""
                         )}
                     >
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="text-sm font-bold ui-active:active"
+                            className="text-sm font-bold"
                         >
-                            {link.title}
+                            {isActiveLink(link.href, pathname) && (
+                                <motion.span
+                                    layoutId="indicator"
+                                    className="absolute inset-0 -bottom-[15px] mx-auto w-11/12 border-b border-info"
+                                    // className="absolute inset-0 rounded-xl bg-primary"
+                                />
+                            )}
+                            <span
+                                className={cn(
+                                    "relative",
+                                    isActiveLink(link.href, pathname) ? "text-info" : ""
+                                )}
+                            >
+                                {link.title}
+                            </span>
                         </Link>
                     </li>
                 )
@@ -172,3 +184,39 @@ function Desktop({ linkData }: { linkData: LinkData[] }) {
         </menu>
     )
 }
+
+// function Desktop({ linkData }: { linkData: LinkData[] }) {
+//     const pathname = usePathname() as string
+
+//     return (
+//         <menu
+//             tabIndex={0}
+//             className="menu menu-compact flex-none flex-row p-2 max-lg:hidden"
+//         >
+//             {linkData.map((link, i) => {
+//                 return (
+//                     <li
+//                         key={i}
+//                         className={cn(
+//                             link.href !== "/collections" &&
+//                                 link.href !== "/collections/full-catalog"
+//                                 ? "max-xl:hidden"
+//                                 : "",
+//                             isActiveLink(link.href, pathname)
+//                                 ? "bg-primary text-primary-content"
+//                                 : ""
+//                         )}
+//                     >
+//                         <Link
+//                             key={link.href}
+//                             href={link.href}
+//                             className="text-sm font-bold ui-active:active"
+//                         >
+//                             {link.title}
+//                         </Link>
+//                     </li>
+//                 )
+//             })}
+//         </menu>
+//     )
+// }
