@@ -143,14 +143,14 @@ function Desktop({ linkData }: { linkData: LinkData[] }) {
     return (
         <menu
             tabIndex={0}
-            className="menu menu-compact flex-none flex-row p-2 max-lg:hidden"
+            className="tabs flex-none flex-row p-2 max-lg:hidden"
         >
             {linkData.map((link, i) => {
                 return (
                     <li
                         key={i}
                         className={cn(
-                            "relative",
+                            "relative tab",
                             link.href !== "/collections" &&
                                 link.href !== "/collections/full-catalog"
                                 ? "max-xl:hidden"
@@ -164,9 +164,11 @@ function Desktop({ linkData }: { linkData: LinkData[] }) {
                         >
                             {isActiveLink(link.href, pathname) && (
                                 <motion.span
+                                    aria-hidden={true}
                                     layoutId="indicator"
-                                    className="absolute inset-0 -bottom-[15px] mx-auto w-11/12 border-b border-info"
-                                    // className="absolute inset-0 rounded-xl bg-primary"
+                                    className="glow absolute inset-0 bottom-[8px] mx-auto w-2/3"
+                                    // className="absolute inset-0 -bottom-[21px] mx-auto w-11/12 border-b border-info"
+                                    // className="absolute left-0 right-0 -top-1 rounded-xl bg-info/30 h-[120%]"
                                 />
                             )}
                             <span
