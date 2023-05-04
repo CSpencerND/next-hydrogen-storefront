@@ -55,9 +55,11 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
                         )}
                     </Link>
                 </div>
+                <div className="navbar-center">
+                    <NavMenu linkData={linkData} />
+                </div>
                 <div className="navbar-end relative">
                     {/* <Account /> */}
-                    <NavMenu linkData={linkData} />
                     <Cart />
                 </div>
             </nav>
