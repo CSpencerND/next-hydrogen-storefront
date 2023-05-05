@@ -104,7 +104,7 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
                 <span className="flex gap-2">
                     <button
                         aria-controls="alice-carousel"
-                        className="btn-square btn-sm btn bg-base-100"
+                        className="btn-square btn-sm btn rounded-lg bg-base-100"
                         onClick={() => sliderRef?.current?.slidePrev() || null}
                     >
                         <ChevronLeft />
@@ -112,7 +112,7 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
 
                     <button
                         aria-controls="alice-carousel"
-                        className="btn-square btn-sm btn bg-base-100"
+                        className="btn-square btn-sm btn rounded-lg bg-base-100"
                         onClick={() => sliderRef?.current?.slideNext() || null}
                     >
                         <ChevronRight />
