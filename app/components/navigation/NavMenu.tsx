@@ -166,6 +166,7 @@ function Desktop({ linkData }: { linkData: LinkData[] }) {
                                 <motion.span
                                     aria-hidden={true}
                                     layoutId="indicator"
+                                    // TODO: Make a prop that can be passed in to select which hl method
                                     className="glow absolute inset-0 bottom-[8px] mx-auto w-2/3"
                                     // className="absolute inset-0 -bottom-[21px] mx-auto w-11/12 border-b border-info"
                                     // className="absolute left-0 right-0 -top-1 rounded-xl bg-info/30 h-[120%]"
