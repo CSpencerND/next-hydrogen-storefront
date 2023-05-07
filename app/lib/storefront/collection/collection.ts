@@ -1,20 +1,6 @@
-import storefrontQuery from "./storefrontClient"
+import { gql } from "../storefrontClient"
 
-import type {
-    Collection,
-    CollectionConnection,
-    Product,
-} from "@shopify/hydrogen-react/storefront-api-types"
-
-const gql = String.raw
-
-export async function getCollections(): Promise<Collection[]> {
-    const data = await storefrontQuery<"collections", CollectionConnection>(query)
-    const collections: Collection[] = data.collections.nodes
-    return collections
-}
-
-const query = gql`
+export const collectionQueryAll = gql`
     {
         collections(first: 9) {
             nodes {
@@ -33,12 +19,7 @@ const query = gql`
     }
 `
 
-export async function getCollectionByHandle(handle: string): Promise<Product[]> {
-    const data = await storefrontQuery<"collection", Collection>(featuredQuery, { handle })
-    return data.collection.products.nodes
-}
-
-const featuredQuery = gql`
+export const collectionQuerySingleton = gql`
     query getFeaturedProducts($handle: String!) {
         collection(handle: $handle) {
             products(first: 99) {

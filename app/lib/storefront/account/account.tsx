@@ -1,4 +1,4 @@
-const gql = String.raw
+import { gql } from "../storefrontClient"
 
 const LOGIN_MUTATION = gql`
     mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {

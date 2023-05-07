@@ -1,44 +1,13 @@
-import storefrontQuery from "./storefrontClient"
+import { gql } from "../storefrontClient"
 
-import type { Collection, Product } from "@shopify/hydrogen-react/storefront-api-types"
-
-type ProductsByCollection = {
-    collectionTitle: string
-    collectionDescription: string
-    products: Product[]
-}
-
-const gql = String.raw
-
-export async function getProductsByCollection(handle: string): Promise<ProductsByCollection> {
-    const data = await storefrontQuery<"collection", Collection>(allProductsQuery, { handle })
-
-    const collectionTitle: string = data.collection.title
-    const collectionDescription: string = data.collection.descriptionHtml
-    const products: Product[] = data.collection.products.nodes
-    return { collectionTitle, collectionDescription, products }
-}
-
-export async function getProductByHandle(handle: string): Promise<Product> {
-    const data = await storefrontQuery<"product", Product>(productByHandleQuery, { handle })
-    return data.product
-}
-
-export async function getProductRecommendations(id: string): Promise<Product[]> {
-    const data = await storefrontQuery<"productRecommendations", Product[]>(
-        recommendedProductsQuery,
-        { id }
-    )
-    return data.productRecommendations
-}
-
-const allProductsQuery = gql`
+export const productQueryByCollection = gql`
     query getProductsByCollection($handle: String!) {
         collection(handle: $handle) {
             title
             descriptionHtml
             products(first: 99) {
                 nodes {
+                    availableForSale
                     id
                     handle
                     title
@@ -106,9 +75,10 @@ const allProductsQuery = gql`
     }
 `
 
-const productByHandleQuery = gql`
+export const productQuerySingleton = gql`
     query getProductByHandle($handle: String!) {
         product(handle: $handle) {
+            availableForSale
             id
             handle
             title
@@ -174,7 +144,7 @@ const productByHandleQuery = gql`
     }
 `
 
-const recommendedProductsQuery = gql`
+export const productQueryRecommended = gql`
     query Recommendations($id: ID!) {
         productRecommendations(productId: $id) {
             featuredImage {
@@ -183,6 +153,7 @@ const recommendedProductsQuery = gql`
                 width
                 height
             }
+            availableForSale
             title
             id
             handle

@@ -1,4 +1,8 @@
+import { isShopifyError } from "@/lib/type-guards"
 import { env } from "env.mjs"
+import { Connection, Product } from "./shopTypes"
+
+type ExtractVariables<T> = T extends { variables: object } ? T["variables"] : never
 
 export const shopify = {
     endpoint: `https://${env.NEXT_PUBLIC_STOREFRONT_DOMAIN}/api/${env.NEXT_PUBLIC_STOREFRONT_VERSION}/graphql.json`,
@@ -11,21 +15,58 @@ export const shopify = {
     },
 } as const
 
-export default async function storefrontQuery<K extends string, V>(
-    query: string,
-    vars = {}
-): Promise<Record<K, V>> {
-    const response = await fetch(shopify.endpoint, {
-        body: JSON.stringify({ query, variables: vars }),
-        headers: shopify.headers,
-        method: "POST",
-        next: { revalidate: 86400 },
-    })
+export default async function shopifyFetch<T>({
+    query,
+    variables,
+}: {
+    query: string
+    variables?: ExtractVariables<T>
+    headers?: HeadersInit
+    cache?: RequestCache
+}): Promise<{ status: number; body: T } | never> {
+    try {
+        const result = await fetch(shopify.endpoint, {
+            method: "POST",
+            headers: shopify.headers,
+            body: JSON.stringify({
+                ...(query && { query }),
+                ...(variables && { variables }),
+            }),
+            next: { revalidate: 86400 },
+        })
 
-    if (!response.ok) {
-        throw new Error(`Storefront query failed: ${response.statusText}`)
+        const body = await result.json()
+
+        if (body.errors) {
+            throw body.errors[0]
+        }
+
+        return {
+            status: result.status,
+            body,
+        }
+    } catch (e) {
+        if (isShopifyError(e)) {
+            throw {
+                status: e.status || 500,
+                message: e.message,
+                query,
+            }
+        }
+
+        throw {
+            error: e,
+            query,
+        }
     }
+}
 
-    const { data } = (await response.json()) as { data: Record<K, V> }
-    return data
+export const gql = String.raw
+
+export function removeEdgesAndNodes(array: Connection<any>) {
+    return array.edges.map((edge) => edge?.node)
+}
+
+export function removeUnavailable(products: Product[]) {
+    return products.filter((p) => p.availableForSale)
 }
