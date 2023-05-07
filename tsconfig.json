@@ -35,7 +35,7 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "./types.d.ts"
+        "./app/lib/storefront/shopTypes.d.ts"
     ],
     "exclude": [
         "node_modules"

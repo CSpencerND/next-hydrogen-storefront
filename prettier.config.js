@@ -6,6 +6,6 @@ module.exports = {
     tabWidth: 4,
     semi: false,
     singleQuote: false,
-    printWidth: 96,
+    printWidth: 120,
     singleAttributePerLine: true,
 }

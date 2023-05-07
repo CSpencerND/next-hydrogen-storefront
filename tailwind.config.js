@@ -83,6 +83,6 @@ module.exports = {
         rtl: false,
         prefix: "",
         darkTheme: "dark",
-        themes: [{ ...require("./theme") }],
+        themes: [{ ...require("./theme") }, "dark", "light"],
     },
 }
