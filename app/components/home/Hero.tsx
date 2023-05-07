@@ -1,33 +1,25 @@
-import type { NextFont } from "next/dist/compiled/@next/font"
-import type { StaticImageData } from "next/image"
-
-import { getStorefrontProps } from "@/lib/storefront"
+import { getShop } from "@/lib/storefront"
 import { cn } from "@/lib/utils"
-
+import { hero } from "@/static"
 import Image from "next/image"
 import Link from "next/link"
 
+import type { NextFont } from "next/dist/compiled/@next/font"
+
 type HeroProps = {
-    image: StaticImageData
     font?: NextFont
     rounded?: boolean
     buttonText?: string
 }
 
-export async function Hero({
-    font,
-    image,
-    rounded,
-    buttonText = "Go Shopping!",
-    ...props
-}: HeroProps) {
-    const { brand } = await getStorefrontProps()
+export async function Hero({ font, rounded, buttonText = "Go Shopping!", ...props }: HeroProps) {
+    const { brand } = await getShop()
 
     return (
         <section className={cn("hero overflow-hidden shadow-lg", rounded ? "rounded-3xl" : "")}>
             <Image
                 className="aspect-video max-h-[calc(100vh-196px)] object-cover object-top"
-                src={image}
+                src={hero}
                 alt={brand?.slogan ?? brand?.coverImage?.alt ?? ""}
                 placeholder="blur"
                 priority

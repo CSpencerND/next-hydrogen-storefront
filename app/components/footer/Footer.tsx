@@ -1,14 +1,11 @@
-import { getStorefrontProps } from "@/lib/storefront"
+import { getShop } from "@/lib"
+import { logoSquare } from "@/static"
 import { Facebook, Instagram, Twitter } from "lucide-react"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 import Link from "next/link"
 
-type FooterProps = {
-    logo?: StaticImageData
-}
-
-export async function Footer({ logo }: FooterProps) {
-    const shop = await getStorefrontProps()
+export async function Footer() {
+    const shop = await getShop()
     const currentYear = new Date().getFullYear()
 
     return (
@@ -16,9 +13,7 @@ export async function Footer({ logo }: FooterProps) {
             <section className="footer max-md:footer-center">
                 <div className="form-control text-sm">
                     <label className="label">
-                        <span className="text-sm font-bold text-base-content/80">
-                            Sign Up To Our Newsletter!
-                        </span>
+                        <span className="text-sm font-bold text-base-content/80">Sign Up To Our Newsletter!</span>
                     </label>
                     <div className="relative isolate">
                         <div
@@ -34,9 +29,7 @@ export async function Footer({ logo }: FooterProps) {
                             placeholder="username@site.com"
                             className="input mb-2 w-full bg-base-300"
                         />
-                        <button className="btn-secondary btn absolute right-0 top-0 rounded-l-none">
-                            Sub
-                        </button>
+                        <button className="btn-secondary btn absolute right-0 top-0 rounded-l-none">Sub</button>
                     </div>
                 </div>
                 <div className="md:place-self-center md:self-end md:justify-self-end">
@@ -70,17 +63,20 @@ export async function Footer({ logo }: FooterProps) {
             </section>
             <section className="footer border-t border-neutral-focus py-6 max-md:footer-center">
                 <div className="grid-flow-col items-center">
-                    {logo && (
+                    {logoSquare ? (
                         <Link
                             href="/"
                             className="h-14 w-14 hover:opacity-80"
                         >
                             <Image
-                                src={logo}
+                                src={logoSquare}
                                 alt={shop.name}
+                                placeholder="blur"
                                 className="h-full w-auto"
                             />
                         </Link>
+                    ) : (
+                        <h3>square logo</h3>
                     )}
                     <p>
                         © {currentYear} All rights reserved {shop.name}

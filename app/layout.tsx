@@ -1,22 +1,20 @@
 import type { Metadata } from "next/dist/lib/metadata/types/metadata-interface"
 import type Children from "types"
 
-import { cn } from "./lib/utils"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { cn } from "./lib/utils"
 
-import { RootProvider } from "./lib/state"
-import { getStorefrontProps } from "./lib/storefront"
+import { RootProvider, getShop } from "./lib"
 
-import { Navbar } from "./components/navigation"
+import { Suspense } from "react"
 import { Footer } from "./components/footer"
-
-// import { logoMain, logoSquare } from "@/static"
+import { Navbar } from "./components/navigation"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export async function generateMetadata(): Promise<Metadata> {
-    const shop = await getStorefrontProps()
+    const shop = await getShop()
 
     return {
         title: shop.name,
@@ -55,15 +53,19 @@ export default async function RootLayout({ children }: Children) {
                     paddingBottom: "env(safe-area-inset-bottom)", // ios
                 }}
             >
-                <RootProvider>
-                    {/*@ts-expect-error Async Component*/}
-                    {/* <Navbar logo={logoMain} /> */}
-                    <main className="container relative mx-auto max-w-7xl space-y-8 px-4 py-8 sm:px-6">
-                        {children}
-                    </main>
-                    {/*@ts-expect-error Async Component*/}
-                    {/* <Footer logo={logoSquare} /> */}
-                </RootProvider>
+                    <RootProvider>
+                            {/*@ts-expect-error Async Component*/}
+                            <Navbar />
+                        <Suspense>
+                            <main className="container relative mx-auto max-w-7xl space-y-8 px-4 py-8 sm:px-6">
+                                {children}
+                            </main>
+                        </Suspense>
+                        <Suspense>
+                            {/*@ts-expect-error Async Component*/}
+                            <Footer />
+                        </Suspense>
+                    </RootProvider>
             </body>
         </html>
     )

@@ -1,11 +1,13 @@
 import { getCollections } from "@/lib/storefront"
 
-import Image, { type StaticImageData } from "next/image"
+import Image from "next/image"
 import Link from "next/link"
 
 // import Account from "@/components/account"
 import Cart from "@/components/cart"
 import NavMenu from "./NavMenu"
+
+import { logoMain } from "@/static"
 
 const getData = async () => {
     const collections = await getCollections()
@@ -26,7 +28,7 @@ const getData = async () => {
     ]
 }
 
-export async function Navbar({ logo }: { logo?: StaticImageData }) {
+export async function Navbar() {
     const linkData = await getData()
 
     return (
@@ -46,12 +48,15 @@ export async function Navbar({ logo }: { logo?: StaticImageData }) {
                         href="/"
                         className="btn-link btn pl-2 hover:opacity-80"
                     >
-                        {logo && (
+                        {logoMain ? (
                             <Image
-                                src={logo}
+                                src={logoMain}
                                 alt="BrandLogo"
+                                placeholder="blur"
                                 className="h-full w-auto"
                             />
+                        ) : (
+                            <h1>brand logo</h1>
                         )}
                     </Link>
                 </div>

@@ -1,6 +1,7 @@
 import hero from "./hero.webp"
-import product from "./product.webp"
 import logoMain from "./logoMain.webp"
 import logoSquare from "./logoSquare.webp"
+import product from "./product.webp"
 
-export { hero, product, logoMain, logoSquare }
+export { galleryImages } from "./gallery"
+export { hero, logoMain, logoSquare, product }
