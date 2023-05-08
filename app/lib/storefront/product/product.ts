@@ -6,67 +6,69 @@ export const productQueryByCollection = gql`
             title
             descriptionHtml
             products(first: 99) {
-                nodes {
-                    availableForSale
-                    id
-                    handle
-                    title
-                    priceRange {
-                        maxVariantPrice {
-                            currencyCode
-                            amount
-                        }
-                        minVariantPrice {
-                            currencyCode
-                            amount
-                        }
-                    }
-                    descriptionHtml
-                    images(first: 99) {
-                        nodes {
-                            url
-                            altText
-                            width
-                            height
-                            id
-                        }
-                    }
-                    variants(first: 99) {
-                        nodes {
-                            id
-                            title
-                            price {
-                                amount
+                edges {
+                    node {
+                        availableForSale
+                        id
+                        handle
+                        title
+                        priceRange {
+                            maxVariantPrice {
                                 currencyCode
+                                amount
                             }
-                            selectedOptions {
-                                name
-                                value
+                            minVariantPrice {
+                                currencyCode
+                                amount
                             }
-                            sellingPlanAllocations(first: 1) {
-                                nodes {
-                                    sellingPlan {
-                                        name
+                        }
+                        descriptionHtml
+                        images(first: 99) {
+                            nodes {
+                                url
+                                altText
+                                width
+                                height
+                                id
+                            }
+                        }
+                        variants(first: 99) {
+                            nodes {
+                                id
+                                title
+                                price {
+                                    amount
+                                    currencyCode
+                                }
+                                selectedOptions {
+                                    name
+                                    value
+                                }
+                                sellingPlanAllocations(first: 1) {
+                                    nodes {
+                                        sellingPlan {
+                                            name
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                    options(first: 99) {
-                        name
-                        values
-                    }
-                    metafield(namespace: "swatch", key: "colors") {
-                        value
-                    }
-                    collections(first: 9) {
-                        nodes {
-                            title
-                        }
-                    }
-                    sellingPlanGroups(first: 1) {
-                        nodes {
+                        options(first: 99) {
                             name
+                            values
+                        }
+                        metafield(namespace: "swatch", key: "colors") {
+                            value
+                        }
+                        collections(first: 9) {
+                            nodes {
+                                title
+                            }
+                        }
+                        sellingPlanGroups(first: 1) {
+                            nodes {
+                                name
+                            }
                         }
                     }
                 }

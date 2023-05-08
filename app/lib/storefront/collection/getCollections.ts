@@ -1,7 +1,7 @@
 import { collectionQueryAll, collectionQuerySingleton } from "./collection"
 import shopifyFetch, { removeEdgesAndNodes } from "../storefrontClient"
 
-import type { Collection, CollectionOperation, CollectionsOperation } from "../shopTypes"
+import type { Collection, CollectionOperation, CollectionsOperation, Product } from "../shopTypes"
 
 export async function getCollections(): Promise<Collection[]> {
     const res = await shopifyFetch<CollectionsOperation>({
@@ -11,7 +11,7 @@ export async function getCollections(): Promise<Collection[]> {
     return collections
 }
 
-export async function getCollectionByHandle(handle: string): Promise<Collection> {
+export async function getCollectionByHandle(handle: string): Promise<Product[]> {
     const res = await shopifyFetch<CollectionOperation>({
         query: collectionQuerySingleton,
         variables: {
@@ -19,5 +19,5 @@ export async function getCollectionByHandle(handle: string): Promise<Collection>
         },
     })
 
-    return res.body?.data?.collection
+    return removeEdgesAndNodes(res.body?.data?.collection?.products)
 }
