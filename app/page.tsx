@@ -1,4 +1,4 @@
-import { Featured, Gallery, Hero, Statement } from "@/components/home"
+import { Featured, Gallery, Hero, Statement } from "@/components/ui"
 import { Suspense } from "react"
 
 import font from "next/font/local"
