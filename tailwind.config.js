@@ -49,8 +49,10 @@ module.exports = {
     plugins: [
         require("daisyui"),
         require("@tailwindcss/typography"),
-        require("@headlessui/tailwindcss")({ prefix: "ui" }),
+        require("@tailwindcss/forms"),
+        require("@tailwindcss/aspect-ratio"),
         require("tailwindcss-animate"),
+        require("@headlessui/tailwindcss")({ prefix: "ui" }),
 
         function ({ addComponents }) {
             addComponents({

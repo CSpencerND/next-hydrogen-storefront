@@ -12,8 +12,7 @@ export default async function HomePage() {
         <>
             {/*@ts-expect-error Async Component*/}
             <Hero
-                // font={heroFont}
-                rounded
+            // font={heroFont}
             />
             <Suspense>
                 {/*@ts-expect-error Async Component*/}

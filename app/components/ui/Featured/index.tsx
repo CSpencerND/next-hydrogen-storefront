@@ -1,4 +1,4 @@
-import { getCollectionByHandle } from "@/lib/storefront"
+import { getCollectionByHandle } from "@/lib"
 import { FeaturedCollection } from "./Featured"
 
 export async function Featured({ collectionHandle }: { collectionHandle: string }) {
