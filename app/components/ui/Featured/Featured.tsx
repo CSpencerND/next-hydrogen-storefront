@@ -26,7 +26,7 @@ export function FeaturedCollection({ featured }: FeaturedProps) {
     const autoplay: boolean = useHydrated()
 
     const { toggleLoading, LoadingSpinner } = useLoader()
-    const [items, setItems] = useState<JSX.Element[]>([ <LoadingSpinner /> ])
+    const [items, setItems] = useState<JSX.Element[]>([<LoadingSpinner />])
 
     useMountEffect(() => {
         const items = featured.map(({ featuredImage, title }) => (
@@ -46,7 +46,7 @@ export function FeaturedCollection({ featured }: FeaturedProps) {
                         />
                     )}
                 </figure>
-                <span className="card-body mt-auto rounded-b-3xl bg-white/10 backdrop-blur-[10px] backdrop-saturate-[1.8]">
+                <span className="card-body mt-auto rounded-b-3xl bg-white/10 !py-2 backdrop-blur-[10px] backdrop-saturate-[1.8]">
                     <h2 className="truncate text-center text-sm font-bold">{title}</h2>
                 </span>
             </div>
@@ -99,7 +99,7 @@ export function FeaturedCollection({ featured }: FeaturedProps) {
                     <button
                         aria-controls="alice-carousel"
                         className="btn-square btn-sm btn rounded-lg bg-base-100"
-                        onClick={() => sliderRef?.current?.slidePrev() || null}
+                        onClick={() => sliderRef?.current?.slidePrev() ?? null}
                     >
                         <ChevronLeft />
                     </button>
@@ -107,7 +107,7 @@ export function FeaturedCollection({ featured }: FeaturedProps) {
                     <button
                         aria-controls="alice-carousel"
                         className="btn-square btn-sm btn rounded-lg bg-base-100"
-                        onClick={() => sliderRef?.current?.slideNext() || null}
+                        onClick={() => sliderRef?.current?.slideNext() ?? null}
                     >
                         <ChevronRight />
                     </button>
