@@ -1,3 +1,4 @@
+export { Backdrop } from "./Backdrop"
 export { Featured } from "./Featured"
 export { Gallery } from "./Gallery"
 export { Hero } from "./Hero"
