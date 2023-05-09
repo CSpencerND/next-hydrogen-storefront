@@ -4,68 +4,62 @@ import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import "./Featured.css"
 
-import Product from "@/components/product"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 
 import { useHydrated, useLoader } from "@/lib/state"
 import { useWindowSize } from "@react-hookz/web/esm/useWindowSize"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
-import type { Image, Product as TProduct } from "@shopify/hydrogen-react/storefront-api-types"
-import type { HTMLAttributes } from "react"
+import type { Product as TProduct } from "@shopify/hydrogen-react/storefront-api-types"
 
 type FeaturedProps = {
     featured: TProduct[]
-} & HTMLAttributes<HTMLElement>
+}
 
-export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
-    const { toggleLoading, LoadingSpinner } = useLoader()
+import NextImage from "next/image"
+import { useMountEffect } from "@react-hookz/web"
 
+export function FeaturedCollection({ featured }: FeaturedProps) {
     const sliderRef = useRef<AliceCarousel>(null)
     const width = useWindowSize(undefined, true).width
-
     const autoplay: boolean = useHydrated()
 
-    const carouselItems = featured.map(({ featuredImage, title }, i) => (
-        <Product.Card
-            carouselItem
-            key={i}
-        >
-            <Product.Image.Static
+    const { toggleLoading, LoadingSpinner } = useLoader()
+    const [items, setItems] = useState<JSX.Element[]>([ <LoadingSpinner /> ])
+
+    useMountEffect(() => {
+        const items = featured.map(({ featuredImage, title }) => (
+            <div
+                className="card image-full card-compact grid-cols-1 !rounded-3xl before:hidden"
                 key={featuredImage?.id}
-                image={featuredImage as Image}
-                title={title}
-                imageProps={{
-                    onDragStart: (e) => e.preventDefault(),
-                }}
-            />
-            <Product.Title.Overlay rounded>
-                <Product.Title
-                    className="p-2"
-                    title={title}
-                    truncate
-                    centered
-                />
-            </Product.Title.Overlay>
-        </Product.Card>
-    ))
+            >
+                <figure className="glass rounded-3xl">
+                    {featuredImage && (
+                        <NextImage
+                            src={featuredImage?.url}
+                            alt={featuredImage.altText ?? title ?? " "}
+                            width={featuredImage.width ?? 1024}
+                            height={featuredImage.height ?? 1024}
+                            role="presentation"
+                            onDragStart={(e) => e.preventDefault()}
+                        />
+                    )}
+                </figure>
+                <span className="card-body mt-auto rounded-b-3xl bg-white/10 backdrop-blur-[10px] backdrop-saturate-[1.8]">
+                    <h2 className="truncate text-center text-sm font-bold">{title}</h2>
+                </span>
+            </div>
+        ))
+        setItems(items)
+        toggleLoading()
+    })
 
     return (
-        <section
-            className="card bg-blur space-y-6 rounded-3xl bg-base-200/60 py-6"
-            {...props}
-        >
-            <h2 className="text-center text-lg font-bold text-accent-content">
-                Featured Items
-            </h2>
-
-            <LoadingSpinner />
-
+        <>
             <AliceCarousel
-                onInitialized={toggleLoading}
                 ref={sliderRef}
-                items={carouselItems}
+                items={items}
                 infinite
                 keyboardNavigation
                 disableDotsControls
@@ -119,6 +113,6 @@ export function FeaturedCollection({ featured, ...props }: FeaturedProps) {
                     </button>
                 </span>
             </div>
-        </section>
+        </>
     )
 }
