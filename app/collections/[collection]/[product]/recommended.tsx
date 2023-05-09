@@ -18,7 +18,6 @@ export default async function RecommendedProducts({ productID }: { productID: st
                             <NextLink
                                 className="card image-full card-compact grid-cols-1 !rounded-3xl before:hidden"
                                 href={href}
-                                key={id}
                             >
                                 <figure className="glass rounded-3xl">
                                     {image && (
