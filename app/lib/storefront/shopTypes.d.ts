@@ -67,7 +67,7 @@ export type ProductRecommendationsOperation = {
         productRecommendations: Product[]
     }
     variables: {
-        productID: string
+        id: string
     }
 }
 

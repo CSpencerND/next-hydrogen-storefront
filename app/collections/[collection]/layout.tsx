@@ -24,21 +24,12 @@ export async function generateStaticParams() {
 
 type CollectionLayoutProps = {
     children?: ReactNode
-    modal?: ReactNode
 }
 
-export default function CollectionLayout({ children, modal }: CollectionLayoutProps) {
-
+export default function CollectionLayout({ children }: CollectionLayoutProps) {
     return (
         <>
             <Breadcrumbs />
-            {modal && (
-                <>
-                    <h2>Modal</h2>
-                    {modal}
-                </>
-            )}
-
             {children}
         </>
     )

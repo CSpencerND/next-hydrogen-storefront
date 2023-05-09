@@ -1,9 +1,8 @@
-import { getCollectionByHandle, getProductByHandle } from "@/lib/storefront"
+import { getCollectionByHandle, getProductByHandle } from "@/lib"
 
 import Product from "@/components/product"
 import RecommendedProducts from "./recommended"
 
-import { LoadingSpinner } from "@/components/ui"
 import { Suspense } from "react"
 
 import type { FullPathParams } from "../layout"
@@ -18,23 +17,22 @@ export async function generateStaticParams({ params }: FullPathParams) {
 
 export default async function ProductDynamicSegment({ params }: FullPathParams) {
     const p = await getProductByHandle(params.product)
+    const { id, title, descriptionHtml } = p
 
     return (
         <>
             <Product.Layout
                 product={p}
-                key={p.id}
+                key={id}
             >
                 <div className="space-y-6">
-                    <Suspense fallback={<LoadingSpinner />}>
-                        <Product.Image
-                            title={p.title}
-                            rounded="full"
-                        />
-                    </Suspense>
+                    <Product.Image
+                        title={title}
+                        rounded="full"
+                    />
                     <Product.Title
                         className="text-accent-content md:text-lg"
-                        title={p.title}
+                        title={title}
                     />
                 </div>
                 <Product.Layout.Body>
@@ -45,11 +43,13 @@ export default async function ProductDynamicSegment({ params }: FullPathParams) 
                         <Product.Price className="text-right" />
                     </div>
                     <Product.CartButton />
-                    <Product.Description text={p.descriptionHtml} />
+                    <Product.Description text={descriptionHtml} />
                 </Product.Layout.Body>
             </Product.Layout>
-            {/* @ts-expect-error Server Component */}
-            <RecommendedProducts productID={p.id} />
+            <Suspense>
+                {/* @ts-expect-error Server Component */}
+                <RecommendedProducts productID={id} />
+            </Suspense>
         </>
     )
 }

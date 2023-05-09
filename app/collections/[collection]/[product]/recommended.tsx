@@ -1,15 +1,15 @@
-import { getProductRecommendations } from "@/lib/storefront"
+import { getProductRecommendations } from "@/lib"
 import NextImage from "next/image"
 import NextLink from "next/link"
 
 export default async function RecommendedProducts({ productID }: { productID: string }) {
-    const r = await getProductRecommendations(productID)
+    const products = await getProductRecommendations(productID)
 
     return (
         <section>
             <h3 className="mb-4 text-lg font-bold text-info">You may also like</h3>
             <ul className="mx-auto grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
-                {r.slice(0, 4).map((p) => {
+                {products.map((p) => {
                     const { id, title, featuredImage: image, handle } = p
                     const href = `/collections/full-catalog/${handle}`
 

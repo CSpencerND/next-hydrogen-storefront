@@ -41,10 +41,10 @@ export async function getProductByHandle(handle: string): Promise<Product | neve
     return product
 }
 
-export async function getProductRecommendations(productID: string): Promise<Product[]> {
+export async function getProductRecommendations(id: string) {
     const res = await shopifyFetch<ProductRecommendationsOperation>({
         query: productQueryRecommended,
-        variables: { productID },
+        variables: { id },
     })
 
     const available = removeUnavailable(res.body?.data?.productRecommendations)
