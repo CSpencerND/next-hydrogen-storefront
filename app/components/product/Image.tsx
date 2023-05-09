@@ -37,7 +37,7 @@ function Image(props: ProductImageProps) {
             <ShopImage
                 role="presentation"
                 data={currentImage}
-                alt={currentImage.altText ?? title ?? ""}
+                alt={currentImage.altText ?? title ?? " "}
                 className={cn(
                     "glass h-full w-full object-cover object-center",
                     rounded === "full" ? "rounded-3xl" : "",
@@ -63,7 +63,7 @@ function Static(props: StaticImageProps) {
             <NextImage
                 role="presentation"
                 src={url}
-                alt={altText ?? title ?? ""}
+                alt={altText ?? title ?? " "}
                 width={width || 1024}
                 height={height || 1024}
                 className={cn(
