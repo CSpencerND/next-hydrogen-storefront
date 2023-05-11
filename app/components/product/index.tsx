@@ -1,6 +1,6 @@
 import Children from "types"
 
-import { Card } from "./Card"
+// import { Card } from "./Card"
 import { CartButton } from "./CartButton"
 import { Description } from "./Description"
 import { Image } from "./Image"
@@ -18,7 +18,7 @@ function Product({ children }: Children) {
     return <>{children}</>
 }
 
-Product.Card = Card
+// Product.Card = Card
 Product.CartButton = CartButton
 Product.Description = Description
 Product.Image = Image
@@ -33,3 +33,21 @@ Product.Title = Title
 Product.Variant = Variant
 
 export default Product
+
+// export function StaticProductCard({ href, product, image }: React.ComponentProps<typeof Card>) {
+//     return (
+//         <Card
+//             href={href}
+//             product={product}
+//         >
+//             {(image, title) =>
+//                 image && (
+//                     <Figure
+//                         image={image}
+//                         title={title}
+//                     />
+//                 )
+//             }
+//         </Card>
+//     )
+// }

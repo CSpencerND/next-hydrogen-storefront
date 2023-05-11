@@ -3,7 +3,7 @@ import type Children from "types"
 
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { cn } from "./lib/utils"
+import { cn } from "./lib"
 
 import { RootProvider, getShop } from "./lib"
 

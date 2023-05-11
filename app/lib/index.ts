@@ -1,3 +1,5 @@
+export { ProductProvider, RootProvider, useHydrated, useLoader, useProductStore } from "./state"
+
 export {
     getCollectionByHandle,
     getCollections,
@@ -8,8 +10,8 @@ export {
     shopify,
 } from "./storefront"
 
-export { ProductProvider, RootProvider, useHydrated, useLoader, useProductStore } from "./state"
-
 export { isObject, isShopifyError } from "./type-guards"
+export { cn } from "./utils/cn"
+export { AnimatePresence, MotionConfig, MotionDiv, MotionLink, motion } from "./utils/motion"
 
-export { cn } from "./utils"
+export type { Transition, Variants } from "./utils/motion"

@@ -1,4 +1,5 @@
-import { Featured, Gallery, Hero, Statement } from "@/components/ui"
+import { Gallery, Hero, Statement } from "@/components/ui"
+// import { Featured, Gallery, Hero, Statement } from "@/components/ui"
 import { Suspense } from "react"
 
 import font from "next/font/local"
@@ -14,10 +15,9 @@ export default async function HomePage() {
             <Hero
             // font={heroFont}
             />
-            <Suspense>
-                {/*@ts-expect-error Async Component*/}
-                <Featured collectionHandle="staff-picks" />
-            </Suspense>
+            {/* <Suspense> */}
+            {/*     <Featured collectionHandle="staff-picks" /> */}
+            {/* </Suspense> */}
             <Statement heading="What we do">
                 <p>Work hard, play hard, I guess.</p>
                 <p>That is what The kids say, yeah?</p>

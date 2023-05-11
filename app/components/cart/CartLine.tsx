@@ -12,7 +12,7 @@ import { Popover } from "@headlessui/react"
 import { Minus, Plus } from "lucide-react"
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib"
 import { motion } from "framer-motion"
 
 import type {
@@ -86,11 +86,11 @@ function Image({ image, title, productURL }: ImageProps) {
                 href={productURL}
                 className="w-2/5 sm:w-1/4"
             >
-                <Product.Image.Static
-                    imageClassName="rounded-2xl sm:rounded-3xl"
-                    image={image}
-                    title={title}
-                />
+                {/* <Product.Image.Static */}
+                {/*     imageClassName="rounded-2xl sm:rounded-3xl" */}
+                {/*     image={image} */}
+                {/*     title={title} */}
+                {/* /> */}
             </Link>
         </Popover.Button>
     )

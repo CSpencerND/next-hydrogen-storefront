@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib"
 import { motion } from "framer-motion"
 import Link from "next/link"
 

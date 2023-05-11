@@ -3,7 +3,7 @@ import NextImage, { ImageProps } from "next/image"
 import type { Image as TImage } from "@shopify/hydrogen-react/storefront-api-types"
 import type { HTMLAttributes } from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib"
 
 type ProductImageProps = {
     image: TImage

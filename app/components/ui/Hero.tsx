@@ -1,5 +1,5 @@
 import { getShop } from "@/lib/storefront"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib"
 import { hero } from "@/static"
 import Image from "next/image"
 import Link from "next/link"

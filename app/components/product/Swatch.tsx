@@ -3,7 +3,7 @@
 import { useProductStore } from "@/lib/state"
 import { useProduct } from "@shopify/hydrogen-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib"
 
 import { RadioGroup } from "@headlessui/react"
 
