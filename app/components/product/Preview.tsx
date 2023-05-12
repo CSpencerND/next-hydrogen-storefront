@@ -7,7 +7,7 @@ import { useProductStore } from "@/lib/state"
 import type { ComponentProps } from "react"
 type CardProps = Omit<ComponentProps<typeof ProductCard>, "image">
 
-export function Card({ href, title }: CardProps) {
+export function Preview({ href, title }: CardProps) {
     const currentImage = useProductStore((s) => s.currentImage)
 
     return (

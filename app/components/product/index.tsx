@@ -1,6 +1,6 @@
 import Children from "types"
 
-import { Card } from "./Card"
+import { Preview } from "./Preview"
 import { CartButton } from "./CartButton"
 import { Description } from "./Description"
 import { Layout } from "./Layout"
@@ -14,7 +14,7 @@ import { Variant } from "./Variant"
 
 const Product = ({ children }: Children) => <>{children}</>
 
-Product.Card = Card
+Product.Preview = Preview
 Product.CartButton = CartButton
 Product.Description = Description
 Product.Layout = Layout
