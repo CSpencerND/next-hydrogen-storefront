@@ -26,8 +26,11 @@
         @apply !rounded-xl;
     }
 
+    /* .glass { */
+    /*     @apply ring-0 hover:ring-0; */
+    /* } */
     .glass {
-        @apply ring-0 hover:ring-0;
+        @apply !backdrop-filter-none;
     }
 }
 
