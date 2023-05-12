@@ -4,10 +4,12 @@ import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import "./Featured.css"
 
+import { ProductCard } from "@/components"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 
 import { useHydrated, useLoader } from "@/lib/state"
+import { useMountEffect } from "@react-hookz/web"
 import { useWindowSize } from "@react-hookz/web/esm/useWindowSize"
 import { useRef, useState } from "react"
 
@@ -15,12 +17,10 @@ import type { Product as TProduct } from "@shopify/hydrogen-react/storefront-api
 
 type FeaturedProps = {
     featured: TProduct[]
+    collectionHandle: string
 }
 
-import NextImage from "next/image"
-import { useMountEffect } from "@react-hookz/web"
-
-export function FeaturedCollection({ featured }: FeaturedProps) {
+export function FeaturedCollection({ featured, collectionHandle }: FeaturedProps) {
     const sliderRef = useRef<AliceCarousel>(null)
     const width = useWindowSize(undefined, true).width
     const autoplay: boolean = useHydrated()
@@ -29,28 +29,19 @@ export function FeaturedCollection({ featured }: FeaturedProps) {
     const [items, setItems] = useState<JSX.Element[]>([<LoadingSpinner />])
 
     useMountEffect(() => {
-        const items = featured.map(({ featuredImage, title }) => (
-            <div
-                className="card image-full card-compact grid-cols-1 !rounded-3xl before:hidden"
-                key={featuredImage?.id}
-            >
-                <figure className="glass rounded-3xl">
-                    {featuredImage && (
-                        <NextImage
-                            src={featuredImage?.url}
-                            alt={featuredImage.altText ?? title ?? " "}
-                            width={featuredImage.width ?? 1024}
-                            height={featuredImage.height ?? 1024}
-                            role="presentation"
-                            onDragStart={(e) => e.preventDefault()}
-                        />
-                    )}
-                </figure>
-                <span className="card-body mt-auto rounded-b-3xl bg-white/10 !py-2 backdrop-blur-[10px] backdrop-saturate-[1.8]">
-                    <h2 className="truncate text-center text-sm font-bold">{title}</h2>
-                </span>
-            </div>
-        ))
+        const items = featured.map((product) => {
+            const { featuredImage: image, title, handle } = product
+            const href = `/collections/${collectionHandle}/${handle}`
+
+            return (
+                <ProductCard
+                    title={title}
+                    href={href}
+                    image={image}
+                    onDragStart={(e) => e.preventDefault()}
+                />
+            )
+        })
         setItems(items)
         toggleLoading()
     })
@@ -64,7 +55,6 @@ export function FeaturedCollection({ featured }: FeaturedProps) {
                 keyboardNavigation
                 disableDotsControls
                 disableButtonsControls
-                mouseTracking
                 paddingLeft={70}
                 paddingRight={70}
                 autoPlay={autoplay}

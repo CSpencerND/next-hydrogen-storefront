@@ -7,5 +7,5 @@
 }
 
 li.alice-carousel__stage-item {
-    @apply px-2 [&>*]:rounded-2xl;
+    @apply px-2;
 }
