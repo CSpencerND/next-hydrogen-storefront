@@ -23,7 +23,7 @@ export const useLoader = (): LoaderState => {
             color={color}
             size={size}
             loading={isLoading}
-            className={cn("mx-auto", className)}
+            className={cn("mx-auto h-fit max-h-full", className)}
             aria-label="Loading Spinner"
             data-testid="loader"
         />

@@ -18,15 +18,15 @@ const fadeInUp: Variants = {
     },
 }
 
-const rootVariants = cva("overflow-hidden rounded-3xl shadow-lg", {
+const rootVariants = cva("relative overflow-hidden rounded-3xl shadow-lg", {
     variants: {
         variant: {
-            default: "bg-base-200",
+            default: "bg-base-200/60",
             glass: "glass",
         },
-        defaultVariants: {
-            variant: "default",
-        },
+    },
+    defaultVariants: {
+        variant: "default",
     },
 })
 
@@ -49,7 +49,7 @@ const CardRoot = forwardRef<HTMLDivElement, CardRootProps>(({ className, variant
         <MotionLink
             ref={ref}
             href={href}
-            className={cn("[&_h3]:text-primary-content block", rootVariants({ variant, className }))}
+            className={cn("block [&_h3]:text-primary-content", rootVariants({ variant, className }))}
             variants={fadeInUp}
             {...props}
         />

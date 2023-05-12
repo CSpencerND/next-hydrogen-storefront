@@ -83,6 +83,8 @@ module.exports = {
         warning: "hsl(49, 88%, 49%)",
         error: "hsl(346, 87%, 57%)",
         "--border-btn": "0px",
+        "--glass-blur": "16px",
+        // "--glass-opacity": "60%"
         // TODO: add border radius options
     },
 
