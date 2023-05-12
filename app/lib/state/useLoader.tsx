@@ -1,34 +1,33 @@
 "use client"
 
-import { useState } from "react"
-
+import { ComponentProps, useState } from "react"
 import { HashLoader as Loader } from "react-spinners"
-
-const loaderProps = {
-    color: "#00aaff",
-    size: 96,
-}
+import { cn } from "../utils/cn"
 
 type LoaderState = {
-    LoadingSpinner: () => JSX.Element
+    LoadingSpinner: ({ color, size, loading, className }: Partial<ComponentProps<typeof Loader>>) => JSX.Element
     toggleLoading: () => void
+    setLoadingTrue: () => void
+    setLoadingFalse: () => void
     isLoading: boolean
 }
 
-export const useLoader = (size?: number, color?: string): LoaderState => {
+export const useLoader = (): LoaderState => {
     const [isLoading, setLoading] = useState<boolean>(true)
     const toggleLoading = () => setLoading((state) => !state)
+    const setLoadingTrue = () => setLoading(true)
+    const setLoadingFalse = () => setLoading(false)
 
-    const LoadingSpinner = () => (
+    const LoadingSpinner = ({ className, color = "#00aaff", size = 96 }: Partial<ComponentProps<typeof Loader>>) => (
         <Loader
-            color={color ?? loaderProps.color}
-            size={size ?? loaderProps.size}
+            color={color}
+            size={size}
             loading={isLoading}
-            className="mx-auto"
+            className={cn("mx-auto", className)}
             aria-label="Loading Spinner"
             data-testid="loader"
         />
     )
 
-    return { LoadingSpinner, toggleLoading, isLoading }
+    return { LoadingSpinner, toggleLoading, setLoadingTrue, setLoadingFalse, isLoading }
 }
