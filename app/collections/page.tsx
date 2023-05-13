@@ -1,5 +1,5 @@
 import Collection from "@/components/collection"
-import { ProductCard } from "@/components"
+import { ProductCard } from "@/components/ui"
 
 import { getCollections } from "@/lib"
 

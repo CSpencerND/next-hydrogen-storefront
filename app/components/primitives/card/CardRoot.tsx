@@ -1,56 +1,39 @@
-import { MotionDiv, MotionLink } from "@/lib"
-import Link from "next/link"
+import { Motion } from "@/components/ui"
 
 import { cn } from "@/lib"
 import { cva } from "class-variance-authority"
 import { forwardRef } from "react"
 
-import type { Variants } from "@/lib"
 import type { VariantProps } from "class-variance-authority"
 import type { HTMLMotionProps } from "framer-motion"
 import type { ComponentPropsWithoutRef } from "react"
 
-const fadeInUp: Variants = {
-    hidden: { y: -80, opacity: 0 },
-    visible: {
-        y: 0,
-        opacity: 1,
-    },
-}
-
 const rootVariants = cva("relative overflow-hidden rounded-3xl shadow-lg", {
     variants: {
-        variant: {
-            default: "bg-base-200/60",
-            glass: "glass",
+        glass: {
+            true: "glass bg-blur before:bg-base-200/[22.36%]",
         },
-    },
-    defaultVariants: {
-        variant: "default",
     },
 })
 
 type CardRootProps = HTMLMotionProps<"div"> &
     VariantProps<typeof rootVariants> &
-    Partial<ComponentPropsWithoutRef<typeof Link>>
+    Partial<ComponentPropsWithoutRef<typeof Motion.Link>>
 
-const CardRoot = forwardRef<HTMLDivElement, CardRootProps>(({ className, variant, href, ...props }, ref) => {
+const CardRoot = forwardRef<HTMLDivElement, CardRootProps>(({ className, href, glass, ...props }, ref) => {
     if (!href) {
         return (
-            <MotionDiv
+            <Motion.Div
                 ref={ref}
-                className={cn(rootVariants({ variant, className }))}
-                variants={fadeInUp}
+                className={cn(rootVariants({ className, glass }))}
                 {...props}
             />
         )
     }
     return (
-        <MotionLink
-            ref={ref}
+        <Motion.Link
             href={href}
-            className={cn("block [&_h3]:text-primary-content", rootVariants({ variant, className }))}
-            variants={fadeInUp}
+            className={cn("block [&_h3]:text-primary-content", rootVariants({ className, glass }))}
             {...props}
         />
     )

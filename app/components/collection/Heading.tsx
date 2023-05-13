@@ -1,15 +1,13 @@
-"use client"
-
 type HeadingProps = {
     collectionTitle: string
     collectionDescription?: string
 }
 
-import { motion } from "framer-motion"
+import { Motion } from "@/components/ui"
 
 export function Heading({ collectionTitle, collectionDescription }: HeadingProps) {
     return (
-        <motion.article
+        <Motion.Article
             initial={{ opacity: 0, x: "-20%" }}
             animate={{ opacity: 1, x: 0 }}
             className="prose mt-4 max-w-prose-narrow prose-headings:mb-4">
@@ -22,6 +20,6 @@ export function Heading({ collectionTitle, collectionDescription }: HeadingProps
                     }}
                 />
             )}
-        </motion.article>
+        </Motion.Article>
     )
 }

@@ -1,8 +1,7 @@
-"use client"
+import Link from "next/link"
+import { Motion } from "@/components/ui"
 
 import { cn } from "@/lib"
-import { motion } from "framer-motion"
-import Link from "next/link"
 
 import type { Url } from "next/dist/shared/lib/router/router"
 import type { PropsWithChildren } from "react"
@@ -23,7 +22,7 @@ const fadeInUp = {
 
 export function Card({ href, children, rounded, ...props }: CardProps) {
     return (
-        <motion.li
+        <Motion.Li
             variants={fadeInUp}
             className={cn(
                 `
@@ -39,6 +38,6 @@ export function Card({ href, children, rounded, ...props }: CardProps) {
             >
                 {children}
             </Link>
-        </motion.li>
+        </Motion.Li>
     )
 }

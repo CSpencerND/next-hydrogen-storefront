@@ -2,25 +2,23 @@ import { cn } from "@/lib"
 import { cva, type VariantProps } from "class-variance-authority"
 import { forwardRef, type HTMLAttributes } from "react"
 
-const footerVariants = cva("p-2 rounded-b-3xl", {
+const footerVariants = cva("p-2 rounded-b-3xl flex items-center", {
     variants: {
-        variant: {
-            default: "flex items-center",
-            absolute:
-                "absolute bottom-0 w-full bg-white/10 p-3 isolate",
+        overlay: {
+            true: "bg-blur absolute bottom-0 isolate w-full p-3 before:bg-neutral/20",
         },
-        defaultVariants: {
-            variant: "default",
+        center: {
+            true: "justify-center",
         },
     },
 })
 
 type CardFooterProps = HTMLAttributes<HTMLDivElement> & VariantProps<typeof footerVariants>
 
-const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(({ variant, className, ...props }, ref) => (
+const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(({ overlay, center, className, ...props }, ref) => (
     <footer
         ref={ref}
-        className={cn(footerVariants({ variant, className }))}
+        className={cn(footerVariants({ overlay, center, className }))}
         {...props}
     />
 ))
