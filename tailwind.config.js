@@ -57,20 +57,16 @@ module.exports = {
         function ({ addComponents }) {
             addComponents({
                 ".bg-blur": {
-                    position: "relative",
-                    overflow: "hidden",
-
                     "&::before": {
                         content: `""`,
-                        position: "absolute",
-                        top: "0",
-                        left: "0",
-                        width: "100%",
-                        height: "100%",
-                        zIndex: "-1",
-                        backdropFilter: "blur(16px) saturate(1.8)",
                         pointerEvents: "none",
-                        borderRadius: "inherit"
+                        position: "absolute",
+                        inset: "0",
+                        zIndex: "-1",
+                        height: "100%",
+                        width: "100%",
+                        borderRadius: "inherit",
+                        backdropFilter: "blur(10px) saturate(1.8)",
                     },
                 },
             })

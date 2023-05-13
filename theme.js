@@ -1,20 +1,45 @@
-const light = {
-    gray1: "hsl(231, 1%, 56%)",
-    gray2: "hsl(240, 2%, 68%)",
-    gray3: "hsl(240, 3%, 78%)",
-    gray4: "hsl(240, 6%, 84%)",
-    gray5: "hsl(240, 12%, 91%)",
-    gray6: "hsl(240, 24%, 96%)",
+const nextLight = {
+    gray1: "#889096",
+    gray2: "#C1C8CD",
+    gray3: "#D7DBDF",
+    gray4: "#DFE3E6",
+    gray5: "#E6E8EB",
+    gray6: "#ECEEF0",
+    gray7: "#F1F3F5",
 }
 
-const dark = {
-    gray1: "hsl(231, 2%, 56%)",
-    gray2: "hsl(240, 2%, 44%)",
-    gray3: "hsl(240, 4%, 32%)",
-    gray4: "hsl(240, 6%, 26%)",
-    gray5: "hsl(240, 8%, 20%)",
-    gray6: "hsl(240, 12%, 14%)",
-    gray7: "hsl(240, 18%, 8%)",
+const nextDark = {
+    gray1: "#697177",
+    gray2: "#4C5155",
+    gray3: "#3A3F42",
+    gray4: "#313538",
+    gray5: "#2B2F31",
+    gray6: "#26292B",
+    gray7: "#16181A",
+}
+
+const zinc = {
+    z50: "rgb(250, 250, 250)",
+    z100: "rgb(244, 244, 245)",
+    z200: "rgb(228, 228, 231)",
+    z300: "rgb(212, 212, 216)",
+    z400: "rgb(161, 161, 170)",
+    z500: "rgb(113, 113, 122)",
+    z600: "rgb(82, 82, 91)",
+    z700: "rgb(63, 63, 70)",
+    z800: "rgb(39, 39, 42)",
+    z900: "rgb(24, 24, 27)",
+    z950: "rgb(9, 9, 11)",
+}
+
+const iosDark = {
+    gray1: "rgb(174, 174, 178)",
+    gray2: "rgb(124, 124, 128)", // 50
+    gray3: "rgb(84, 84, 86)", // 40
+    gray4: "rgb(68, 68, 70)", // 16
+    gray5: "rgb(54, 54, 56)", // 14
+    gray6: "rgb(36, 36, 38)", // 18
+    gray7: "rgb(20, 20, 22)", // 16
 }
 
 const iosLight = {
@@ -55,16 +80,6 @@ const iosContrast = {
     pink: "hsl(339, 87%, 74%)",
 }
 
-// const iosDark = {
-//     gray1: 'rgb(174, 174, 178)',
-//     gray2: 'rgb(124, 124, 128)', // 50
-//     gray3: 'rgb(84, 84, 86)',    // 40
-//     gray4: 'rgb(68, 68, 70)',    // 16
-//     gray5: 'rgb(54, 54, 56)',    // 14
-//     gray6: 'rgb(36, 36, 38)',    // 18
-//     gray7: 'rgb(20, 20, 22)'     // 16
-// }
-
 module.exports = {
     nextDark: {
         primary: "hsl(208, 90%, 15%)",
@@ -73,18 +88,20 @@ module.exports = {
         "secondary-content": "hsl(266, 85%, 68%)",
         accent: "hsl(302, 63%, 19%)",
         "accent-content": "hsl(300, 58%, 53%)",
-        neutral: dark.gray3,
-        "neutral-focus": dark.gray4,
-        "base-100": dark.gray5,
-        "base-200": dark.gray6,
-        "base-300": dark.gray7,
+
+        neutral: zinc.z500,
+        "neutral-focus": zinc.z600,
+        "base-100": zinc.z700,
+        "base-200": zinc.z800,
+        "base-300": zinc.z900,
+
         info: "hsl(170, 79%, 43%)",
         success: "hsl(145, 70%, 46%)",
         warning: "hsl(49, 88%, 49%)",
         error: "hsl(346, 87%, 57%)",
         "--border-btn": "0px",
         "--glass-blur": "16px",
-        // "--glass-opacity": "60%"
+        "--glass-opacity": "22.36%"
         // TODO: add border radius options
     },
 
@@ -98,11 +115,17 @@ module.exports = {
         accent: iosContrast.pink,
         "accent-content": iosColors.pink,
 
-        neutral: iosLight.gray3,
-        "neutral-focus": iosLight.gray4,
-        "base-100": iosLight.gray7,
-        "base-200": iosLight.gray6,
-        "base-300": iosLight.gray5,
+        neutral: zinc.z500,
+        "neutral-focus": zinc.z600,
+        "base-100": zinc.z100,
+        "base-200": zinc.z200,
+        "base-300": zinc.z300,
+
+        // neutral: zinc.z500,
+        // "neutral-focus": zinc.z400,
+        // "base-100": zinc.z300,
+        // "base-200": zinc.z200,
+        // "base-300": zinc.z100,
 
         info: iosColors.teal,
         success: iosColors.green,
