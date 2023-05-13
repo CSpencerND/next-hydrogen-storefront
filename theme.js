@@ -89,11 +89,11 @@ module.exports = {
         accent: "hsl(302, 63%, 19%)",
         "accent-content": "hsl(300, 58%, 53%)",
 
-        neutral: zinc.z500,
-        "neutral-focus": zinc.z600,
+        neutral: zinc.z600,
+        "neutral-focus": zinc.z500,
         "base-100": zinc.z700,
         "base-200": zinc.z800,
-        "base-300": zinc.z900,
+        "base-300": "#000000",
 
         info: "hsl(170, 79%, 43%)",
         success: "hsl(145, 70%, 46%)",
@@ -116,7 +116,7 @@ module.exports = {
         "accent-content": iosColors.pink,
 
         neutral: zinc.z500,
-        "neutral-focus": zinc.z600,
+        "neutral-focus": zinc.z400,
         "base-100": zinc.z100,
         "base-200": zinc.z200,
         "base-300": zinc.z300,

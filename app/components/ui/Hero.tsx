@@ -13,14 +13,10 @@ type HeroProps = {
     aspect?: "portrait" | "landscape"
 }
 
-export async function Hero({
-    font,
-    rounded = true,
-    aspect = "landscape",
-    buttonText = "Go Shopping!",
-    ...props
-}: HeroProps) {
+export async function Hero({ font, ...props }: HeroProps) {
     const { brand } = await getShop()
+    const { rounded = true, aspect = "landscape", buttonText = "Go Shopping!" } = props
+
     return (
         <section
             className="aspect-h-9 aspect-w-16 max-h-[calc(100vh-192px)]"
@@ -56,12 +52,11 @@ export async function Hero({
                     </h1>
                     <Link
                         href="/collections"
-                        className="glass btn relative mx-auto w-fit text-primary-content shadow-box shadow-primary-content"
+                        className={`
+                            btn-primary btn mx-auto w-fit bg-opacity-60 text-primary-content
+                            shadow-box shadow-primary-content backdrop-blur-sm backdrop-saturate-150
+                        `}
                     >
-                        <div
-                            className="absolute left-0 top-0 -z-10 h-full w-full rounded-xl bg-primary/60 backdrop-blur-lg backdrop-saturate-150"
-                            aria-hidden={true}
-                        />
                         {buttonText}
                     </Link>
                 </div>

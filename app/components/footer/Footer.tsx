@@ -61,7 +61,7 @@ export async function Footer() {
                     </ul>
                 </div>
             </section>
-            <section className="footer border-t border-neutral-focus py-6 max-md:footer-center">
+            <section className="footer border-t border-base-200 py-6 max-md:footer-center">
                 <div className="grid-flow-col items-center">
                     {logoSquare ? (
                         <Link

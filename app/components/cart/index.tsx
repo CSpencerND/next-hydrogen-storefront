@@ -2,12 +2,7 @@
 
 import { cn } from "@/lib"
 
-import {
-    CartCheckoutButton,
-    CartCost,
-    CartLineProvider,
-    useCart,
-} from "@shopify/hydrogen-react"
+import { CartCheckoutButton, CartCost, CartLineProvider, useCart } from "@shopify/hydrogen-react"
 
 import { ScreenOverlay } from "@/components/ui"
 import { Popover } from "@headlessui/react"
@@ -58,8 +53,8 @@ export default function Cart() {
                             <MotionConfig transition={{ ...transition }}>
                                 <motion.div
                                     className={`
-                                        fixed inset-0 z-50 h-screen w-screen border-l border-neutral-focus
-                                        bg-base-300/60 sm:ml-auto sm:max-w-3xl
+                                        fixed inset-0 z-50 h-screen w-screen border-l border-base-200
+                                        bg-base-300/60 backdrop-blur-xl backdrop-saturate-[1.8] sm:ml-auto sm:max-w-3xl
                                     `}
                                     key="navMenuSidebar"
                                     variants={{
@@ -83,9 +78,7 @@ export default function Cart() {
                                 >
                                     <Popover.Panel className="flex h-screen flex-col">
                                         <header className="flex items-center justify-between border-b border-base-100 p-4">
-                                            <h1 className="text-2xl font-medium">
-                                                In Your Cart
-                                            </h1>
+                                            <h1 className="text-2xl font-medium">In Your Cart</h1>
                                             <Popover.Button className="btn-primary btn-square btn rounded-sq">
                                                 <ArrowRight />
                                             </Popover.Button>
@@ -104,9 +97,7 @@ export default function Cart() {
                                             {lines?.length === 0 ? (
                                                 <div className="grid h-full place-items-center">
                                                     <div className="space-y-6">
-                                                        <h2 className="text-xl font-bold">
-                                                            Your Cart Is Empty
-                                                        </h2>
+                                                        <h2 className="text-xl font-bold">Your Cart Is Empty</h2>
                                                         <Popover.Button as={Fragment}>
                                                             <Link
                                                                 href="/collections"
@@ -142,9 +133,7 @@ export default function Cart() {
                                                     />
                                                 </p>
                                             </div>
-                                            <p className="mt-2 text-xs">
-                                                Shipping and taxes calculated at checkout.
-                                            </p>
+                                            <p className="mt-2 text-xs">Shipping and taxes calculated at checkout.</p>
 
                                             <CartCheckoutButton
                                                 className={cn(

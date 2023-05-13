@@ -57,9 +57,9 @@ export default function NavMenu({ linkData }: { linkData: LinkData[] }) {
                             {open && (
                                 <motion.div
                                     className={`
-                                    fixed inset-0 z-40 mr-24 flex h-screen border-r
-                                    border-neutral-focus bg-base-300/60 lg:hidden
-                                `}
+                                        fixed inset-0 z-40 mr-24 flex h-screen border-r border-base-200
+                                        bg-base-300/60 backdrop-blur-xl backdrop-saturate-[1.8] lg:hidden
+                                    `}
                                     key="navMenuSidebar"
                                     variants={{
                                         close: {
@@ -131,10 +131,7 @@ export default function NavMenu({ linkData }: { linkData: LinkData[] }) {
 }
 
 function isActiveLink(linkHref: string, currentPathname: string) {
-    return (
-        linkHref === currentPathname ||
-        (currentPathname.startsWith(linkHref + "/") && linkHref !== "/collections")
-    )
+    return linkHref === currentPathname || (currentPathname.startsWith(linkHref + "/") && linkHref !== "/collections")
 }
 
 function Desktop({ linkData }: { linkData: LinkData[] }) {
@@ -150,9 +147,8 @@ function Desktop({ linkData }: { linkData: LinkData[] }) {
                     <li
                         key={i}
                         className={cn(
-                            "relative tab",
-                            link.href !== "/collections" &&
-                                link.href !== "/collections/full-catalog"
+                            "tab relative",
+                            link.href !== "/collections" && link.href !== "/collections/full-catalog"
                                 ? "max-xl:hidden"
                                 : ""
                         )}
@@ -172,12 +168,7 @@ function Desktop({ linkData }: { linkData: LinkData[] }) {
                                     // className="absolute left-0 right-0 -top-1 rounded-xl bg-info/30 h-[120%]"
                                 />
                             )}
-                            <span
-                                className={cn(
-                                    "relative",
-                                    isActiveLink(link.href, pathname) ? "text-info" : ""
-                                )}
-                            >
+                            <span className={cn("relative", isActiveLink(link.href, pathname) ? "text-info" : "")}>
                                 {link.title}
                             </span>
                         </Link>

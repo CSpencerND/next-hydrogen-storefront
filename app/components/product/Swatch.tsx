@@ -78,7 +78,7 @@ export function Swatch({ attached, ...props }: { attached?: boolean; className?:
                             }}
                             className={cn(
                                 `
-                                h-7 w-7 rounded-full border-2 border-neutral
+                                h-7 w-7 rounded-full border-2 border-base-200
                                 ui-checked:border-0`,
                                 props.className
                             )}

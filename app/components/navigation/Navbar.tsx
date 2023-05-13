@@ -35,14 +35,10 @@ export async function Navbar() {
         <header className="sticky top-0 z-40 sm:-mx-6">
             <nav
                 className={`
-                    navbar relative isolate mx-auto max-h-[74px] max-w-7xl
-                    border-b border-neutral-focus px-3 py-6 sm:px-6
+                    navbar bg-blur relative isolate mx-auto max-h-[74px] max-w-7xl border-b
+                    border-base-200 bg-base-300/60 px-3 py-6 sm:px-6
                 `}
             >
-                <div
-                    aria-hidden={true}
-                    className="absolute left-0 top-0 -z-10 h-full w-full backdrop-blur-lg backdrop-saturate-150"
-                />
                 <div className="navbar-start">
                     <Link
                         href="/"
