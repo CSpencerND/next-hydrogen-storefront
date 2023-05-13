@@ -1,11 +1,6 @@
 "use client"
 
-import { AnimatePresence, MotionConfig, motion } from "framer-motion"
-import Link from "next/link"
-
-export const MotionDiv = motion.div
-export const MotionLink = motion(Link)
-
-export { AnimatePresence, MotionConfig, motion }
+import { AnimatePresence, LazyMotion, MotionConfig, domAnimation, domMax, m, motion } from "framer-motion"
 
 export type { Transition, Variants } from "framer-motion"
+export { AnimatePresence, MotionConfig, motion, m, domMax, domAnimation, LazyMotion }

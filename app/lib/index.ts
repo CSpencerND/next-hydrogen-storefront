@@ -1,5 +1,4 @@
 export { ProductProvider, RootProvider, useHydrated, useLoader, useProductStore } from "./state"
-
 export {
     getCollectionByHandle,
     getCollections,
@@ -7,11 +6,9 @@ export {
     getProductRecommendations,
     getProductsByCollection,
     getShop,
-    shopify,
+    shopify
 } from "./storefront"
-
 export { isObject, isShopifyError } from "./type-guards"
 export { cn } from "./utils/cn"
-export { AnimatePresence, MotionConfig, MotionDiv, MotionLink, motion } from "./utils/motion"
-
+export { AnimatePresence, MotionConfig, motion, m, LazyMotion, domAnimation, domMax } from "./utils/motion"
 export type { Transition, Variants } from "./utils/motion"
