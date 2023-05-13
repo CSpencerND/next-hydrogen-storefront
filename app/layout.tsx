@@ -48,7 +48,7 @@ export default async function RootLayout({ children }: Children) {
             lang="en"
         >
             <body
-                className="relative isolate bg-base-300 text-sm sm:px-6"
+                className="relative isolate bg-black text-sm sm:px-6"
                 style={{
                     paddingBottom: "env(safe-area-inset-bottom)", // ios
                 }}

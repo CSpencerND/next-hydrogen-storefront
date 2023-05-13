@@ -1,1 +1,1 @@
-export { Backdrop, Featured, Gallery, Hero, LoadingSpinner, ProductCard, ScreenOverlay, Statement } from "./ui";
+export { Backdrop, Gallery, Hero, LoadingSpinner, ProductCard, ScreenOverlay, Statement } from "./ui";
